@@ -79,24 +79,30 @@ h1, h2, h3, h4, h5, h6 {
     background: var(--bg-surface);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--glass-border);
+    border: 2px solid transparent;
     border-radius: 50px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    overflow: hidden; /* For the colorful line */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    
+    /* Using background-clip for the gradient border */
+    background-image: linear-gradient(var(--bg-surface), var(--bg-surface)), 
+                      linear-gradient(90deg, #ff9800, #9d4edd, #ff9800);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    background-size: 100% 100%, 200% 100%;
+    animation: borderGradientFlow 4s linear infinite;
 }
 
-/* Visible Colorful Line in Header */
-.glass-nav::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(90deg, #ff9800, #9d4edd, #ff9800);
-    background-size: 200% auto;
-    animation: gradientFlow 4s linear infinite;
-    opacity: 0.8;
+@keyframes borderGradientFlow {
+    0% { background-position: 0% 0%, 0% 0%; }
+    100% { background-position: 0% 0%, 200% 0%; }
+}
+
+/* Responsive adjustment for border */
+@media (max-width: 768px) {
+    .glass-nav {
+        border-radius: 25px;
+        top: 10px;
+    }
 }
 
 @keyframes gradientFlow {
