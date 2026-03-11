@@ -286,30 +286,39 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Replace the URL below with your actual FastAPI endpoint URL when deployed
                 // e.g. "https://your-api-url.com/api/chat"
                 try {
-                    /* Uncomment this fetch block when your backend is ready! 
-                    const response = await fetch("http://127.0.0.1:8000/chat", {
+                    // Call Google Gemini API directly
+                    const API_KEY = "AIzaSyAnOnS6B8_hT0VgOizBgi5MLyHHmvCZTQo";
+                    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+                    
+                    const response = await fetch(url, {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ message: text }) // Send the user's text
+                        body: JSON.stringify({
+                            contents: [{
+                                parts: [{ text: "You are an AI assistant for Zeeshan, an AI Engineer. Keep your answers brief, professional, and helpful. User asks: " + text }]
+                            }]
+                        })
                     });
                     
                     if (!response.ok) throw new Error("Network response was not ok");
                     
                     const data = await response.json();
-                    const aiReply = data.reply; // Adjust based on your API's JSON key
-                    */
+                    
+                    // Extract the text from the Gemini response structure
+                    let aiReply = "Sorry, I couldn't understand that.";
+                    if (data.candidates && data.candidates[0].content && data.candidates[0].content.parts.length > 0) {
+                        aiReply = data.candidates[0].content.parts[0].text;
+                    }
 
-                    // Simulated AI Reply for now (Delete this when using fetch)
-                    const aiReply = await new Promise(resolve => 
-                        setTimeout(() => resolve("This is a simulated response. Link me to your FastAPI backend to make me smart! 🧠"), 1500)
-                    );
+                    // Format line breaks for HTML display
+                    aiReply = aiReply.replace(/\n/g, '<br>');
 
                     // Update UI with the actual AI response
                     loadingMsg.innerHTML = aiReply;
 
                 } catch (error) {
                     console.error("Chatbot API Error:", error);
-                    loadingMsg.innerHTML = "Sorry, I am having trouble connecting to my server right now!";
+                    loadingMsg.innerHTML = "Sorry, I am having trouble connecting to Gemini API right now!";
                     loadingMsg.style.color = "#ff5f56";
                 }
                 
