@@ -110,15 +110,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 5. Glass Nav Background Blur on Scroll
+    // 5. Glass Nav Class on Scroll
     const nav = document.querySelector('.glass-nav');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
-            nav.style.background = 'rgba(10, 10, 15, 0.85)';
-            nav.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.5)';
+            nav.classList.add('nav-scrolled');
         } else {
-            nav.style.background = 'rgba(20, 20, 30, 0.6)';
-            nav.style.boxShadow = 'none';
+            nav.classList.remove('nav-scrolled');
         }
     });
 
