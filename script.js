@@ -264,10 +264,10 @@ document.addEventListener('DOMContentLoaded', () => {
             chatbotWindow.classList.remove('open');
         });
 
-        const handleSendMessage = () => {
+        const handleSendMessage = async () => {
             const text = chatbotInputBox.value.trim();
             if (text) {
-                // Add user message
+                // Add user message to UI
                 const userMsg = document.createElement('div');
                 userMsg.className = 'message user-message';
                 userMsg.textContent = text;
@@ -275,14 +275,45 @@ document.addEventListener('DOMContentLoaded', () => {
                 chatbotInputBox.value = '';
                 chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
 
-                // Simulate bot response
-                setTimeout(() => {
-                    const botMsg = document.createElement('div');
-                    botMsg.className = 'message bot-message';
-                    botMsg.innerHTML = "Thanks for your message! 🤖<br><br>I am a UI placeholder right now. You can easily connect me to your FastAPI/LangChain backend by updating the fetch logic in `script.js`!";
-                    chatbotMessages.appendChild(botMsg);
-                    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-                }, 1000);
+                // Create a temporary loading message for the bot
+                const loadingMsg = document.createElement('div');
+                loadingMsg.className = 'message bot-message';
+                loadingMsg.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Thinking...';
+                chatbotMessages.appendChild(loadingMsg);
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+
+                // --- HOW TO CONNECT TO YOUR AI BACKEND ---
+                // Replace the URL below with your actual FastAPI endpoint URL when deployed
+                // e.g. "https://your-api-url.com/api/chat"
+                try {
+                    /* Uncomment this fetch block when your backend is ready! 
+                    const response = await fetch("http://127.0.0.1:8000/chat", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ message: text }) // Send the user's text
+                    });
+                    
+                    if (!response.ok) throw new Error("Network response was not ok");
+                    
+                    const data = await response.json();
+                    const aiReply = data.reply; // Adjust based on your API's JSON key
+                    */
+
+                    // Simulated AI Reply for now (Delete this when using fetch)
+                    const aiReply = await new Promise(resolve => 
+                        setTimeout(() => resolve("This is a simulated response. Link me to your FastAPI backend to make me smart! 🧠"), 1500)
+                    );
+
+                    // Update UI with the actual AI response
+                    loadingMsg.innerHTML = aiReply;
+
+                } catch (error) {
+                    console.error("Chatbot API Error:", error);
+                    loadingMsg.innerHTML = "Sorry, I am having trouble connecting to my server right now!";
+                    loadingMsg.style.color = "#ff5f56";
+                }
+                
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
             }
         };
 
