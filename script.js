@@ -260,9 +260,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        closeChatbot.addEventListener('click', () => {
+        closeChatbot.addEventListener('click', (e) => {
+            e.stopPropagation();
             chatbotWindow.classList.remove('open');
         });
+
+        let sessionApiKey = window.ENV?.GEMINI_API_KEY || "";
 
         const handleSendMessage = async () => {
             const text = chatbotInputBox.value.trim();
@@ -275,6 +278,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 chatbotInputBox.value = '';
                 chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
 
+                // Handle missing API key on GitHub pages
+                if (!sessionApiKey) {
+                    if (text.startsWith("AIza")) {
+                        sessionApiKey = text;
+                        const keyMsg = document.createElement('div');
+                        keyMsg.className = 'message bot-message';
+                        keyMsg.innerHTML = "API Key saved securely for this session! 🤖 How can I help you today?";
+                        chatbotMessages.appendChild(keyMsg);
+                        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+                        return;
+                    } else {
+                        const errorMsg = document.createElement('div');
+                        errorMsg.className = 'message bot-message';
+                        errorMsg.innerHTML = "<b>API Key missing!</b><br>Since this is a public GitHub Page, the API key is hidden for security.<br><br>Please paste your Gemini API Key here to start chatting securely in this session.";
+                        chatbotMessages.appendChild(errorMsg);
+                        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+                        return;
+                    }
+                }
+
                 // Create a temporary loading message for the bot
                 const loadingMsg = document.createElement('div');
                 loadingMsg.className = 'message bot-message';
@@ -283,17 +306,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
 
                 // --- HOW TO CONNECT TO YOUR AI BACKEND ---
-                // Replace the URL below with your actual FastAPI endpoint URL when deployed
-                // e.g. "https://your-api-url.com/api/chat"
                 try {
-                    // Pull Google Gemini API Key from the hidden env.js file
-                    const API_KEY = window.ENV?.GEMINI_API_KEY;
-                    
-                    if (!API_KEY) {
-                        throw new Error("API Key is missing. Please create `env.js` file.");
-                    }
-
-                    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+                    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${sessionApiKey}`;
                     
                     const response = await fetch(url, {
                         method: "POST",
@@ -308,6 +322,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     const data = await response.json();
                     
                     if (!response.ok) {
+                        if(data.error?.message.includes("API key not valid")) {
+                            sessionApiKey = ""; // Reset invalid key
+                        }
                         throw new Error(data.error?.message || "Network response was not ok");
                     }
                     
