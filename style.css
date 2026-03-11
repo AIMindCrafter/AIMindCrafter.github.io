@@ -818,9 +818,11 @@ footer {
     border-top: 1px solid var(--glass-border);
     padding: 4rem 2rem;
     text-align: center;
-    background: rgba(10, 10, 15, 0.8);
+    background: var(--bg-surface);
     position: relative;
     z-index: 10;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 footer h2 {
