@@ -9,6 +9,8 @@
     --secondary: #9d4edd; /* Deep Agency Purple */
     --brand-gradient: linear-gradient(90deg, #f97316, #06b6d4, #b14cff);
     --brand-gradient-diagonal: linear-gradient(135deg, #f97316, #06b6d4, #b14cff);
+    --hero-ambient-glow: radial-gradient(circle, rgba(6, 182, 212, 0.42) 0%, rgba(92, 124, 250, 0.28) 45%, rgba(177, 76, 255, 0.16) 72%, transparent 100%);
+    --hero-card-glow: rgba(6, 182, 212, 0.2);
     --glass-border: rgba(255, 255, 255, 0.08);
     --glass-bg: rgba(255, 255, 255, 0.03);
     --card-bg: rgba(25, 22, 35, 0.8);
@@ -479,7 +481,7 @@ h1, h2, h3, h4, h5, h6 {
     left: -15%;
     width: 800px;
     height: 800px;
-    background: radial-gradient(circle, #ffb800, #ff7b00);
+    background: var(--hero-ambient-glow);
 }
 
 .blur-purple {
@@ -487,7 +489,7 @@ h1, h2, h3, h4, h5, h6 {
     right: -10%;
     width: 700px;
     height: 700px;
-    background: radial-gradient(circle, #8b5cf6, rgba(124, 58, 237, 0.5));
+    background: var(--hero-ambient-glow);
 }
 
 @keyframes float {
