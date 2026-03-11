@@ -244,4 +244,52 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // 12. Chatbot Widget Logic
+    const chatbotToggle = document.getElementById('chatbotToggle');
+    const chatbotWindow = document.getElementById('chatbotWindow');
+    const closeChatbot = document.getElementById('closeChatbot');
+    const chatbotInputBox = document.getElementById('chatbotInputBox');
+    const chatbotSendBtn = document.getElementById('chatbotSendBtn');
+    const chatbotMessages = document.getElementById('chatbotMessages');
+
+    if (chatbotToggle && chatbotWindow) {
+        chatbotToggle.addEventListener('click', () => {
+            chatbotWindow.classList.toggle('open');
+            if(chatbotWindow.classList.contains('open')) {
+                chatbotInputBox.focus();
+            }
+        });
+
+        closeChatbot.addEventListener('click', () => {
+            chatbotWindow.classList.remove('open');
+        });
+
+        const handleSendMessage = () => {
+            const text = chatbotInputBox.value.trim();
+            if (text) {
+                // Add user message
+                const userMsg = document.createElement('div');
+                userMsg.className = 'message user-message';
+                userMsg.textContent = text;
+                chatbotMessages.appendChild(userMsg);
+                chatbotInputBox.value = '';
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+
+                // Simulate bot response
+                setTimeout(() => {
+                    const botMsg = document.createElement('div');
+                    botMsg.className = 'message bot-message';
+                    botMsg.innerHTML = "Thanks for your message! 🤖<br><br>I am a UI placeholder right now. You can easily connect me to your FastAPI/LangChain backend by updating the fetch logic in `script.js`!";
+                    chatbotMessages.appendChild(botMsg);
+                    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+                }, 1000);
+            }
+        };
+
+        chatbotSendBtn.addEventListener('click', handleSendMessage);
+        chatbotInputBox.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleSendMessage();
+        });
+    }
+
 });
