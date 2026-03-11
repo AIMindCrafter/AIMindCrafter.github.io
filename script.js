@@ -286,8 +286,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Replace the URL below with your actual FastAPI endpoint URL when deployed
                 // e.g. "https://your-api-url.com/api/chat"
                 try {
-                    // Call Google Gemini API directly
-                    const API_KEY = "AIzaSyAnOnS6B8_hT0VgOizBgi5MLyHHmvCZTQo";
+                    // Pull Google Gemini API Key from the hidden env.js file
+                    const API_KEY = window.ENV?.GEMINI_API_KEY;
+                    
+                    if (!API_KEY) {
+                        throw new Error("API Key is missing. Please create `env.js` file.");
+                    }
+
                     const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
                     
                     const response = await fetch(url, {
@@ -300,9 +305,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         })
                     });
                     
-                    if (!response.ok) throw new Error("Network response was not ok");
-                    
                     const data = await response.json();
+                    
+                    if (!response.ok) {
+                        throw new Error(data.error?.message || "Network response was not ok");
+                    }
                     
                     // Extract the text from the Gemini response structure
                     let aiReply = "Sorry, I couldn't understand that.";
@@ -318,7 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 } catch (error) {
                     console.error("Chatbot API Error:", error);
-                    loadingMsg.innerHTML = "Sorry, I am having trouble connecting to Gemini API right now!";
+                    loadingMsg.innerHTML = `Error: ${error.message}`;
                     loadingMsg.style.color = "#ff5f56";
                 }
                 
