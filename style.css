@@ -818,11 +818,25 @@ footer {
     border-top: 1px solid var(--glass-border);
     padding: 4rem 2rem;
     text-align: center;
-    background: var(--bg-surface);
+    background: var(--card-bg); /* Use card-bg since it's solid or distinctly variable */
     position: relative;
     z-index: 10;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+}
+
+.light-mode footer {
+    background: #ffffff;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.light-mode footer h2, 
+.light-mode footer p {
+    color: var(--text-primary);
+}
+
+.light-mode footer .copyright {
+    color: var(--text-secondary);
 }
 
 footer h2 {
