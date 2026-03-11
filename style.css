@@ -174,10 +174,25 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .light-mode .nav-links a:hover {
-    color: #000 !important;
-    background: #f0f0f5 !important; /* Lite hover colors */
-    border-color: #d1d1d6 !important;
-    box-shadow: none !important; /* No glowing shadow in light mode */
+    color: #fff !important;
+    background: linear-gradient(90deg, #f97316, #06b6d4, #b14cff) !important;
+    border-color: transparent !important;
+    box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3) !important;
+}
+
+/* Light Mode Gradient Buttons */
+.light-mode .secondary-btn {
+    background-image: linear-gradient(#f9f9fb, #f9f9fb),
+                      linear-gradient(90deg, #f97316, #06b6d4, #b14cff) !important;
+    background-origin: border-box !important;
+    background-clip: padding-box, border-box !important;
+    color: var(--text-primary) !important;
+}
+
+.light-mode .secondary-btn:hover {
+    background-image: linear-gradient(90deg, #f97316, #06b6d4, #b14cff) !important;
+    background-clip: padding-box !important;
+    color: #fff !important;
 }
 
 /* Light Mode Overrides for Cards */
@@ -344,27 +359,45 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .primary-btn {
-    background: var(--accent);
+    background: linear-gradient(90deg, #f97316, #06b6d4, #b14cff);
+    background-size: 200% 100%;
     color: #fff;
     border: none;
     border-radius: 30px;
+    animation: btnGradientShift 4s ease infinite;
+}
+
+@keyframes btnGradientShift {
+    0% { background-position: 0% center; }
+    50% { background-position: 100% center; }
+    100% { background-position: 0% center; }
 }
 
 .primary-btn:hover {
     transform: scale(1.05) translateY(-2px);
-    box-shadow: 0 8px 25px var(--accent-glow);
+    box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
 }
 
 .secondary-btn {
     background: transparent;
     color: var(--text-primary);
-    border: 1px solid var(--glass-border);
+    border: 2px solid transparent;
     backdrop-filter: blur(5px);
+    position: relative;
+    background-image: linear-gradient(var(--bg-dark), var(--bg-dark)),
+                      linear-gradient(90deg, #f97316, #06b6d4, #b14cff);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    background-size: 100% 100%, 200% 100%;
+    animation: btnGradientShift 4s ease infinite;
 }
 
 .secondary-btn:hover {
-    border-color: var(--text-primary);
-    background: rgba(255, 255, 255, 0.05);
+    background-image: linear-gradient(90deg, #f97316, #06b6d4, #b14cff);
+    background-clip: padding-box;
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 8px 25px rgba(249, 115, 22, 0.3);
 }
 
 /* Hero Section */
@@ -816,20 +849,22 @@ h1, h2, h3, h4, h5, h6 {
     right: 30px;
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, var(--accent), var(--secondary));
-    color: #111;
+    background: linear-gradient(135deg, #f97316, #06b6d4, #b14cff);
+    background-size: 200% 200%;
+    color: #fff;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
     text-decoration: none;
-    box-shadow: 0 4px 15px var(--accent-glow);
+    box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4);
     opacity: 0;
     visibility: hidden;
     transform: translateY(20px);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     z-index: 2000;
+    animation: btnGradientShift 4s ease infinite;
 }
 
 .back-to-top.show {
@@ -942,17 +977,19 @@ footer p {
 .chatbot-toggle {
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, var(--accent), var(--secondary));
+    background: linear-gradient(135deg, #f97316, #06b6d4, #b14cff);
+    background-size: 200% 200%;
     color: #fff;
     border-radius: 50%;
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
-    box-shadow: 0 4px 15px var(--accent-glow);
+    box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4);
     transition: transform 0.3s ease;
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: btnGradientShift 4s ease infinite;
 }
 
 .chatbot-toggle:hover {
@@ -1070,7 +1107,8 @@ footer p {
 }
 
 .chatbot-input button {
-    background: linear-gradient(135deg, var(--accent), var(--secondary));
+    background: linear-gradient(135deg, #f97316, #06b6d4, #b14cff);
+    background-size: 200% 200%;
     color: #fff;
     border: none;
     width: 42px;
@@ -1082,6 +1120,7 @@ footer p {
     align-items: center;
     flex-shrink: 0;
     transition: transform 0.2s;
+    animation: btnGradientShift 4s ease infinite;
 }
 
 .chatbot-input button:active {
