@@ -477,27 +477,57 @@ agent_instance.run(<span style="color: #98c379;">"Analyze and summarize context 
     </section>
 
     <!-- Contact Section -->
-    <section class="contact-section" id="contact">
+    <section class="contact-section" id="contact" style="max-width: 1200px; margin: 0 auto; padding: 6rem 2rem;">
         <h2 class="section-title"><i class="fa-solid fa-paper-plane"></i> Get In <span
                 class="figma-gradient-text">Touch</span></h2>
-        <div class="contact-container glass-card" style="text-align: center;">
-            <p style="margin-bottom: 2rem; color: var(--text-secondary); font-size: 1.1rem;">
-                I'm currently open for new opportunities. Whether you have a question or just want to connect, my inbox
-                is always open.
-            </p>
-            <div class="contact-links" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem;">
-                <a href="mailto:321muhammadkamran@gmail.com" class="btn secondary-btn"><i class="fa-solid fa-envelope"
-                        style="color: var(--accent); margin-right: 8px;"></i>321muhammadkamran@gmail.com</a>
-                <a href="https://linkedin.com/in/muhammadzeeshan-6b66a7350" target="_blank" class="btn secondary-btn"><i
-                        class="fa-brands fa-linkedin" style="color: var(--accent); margin-right: 8px;"></i>LinkedIn
-                    Profile</a>
-                <a href="https://muhammad-zeeshan-aiengi-8owxsht.gamma.site/" target="_blank"
-                    class="btn secondary-btn"><i class="fa-solid fa-globe"
-                        style="color: var(--accent); margin-right: 8px;"></i>Gamma Portfolio</a>
-                <a href="https://github.com/AIMindCrafter" target="_blank" class="btn secondary-btn"><i
-                        class="fa-brands fa-github" style="color: var(--accent); margin-right: 8px;"></i>GitHub
-                    Profile</a>
+        
+        <div class="contact-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem;">
+            
+            <!-- Contact Information & Platforms -->
+            <div class="contact-info glass-card" style="display: flex; flex-direction: column; gap: 2rem;">
+                <div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 1rem; color: var(--text-primary);">Let's Connect</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">I'm open for freelance opportunities, consulting, and full-time roles. Feel free to reach out via email or connect on my freelancing profiles.</p>
+                </div>
+                
+                <div class="contact-links" style="display: flex; flex-direction: column; gap: 1rem;">
+                    <a href="mailto:321muhammadkamran@gmail.com" class="btn secondary-btn" style="justify-content: flex-start;"><i class="fa-solid fa-envelope" style="color: var(--accent); margin-right: 12px; font-size: 1.2rem;"></i>321muhammadkamran@gmail.com</a>
+                    <a href="https://linkedin.com/in/muhammadzeeshan-6b66a7350" target="_blank" class="btn secondary-btn" style="justify-content: flex-start;"><i class="fa-brands fa-linkedin" style="color: #0a66c2; margin-right: 12px; font-size: 1.2rem;"></i>LinkedIn Profile</a>
+                    <a href="https://github.com/AIMindCrafter" target="_blank" class="btn secondary-btn" style="justify-content: flex-start;"><i class="fa-brands fa-github" style="color: #fff; margin-right: 12px; font-size: 1.2rem;"></i>GitHub Profile</a>
+                    <a href="https://muhammad-zeeshan-aiengi-8owxsht.gamma.site/" target="_blank" class="btn secondary-btn" style="justify-content: flex-start;"><i class="fa-solid fa-globe" style="color: var(--accent); margin-right: 12px; font-size: 1.2rem;"></i>Gamma Portfolio</a>
+                </div>
+
+                <div>
+                    <h4 style="font-size: 1.2rem; margin-bottom: 1rem; color: var(--text-primary); border-top: 1px solid var(--border-color); padding-top: 1.5rem;">Freelancing Platforms</h4>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <a href="https://www.upwork.com/" target="_blank" class="btn secondary-btn" style="border-color: #14a800; color: #14a800;"><i class="fa-solid fa-upwork" style="margin-right: 8px;"></i>Upwork</a>
+                        <a href="https://www.fiverr.com/" target="_blank" class="btn secondary-btn" style="border-color: #00b22d; color: #00b22d;"><i class="fa-solid fa-briefcase" style="margin-right: 8px;"></i>Fiverr</a>
+                    </div>
+                </div>
             </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form-container glass-card">
+                <form action="https://formspree.io/f/MAY_BE_REPLACED" method="POST" class="contact-form" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <label for="name" style="color: var(--text-primary); font-weight: 500;">Name</label>
+                        <input type="text" id="name" name="name" required style="padding: 1rem; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: white; font-family: inherit; font-size: 1rem;">
+                    </div>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <label for="email" style="color: var(--text-primary); font-weight: 500;">Email</label>
+                        <input type="email" id="email" name="email" required style="padding: 1rem; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: white; font-family: inherit; font-size: 1rem;">
+                    </div>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <label for="message" style="color: var(--text-primary); font-weight: 500;">Message</label>
+                        <textarea id="message" name="message" rows="5" required style="padding: 1rem; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: white; font-family: inherit; font-size: 1rem; resize: vertical;"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn primary-btn" style="width: 100%; justify-content: center; margin-top: 0.5rem; font-size: 1.1rem; padding: 1rem;"><i class="fa-solid fa-paper-plane" style="margin-right: 8px;"></i>Send Message</button>
+                </form>
+            </div>
+            
         </div>
     </section>
 
