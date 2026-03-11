@@ -188,9 +188,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeBtn = document.getElementById('themeToggle');
     const themeIcon = themeBtn.querySelector('i');
     
-    // Check local storage for theme preference
+    // Check local storage for theme preference - Default to Light Mode
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
+    if (savedTheme === 'dark') {
+        document.body.classList.remove('light-mode');
+        themeIcon.className = 'fa-solid fa-moon';
+    } else {
+        // Default or explicitly light
         document.body.classList.add('light-mode');
         themeIcon.className = 'fa-solid fa-sun';
     }
@@ -307,7 +311,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // --- HOW TO CONNECT TO YOUR AI BACKEND ---
                 try {
-                    const url = `https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${sessionApiKey}`;
+                    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${sessionApiKey}`;
                     
                     const response = await fetch(url, {
                         method: "POST",
