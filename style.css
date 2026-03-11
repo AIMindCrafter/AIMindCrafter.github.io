@@ -7,6 +7,8 @@
     --accent: #ff9800; /* Vibrant Agency Orange */
     --accent-glow: rgba(255, 152, 0, 0.4);
     --secondary: #9d4edd; /* Deep Agency Purple */
+    --brand-gradient: linear-gradient(90deg, #f97316, #06b6d4, #b14cff);
+    --brand-gradient-diagonal: linear-gradient(135deg, #f97316, #06b6d4, #b14cff);
     --glass-border: rgba(255, 255, 255, 0.08);
     --glass-bg: rgba(255, 255, 255, 0.03);
     --card-bg: rgba(25, 22, 35, 0.8);
@@ -52,7 +54,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .gradient-text {
-    background: linear-gradient(90deg, var(--accent), var(--secondary));
+    background: var(--brand-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -60,7 +62,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Figma 3-Color Text Gradient (Removed Yellow to match updated prompt) */
 .figma-gradient-text {
-    background: linear-gradient(90deg, #f97316, #06b6d4, #b14cff);
+    background: var(--brand-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -84,7 +86,7 @@ h1, h2, h3, h4, h5, h6 {
     
     /* Using background-clip for the gradient border */
     background-image: linear-gradient(var(--bg-surface), var(--bg-surface)), 
-                      linear-gradient(90deg, #ff9800, #9d4edd, #ff9800);
+                      var(--brand-gradient);
     background-origin: border-box;
     background-clip: padding-box, border-box;
     background-size: 100% 100%, 200% 100%;
@@ -95,7 +97,7 @@ h1, h2, h3, h4, h5, h6 {
 .glass-nav.nav-scrolled {
     top: 10px;
     background-image: linear-gradient(rgba(10, 10, 15, 0.9), rgba(10, 10, 15, 0.9)), 
-                      linear-gradient(90deg, #ff9800, #9d4edd, #ff9800);
+                      var(--brand-gradient);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
 }
 
@@ -175,7 +177,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .light-mode .nav-links a:hover {
     color: #fff !important;
-    background: linear-gradient(90deg, #f97316, #06b6d4, #b14cff) !important;
+    background: var(--brand-gradient) !important;
     border-color: transparent !important;
     box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3) !important;
 }
@@ -183,14 +185,14 @@ h1, h2, h3, h4, h5, h6 {
 /* Light Mode Gradient Buttons */
 .light-mode .secondary-btn {
     background-image: linear-gradient(#f9f9fb, #f9f9fb),
-                      linear-gradient(90deg, #f97316, #06b6d4, #b14cff) !important;
+                      var(--brand-gradient) !important;
     background-origin: border-box !important;
     background-clip: padding-box, border-box !important;
     color: var(--text-primary) !important;
 }
 
 .light-mode .secondary-btn:hover {
-    background-image: linear-gradient(90deg, #f97316, #06b6d4, #b14cff) !important;
+    background-image: var(--brand-gradient) !important;
     background-clip: padding-box !important;
     color: #fff !important;
 }
@@ -359,7 +361,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .primary-btn {
-    background: linear-gradient(90deg, #f97316, #06b6d4, #b14cff);
+    background: var(--brand-gradient);
     background-size: 200% 100%;
     color: #fff;
     border: none;
@@ -385,7 +387,7 @@ h1, h2, h3, h4, h5, h6 {
     backdrop-filter: blur(5px);
     position: relative;
     background-image: linear-gradient(var(--bg-dark), var(--bg-dark)),
-                      linear-gradient(90deg, #f97316, #06b6d4, #b14cff);
+                      var(--brand-gradient);
     background-origin: border-box;
     background-clip: padding-box, border-box;
     background-size: 100% 100%, 200% 100%;
@@ -393,7 +395,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .secondary-btn:hover {
-    background-image: linear-gradient(90deg, #f97316, #06b6d4, #b14cff);
+    background-image: var(--brand-gradient);
     background-clip: padding-box;
     color: #fff;
     border-color: transparent;
@@ -803,7 +805,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .skill-bar .fill {
     height: 100%;
-    background: linear-gradient(90deg, var(--accent), var(--secondary));
+    background: var(--brand-gradient);
     border-radius: 4px;
     box-shadow: 0 0 10px var(--accent-glow);
     transform-origin: left;
@@ -849,7 +851,7 @@ h1, h2, h3, h4, h5, h6 {
     right: 30px;
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, #f97316, #06b6d4, #b14cff);
+    background: var(--brand-gradient-diagonal);
     background-size: 200% 200%;
     color: #fff;
     border-radius: 50%;
@@ -977,7 +979,7 @@ footer p {
 .chatbot-toggle {
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, #f97316, #06b6d4, #b14cff);
+    background: var(--brand-gradient-diagonal);
     background-size: 200% 200%;
     color: #fff;
     border-radius: 50%;
@@ -1107,7 +1109,7 @@ footer p {
 }
 
 .chatbot-input button {
-    background: linear-gradient(135deg, #f97316, #06b6d4, #b14cff);
+    background: var(--brand-gradient-diagonal);
     background-size: 200% 200%;
     color: #fff;
     border: none;
