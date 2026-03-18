@@ -114,6 +114,13 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: 1px;
 }
 
+.logo-gradient {
+    background: linear-gradient(90deg, #f97316, #06b6d4, #b14cff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
 .nav-links {
     list-style: none;
     display: flex;
@@ -757,7 +764,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Contact Section */
 .contact-section {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 6rem 2rem;
 }
@@ -768,14 +775,15 @@ h1, h2, h3, h4, h5, h6 {
 
 .contact-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 2.5rem;
     align-items: stretch;
     margin-top: 1rem;
 }
 
 .contact-card {
-    padding: 2rem;
+    padding: 3rem;
+    min-height: 520px;
 }
 
 .contact-card-title {
@@ -849,7 +857,7 @@ h1, h2, h3, h4, h5, h6 {
     right: 30px;
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, var(--accent), var(--secondary));
+    background: linear-gradient(135deg, #f97316, #06b6d4, #b14cff);
     color: #111;
     border-radius: 50%;
     display: flex;
