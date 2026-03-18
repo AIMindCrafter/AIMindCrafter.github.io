@@ -314,10 +314,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .primary-btn {
-    background: var(--accent);
+    background: linear-gradient(90deg, #f97316, #06b6d4, #b14cff);
+    background-size: 200% auto;
     color: #fff;
     border: none;
     border-radius: 30px;
+    animation: gradientFlow 4s linear infinite;
 }
 
 .primary-btn:hover {
@@ -326,15 +328,37 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .secondary-btn {
-    background: transparent;
+    background: linear-gradient(90deg, #f97316, #06b6d4, #b14cff);
+    background-size: 200% auto;
     color: var(--text-primary);
-    border: 1px solid var(--glass-border);
+    border: 1px solid transparent;
     backdrop-filter: blur(5px);
+    animation: gradientFlow 4s linear infinite;
 }
 
 .secondary-btn:hover {
-    border-color: var(--text-primary);
-    background: rgba(255, 255, 255, 0.05);
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 8px 25px var(--accent-glow);
+}
+
+.card-gradient-btn {
+    padding: 0.62rem 1.25rem;
+    border: 1px solid transparent;
+    border-radius: 26px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #fff;
+    background: linear-gradient(90deg, #f97316, #06b6d4, #b14cff);
+    background-size: 200% auto;
+    animation: gradientFlow 4s linear infinite;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+.card-gradient-btn:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 10px 28px var(--accent-glow);
 }
 
 /* Hero Section */
