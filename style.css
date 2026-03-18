@@ -729,12 +729,26 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
     padding: 3rem;
+    background: linear-gradient(135deg, rgba(249, 115, 22, 0.16) 0%, rgba(6, 182, 212, 0.12) 42%, rgba(177, 76, 255, 0.18) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    position: relative;
+    overflow: hidden;
+}
+
+.skills-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top left, rgba(249, 115, 22, 0.18), transparent 38%),
+                radial-gradient(circle at bottom right, rgba(177, 76, 255, 0.18), transparent 40%);
+    pointer-events: none;
 }
 
 .skill-category h3 {
     font-size: 1.4rem;
     margin-bottom: 1.5rem;
-    color: var(--accent);
+    color: #fff;
 }
 
 .skill-bar-container {
@@ -744,12 +758,13 @@ h1, h2, h3, h4, h5, h6 {
 .skill-name {
     font-size: 0.95rem;
     margin-bottom: 0.5rem;
+    color: var(--text-primary);
 }
 
 .skill-bar {
     width: 100%;
     height: 8px;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 4px;
     overflow: hidden;
 }
