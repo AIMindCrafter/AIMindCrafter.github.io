@@ -766,12 +766,23 @@ h1, h2, h3, h4, h5, h6 {
     padding: 3rem;
 }
 
-.contact-grid {
+.contact-cards {
     display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
-    align-items: start;
-    text-align: left;
+    align-items: stretch;
+    margin-top: 1rem;
+}
+
+.contact-card {
+    padding: 2rem;
+}
+
+.contact-card-title {
+    font-size: 1.35rem;
+    margin-bottom: 1.25rem;
+    color: var(--text-primary);
+    text-align: center;
 }
 
 .contact-form {
@@ -794,10 +805,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .contact-links-panel {
-    padding: 1.25rem;
-    border-radius: 18px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid var(--glass-border);
+    padding: 0;
+    border: none;
+    background: transparent;
 }
 
 .contact-links-title {
@@ -891,6 +901,21 @@ footer {
     color: var(--accent) !important;
 }
 
+.light-mode footer {
+    background: #f8f6ff;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.light-mode footer h2,
+.light-mode footer p,
+.light-mode footer .copyright {
+    color: var(--text-primary);
+}
+
+.light-mode footer p a {
+    color: var(--accent) !important;
+}
+
 footer h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
@@ -940,7 +965,7 @@ footer p {
         padding: 2rem;
     }
 
-    .contact-grid {
+    .contact-cards {
         grid-template-columns: 1fr;
     }
 }
