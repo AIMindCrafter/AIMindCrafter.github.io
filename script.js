@@ -1,15 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
+
     // 1. Typing Effect for Hero Section
     const roleElement = document.querySelector('.typing-effect');
-    const roles = ['AI Engineer & Data Scientist', 'Machine Learning Expert', 'Deep Learning Specialist'];
+    // Fixed: first role now matches the static HTML text to prevent a flash of wrong content
+    const roles = ['AI Engineer | Generative AI | LLMs | AI Agents', 'Machine Learning Expert', 'Deep Learning Specialist', 'LangChain & LangGraph Builder'];
     let roleIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
     let typingSpeed = 100;
 
     function typeEffect() {
+        if (!roleElement) return;
         const currentRole = roles[roleIndex];
-        
+
         if (isDeleting) {
             roleElement.textContent = currentRole.substring(0, charIndex - 1);
             charIndex--;
@@ -31,13 +34,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         setTimeout(typeEffect, typingSpeed);
     }
-    
+
     // Start typing effect slightly after load
-    setTimeout(typeEffect, 500);
+    // Clear the static text first to prevent flash-of-content
+    if (roleElement) {
+        roleElement.textContent = '';
+        setTimeout(typeEffect, 300);
+    }
 
     // 2. Intersection Observer for Fade-in Animations
     const faders = document.querySelectorAll('.project-card, .skills-container, .job-card, .cert-card');
-    
+
     // Add base class for CSS transitions to work
     faders.forEach(fader => {
         fader.classList.add('fade-in');
@@ -50,12 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const appearOnScroll = new IntersectionObserver(function(entries, observer) {
         entries.forEach(entry => {
-            if (!entry.isIntersecting) {
-                return;
-            } else {
-                entry.target.classList.add('appear');
-                observer.unobserve(entry.target);
-            }
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('appear');
+            observer.unobserve(entry.target);
         });
     }, appearOptions);
 
@@ -65,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. Skill Bar Animation on Scroll
     const skillBars = document.querySelectorAll('.skill-bar .fill');
-    
+
     // Reset widths initially
     skillBars.forEach(bar => {
         bar.dataset.width = bar.style.width;
@@ -92,21 +96,33 @@ document.addEventListener('DOMContentLoaded', () => {
         animateSkills.observe(bar);
     });
 
-    // 4. Smooth Scrolling for Navigation
-    document.querySelectorAll('.nav-links a, .cta-buttons a[href^="#"]').forEach(anchor => {
+    // 4. Smooth Scrolling for Navigation (includes hero card links)
+    document.querySelectorAll('.nav-links a, .cta-buttons a[href^="#"], .hero-card-actions a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            
+
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-            
+
             const targetElement = document.querySelector(targetId);
+            if (!targetElement) return;
+
             const navHeight = document.querySelector('.glass-nav').offsetHeight;
-            
+
             window.scrollTo({
                 top: targetElement.offsetTop - navHeight,
                 behavior: 'smooth'
             });
+
+            // Close mobile menu if open
+            const navLinks = document.getElementById('navLinks');
+            const menuToggle = document.getElementById('menuToggle');
+            if (navLinks && navLinks.classList.contains('open')) {
+                navLinks.classList.remove('open');
+                menuToggle.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
         });
     });
 
@@ -124,44 +140,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 6. 3D Tilt Effect for Glass Cards
     const glassCards = document.querySelectorAll('.glass-card');
-    
+
     glassCards.forEach(card => {
         card.addEventListener('mousemove', e => {
             const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left; // x position within the element.
-            const y = e.clientY - rect.top;  // y position within the element.
-            
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
-            
-            const rotateX = ((y - centerY) / centerY) * -8; // Max rotation 8deg
+
+            const rotateX = ((y - centerY) / centerY) * -8;
             const rotateY = ((x - centerX) / centerX) * 8;
-            
+
             card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
         });
-        
+
         card.addEventListener('mouseleave', () => {
             card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
             card.style.transition = 'transform 0.5s ease-out';
         });
-        
+
         card.addEventListener('mouseenter', () => {
-            card.style.transition = 'none'; // Remove transition during hover for instant smooth tracking
+            card.style.transition = 'none';
         });
     });
 
     // 7. Custom Cursor Glow Effect
+    // Fixed: use left/top positioning instead of transform to avoid conflict with will-change:transform
     const cursorGlow = document.createElement('div');
     cursorGlow.classList.add('cursor-glow');
+    // Remove transform-based centering from CSS default — use margin trick via left/top offset
+    cursorGlow.style.position = 'fixed';
+    cursorGlow.style.pointerEvents = 'none';
+    cursorGlow.style.zIndex = '9999';
     document.body.appendChild(cursorGlow);
 
     document.addEventListener('mousemove', (e) => {
-        cursorGlow.style.transform = `translate(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%))`;
+        // Fixed: position via left/top with a -50% offset for centering, not transform
+        cursorGlow.style.left = e.clientX + 'px';
+        cursorGlow.style.top = e.clientY + 'px';
     });
 
     // 8. MetaMask-style Global 3D Tracking for Chatbot
     const chatbot = document.querySelector('.chatbot-container');
-    if(chatbot) {
+    if (chatbot) {
         document.addEventListener('mousemove', (e) => {
             const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
             const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
@@ -171,41 +194,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 9. Back to Top Button Logic
     const backToTopBtn = document.getElementById('backToTopBtn');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 400) {
-            backToTopBtn.classList.add('show');
-        } else {
-            backToTopBtn.classList.remove('show');
-        }
-    });
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
 
-    backToTopBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 
     // 10. Day/Night Theme Toggle
     const themeBtn = document.getElementById('themeToggle');
-    const themeIcon = themeBtn.querySelector('i');
-    
-    // Check local storage for theme preference
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-        document.body.classList.add('light-mode');
-        themeIcon.className = 'fa-solid fa-sun';
-    }
+    if (themeBtn) {
+        const themeIcon = themeBtn.querySelector('i');
 
-    themeBtn.addEventListener('click', () => {
-        document.body.classList.toggle('light-mode');
-        
-        if (document.body.classList.contains('light-mode')) {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-mode');
             themeIcon.className = 'fa-solid fa-sun';
-            localStorage.setItem('theme', 'light');
-        } else {
-            themeIcon.className = 'fa-solid fa-moon';
-            localStorage.setItem('theme', 'dark');
         }
-    });
+
+        themeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+
+            if (document.body.classList.contains('light-mode')) {
+                themeIcon.className = 'fa-solid fa-sun';
+                localStorage.setItem('theme', 'light');
+            } else {
+                themeIcon.className = 'fa-solid fa-moon';
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    }
 
     // 11. Draggable Horizontal Slider for Experience Section
     const slider = document.querySelector('.experience-container');
@@ -217,30 +243,106 @@ document.addEventListener('DOMContentLoaded', () => {
         slider.addEventListener('mousedown', (e) => {
             isDown = true;
             slider.style.cursor = 'grabbing';
-            // Disable CSS snap during physical drag for smoothness
             slider.style.scrollSnapType = 'none';
             startX = e.pageX - slider.offsetLeft;
             scrollLeft = slider.scrollLeft;
         });
-        
+
         slider.addEventListener('mouseleave', () => {
             isDown = false;
             slider.style.cursor = '';
             slider.style.scrollSnapType = 'x mandatory';
         });
-        
+
         slider.addEventListener('mouseup', () => {
             isDown = false;
             slider.style.cursor = '';
             slider.style.scrollSnapType = 'x mandatory';
         });
-        
+
         slider.addEventListener('mousemove', (e) => {
             if (!isDown) return;
-            e.preventDefault(); // Prevent highlighting text while dragging
+            e.preventDefault();
             const x = e.pageX - slider.offsetLeft;
-            const walk = (x - startX) * 2; // Scroll speed multiplier
+            const walk = (x - startX) * 2;
             slider.scrollLeft = scrollLeft - walk;
+        });
+    }
+
+    // 12. Active Nav Link Highlighting on Scroll
+    const sections = document.querySelectorAll('section[id], header[id]');
+    const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const activeId = entry.target.getAttribute('id');
+                navAnchors.forEach(link => {
+                    link.classList.remove('active-link');
+                    if (link.getAttribute('href') === `#${activeId}`) {
+                        link.classList.add('active-link');
+                    }
+                });
+            }
+        });
+    }, { threshold: 0.4, rootMargin: '-10% 0px -50% 0px' });
+
+    sections.forEach(section => sectionObserver.observe(section));
+
+    // 13. Hamburger Menu Toggle for Mobile
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('open');
+            menuToggle.classList.toggle('active');
+            menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        });
+    }
+
+    // 14. Contact Form — JS-handled mailto redirect (replaces broken HTML form POST)
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('senderName').value.trim();
+            const email = document.getElementById('senderEmail').value.trim();
+            const message = document.getElementById('senderMessage').value.trim();
+
+            if (!name || !email || !message) {
+                alert('Please fill in all fields before sending.');
+                return;
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
+            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+            const mailtoLink = `mailto:321muhammadkamran@gmail.com?subject=${subject}&body=${body}`;
+
+            window.location.href = mailtoLink;
+
+            // Show success feedback
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fa-solid fa-check"></i> Opening Email Client...';
+            submitBtn.style.background = 'linear-gradient(90deg, #22c55e, #06b6d4)';
+            submitBtn.disabled = true;
+
+            setTimeout(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.style.background = '';
+                submitBtn.disabled = false;
+                contactForm.reset();
+            }, 3000);
         });
     }
 

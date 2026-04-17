@@ -138,7 +138,8 @@ h1, h2, h3, h4, h5, h6 {
     border: 1px solid transparent;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.active-link {
     color: #fff;
     background: var(--accent);
     border-color: rgba(255, 255, 255, 0.2);
@@ -388,7 +389,19 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 2rem;
     color: var(--text-primary);
     margin-bottom: 1.5rem;
-    height: 3rem; /* Prevents layout shift during typing */
+    min-height: 3rem; /* Prevents layout shift during typing */
+}
+
+/* Typing cursor blink */
+.typing-effect {
+    border-right: 3px solid var(--accent);
+    padding-right: 4px;
+    animation: blink-cursor 0.75s step-end infinite;
+}
+
+@keyframes blink-cursor {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--accent); }
 }
 
 .bio {
@@ -609,10 +622,10 @@ h1, h2, h3, h4, h5, h6 {
 .cert-icon {
     font-size: 2.5rem;
     margin-bottom: 1rem;
+    /* Fixed: removed conflicting background-color that overrode gradient */
     background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(189, 0, 255, 0.1));
     width: 70px;
     height: 70px;
-    background-color: var(--glass-bg);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -799,7 +812,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .contact-card {
     padding: 3rem;
-    min-height: 520px;
+    min-height: auto;
 }
 
 .contact-card-title {
@@ -822,6 +835,35 @@ h1, h2, h3, h4, h5, h6 {
     background: rgba(255,255,255,0.06);
     color: var(--text-primary);
     font-family: var(--font-body);
+    font-size: 0.95rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+/* Light mode form inputs */
+.light-mode .contact-form input,
+.light-mode .contact-form textarea {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.12);
+    color: #121212;
+}
+
+.light-mode .contact-form input:focus,
+.light-mode .contact-form textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-glow);
 }
 
 .contact-form textarea {
@@ -851,6 +893,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Custom Cursor Glow */
+/* Fixed: centering via margin-left/margin-top instead of transform, */
+/* since JS now positions via left/top to avoid will-change:transform conflicts */
 .cursor-glow {
     position: fixed;
     top: 0;
@@ -859,11 +903,12 @@ h1, h2, h3, h4, h5, h6 {
     height: 350px;
     background: radial-gradient(circle, var(--accent-glow) 0%, rgba(0, 0, 0, 0) 70%);
     border-radius: 50%;
-    transform: translate(-50%, -50%);
+    margin-left: -175px;  /* center: -width/2 */
+    margin-top: -175px;   /* center: -height/2 */
     pointer-events: none;
     z-index: 9999;
     mix-blend-mode: color-dodge;
-    will-change: transform, left, top;
+    will-change: left, top;
 }
 
 /* Back to Top Button */
@@ -874,7 +919,7 @@ h1, h2, h3, h4, h5, h6 {
     width: 50px;
     height: 50px;
     background: linear-gradient(135deg, #f97316, #06b6d4, #b14cff);
-    color: #111;
+    color: #fff; /* Fixed: was #111 which is invisible in dark mode */
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -925,20 +970,7 @@ footer {
     color: var(--accent) !important;
 }
 
-.light-mode footer {
-    background: #f8f6ff;
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.light-mode footer h2,
-.light-mode footer p,
-.light-mode footer .copyright {
-    color: var(--text-primary);
-}
-
-.light-mode footer p a {
-    color: var(--accent) !important;
-}
+/* Duplicate light-mode footer rules removed (were identical to lines above) */
 
 footer h2 {
     font-size: 2rem;
@@ -992,9 +1024,85 @@ footer p {
     .contact-cards {
         grid-template-columns: 1fr;
     }
+
+    .code-section {
+        padding: 4rem 1rem !important;
+        gap: 2.5rem !important;
+    }
+
+    .code-editor {
+        min-width: 0 !important;
+    }
 }
 
 @media (max-width: 600px) {
     .name { font-size: 3rem; }
-    .nav-links { display: none; /* In a real app, add a hamburger menu */ }
+    .nav-links {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(10, 8, 22, 0.97);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2.5rem;
+        z-index: 999;
+        padding: 2rem;
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .nav-links a {
+        font-size: 1.4rem;
+    }
+
+    .nav-links li:last-child {
+        margin-top: 1rem;
+    }
+}
+
+/* Hamburger button */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    padding: 0.5rem;
+    z-index: 1001;
+}
+
+.hamburger span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background: var(--text-primary);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width: 600px) {
+    .hamburger { display: flex; }
 }

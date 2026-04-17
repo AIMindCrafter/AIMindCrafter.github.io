@@ -5,7 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AIMindCrafter | AI & Data Science Portfolio</title>
-    <meta name="description" content="Portfolio of AIMindCrafter - AI Engineer and Data Scientist">
+    <meta name="description" content="Portfolio of Muhammad Zeeshan - AI Engineer specializing in Generative AI, LLMs, and Agentic AI systems.">
+    <meta property="og:title" content="AIMindCrafter | AI & Data Science Portfolio">
+    <meta property="og:description" content="AI Engineer specializing in Generative AI, Large Language Models, and Agentic AI systems.">
+    <meta property="og:image" content="preview.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="preview.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,7 +23,7 @@
         <div class="nav-content">
             <h1 class="logo"><i class="fa-solid fa-brain"
                     style="color: var(--accent); margin-right: 8px;"></i><span class="logo-gradient">AIMindCrafter</span></h1>
-            <ul class="nav-links">
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#about"><i class="fa-solid fa-user"></i> About</a></li>
                 <li><a href="#projects"><i class="fa-solid fa-code"></i> Projects</a></li>
                 <li><a href="#experience"><i class="fa-solid fa-briefcase"></i> Experience</a></li>
@@ -28,6 +33,11 @@
                         style="padding: 0.5rem 1rem; margin-left: 1rem; border-radius: 20px;"><i
                             class="fa-solid fa-moon"></i></button></li>
             </ul>
+            <button class="hamburger" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
@@ -46,7 +56,7 @@
                 backed by FastAPI and LLMOps best practices.</p>
             <div class="cta-buttons">
                 <a href="#experience" class="btn primary-btn"><i class="fa-solid fa-briefcase"></i> View Experience</a>
-                <a href="https://github.com/AIMindCrafter" target="_blank" class="btn secondary-btn"><i
+                <a href="https://github.com/AIMindCrafter" target="_blank" rel="noopener noreferrer" class="btn secondary-btn"><i
                         class="fa-brands fa-github"></i> GitHub Profile</a>
             </div>
         </div>
@@ -67,22 +77,24 @@
                 <!-- Subtle 3D transparent overlay -->
                 <div
                     style="position: absolute; right: -15%; top: 5%; width: 55%; height: 100%; z-index: 0; pointer-events: none; transform: perspective(1000px) rotateY(-20deg) scale(1.1); filter: drop-shadow(-15px 25px 35px rgba(0,0,0,0.6));">
-                    <img src="profile-pic-new.jpg" alt="Profile Overlay"
+                    <img src="preview.png" alt="Profile Overlay"
+                        onerror="this.style.display='none'"
                         style="width: 100%; height: 100%; object-fit: cover; mix-blend-mode: luminosity; opacity: 0.8; -webkit-mask-image: linear-gradient(to left bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 80%); mask-image: linear-gradient(to left bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 80%); border-radius: 20px;">
                 </div>
 
                 <div style="z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 1.2rem;">
                     <div
                         style="width: 210px; height: 210px; border-radius: 50%; border: 4px solid #f97316; padding: 4px; background: rgba(255,255,255,0.04); box-shadow: 0 14px 32px rgba(0,0,0,0.5); overflow: hidden;">
-                        <img src="profile-pic-new.jpg" alt="Zeeshan Profile"
+                        <img src="preview.png" alt="Muhammad Zeeshan - AI Engineer"
+                            onerror="this.style.background='linear-gradient(135deg,#f97316,#b14cff)'; this.style.display='block';"
                             style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                     </div>
 
                     <h3 style="font-size: 2.2rem; font-weight: 700; color: var(--text-primary); letter-spacing: -0.3px;">AI Engineer</h3>
 
                     <div class="hero-card-actions" style="display: flex; gap: 0.85rem; flex-wrap: wrap; justify-content: center; margin-top: 0.4rem;">
-                        <a href="resume.pdf" target="_blank" class="btn card-gradient-btn">Resume</a>
-                        <a href="cover-letter.pdf" target="_blank" class="btn card-gradient-btn">Cover Letter</a>
+                        <a href="#contact" class="btn card-gradient-btn">Resume</a>
+                        <a href="#contact" class="btn card-gradient-btn">Cover Letter</a>
                     </div>
                 </div>
             </div>
@@ -150,7 +162,7 @@
         </div>
 
         <div class="code-editor"
-            style="flex: 1.5; min-width: 400px; background: #0a0a0f; border-radius: 16px; border: 1px solid #222; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+            style="flex: 1.5; min-width: 280px; background: #0a0a0f; border-radius: 16px; border: 1px solid #222; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
             <div class="editor-header"
                 style="background: #15151a; padding: 1rem 1.5rem; display: flex; align-items: center; border-bottom: 1px solid #222;">
                 <div class="mac-dots" style="display: flex; gap: 8px; margin-right: 3rem;">
@@ -484,10 +496,10 @@ agent_instance.run(<span style="color: #98c379;">"Analyze and summarize context 
         <div class="contact-cards">
             <div class="contact-card glass-card">
                 <h3 class="contact-card-title">Send a Message</h3>
-                <form class="contact-form" action="mailto:321muhammadkamran@gmail.com" method="post" enctype="text/plain">
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Your Email" required>
-                    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                <form class="contact-form" id="contactForm" novalidate>
+                    <input type="text" id="senderName" name="name" placeholder="Your Name" required>
+                    <input type="email" id="senderEmail" name="email" placeholder="Your Email" required>
+                    <textarea id="senderMessage" name="message" rows="5" placeholder="Your Message" required></textarea>
                     <button type="submit" class="btn primary-btn" style="justify-self: center; min-width: 220px;">Send Message</button>
                 </form>
             </div>
@@ -497,13 +509,13 @@ agent_instance.run(<span style="color: #98c379;">"Analyze and summarize context 
                 <div class="contact-links">
                     <a href="mailto:321muhammadkamran@gmail.com" class="btn secondary-btn"><i class="fa-solid fa-envelope"
                             style="color: var(--accent); margin-right: 8px;"></i>321muhammadkamran@gmail.com</a>
-                    <a href="https://linkedin.com/in/muhammadzeeshan-6b66a7350" target="_blank" class="btn secondary-btn"><i
+                    <a href="https://linkedin.com/in/muhammadzeeshan-6b66a7350" target="_blank" rel="noopener noreferrer" class="btn secondary-btn"><i
                             class="fa-brands fa-linkedin" style="color: var(--accent); margin-right: 8px;"></i>LinkedIn
                         Profile</a>
-                    <a href="https://muhammad-zeeshan-aiengi-8owxsht.gamma.site/" target="_blank"
+                    <a href="https://muhammad-zeeshan-aiengi-8owxsht.gamma.site/" target="_blank" rel="noopener noreferrer"
                         class="btn secondary-btn"><i class="fa-solid fa-globe"
                             style="color: var(--accent); margin-right: 8px;"></i>Gamma Portfolio</a>
-                    <a href="https://github.com/AIMindCrafter" target="_blank" class="btn secondary-btn"><i
+                    <a href="https://github.com/AIMindCrafter" target="_blank" rel="noopener noreferrer" class="btn secondary-btn"><i
                             class="fa-brands fa-github" style="color: var(--accent); margin-right: 8px;"></i>GitHub
                         Profile</a>
                 </div>
@@ -515,7 +527,7 @@ agent_instance.run(<span style="color: #98c379;">"Analyze and summarize context 
     <footer>
         <div class="footer-content">
             <h2>Let's Build the Future</h2>
-            <p>Connect with me on <a href="https://github.com/AIMindCrafter" target="_blank"
+            <p>Connect with me on <a href="https://github.com/AIMindCrafter" target="_blank" rel="noopener noreferrer"
                     style="color: var(--accent); text-decoration: none;">GitHub</a>.</p>
             <p class="copyright">&copy; 2026 AIMindCrafter. All rights reserved.</p>
         </div>
@@ -526,6 +538,7 @@ agent_instance.run(<span style="color: #98c379;">"Analyze and summarize context 
         <i class="fa-solid fa-chevron-up"></i>
     </a>
 
+    <script src="env.js"></script>
     <script src="script.js"></script>
 </body>
 
