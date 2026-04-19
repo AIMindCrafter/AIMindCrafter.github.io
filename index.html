@@ -50,10 +50,8 @@
         <div class="hero-content">
             <h2 class="greeting">Hello, I'm</h2>
             <h1 class="name figma-gradient-text">Muhammad Zeeshan</h1>
-            <h3 class="role typing-effect">AI Engineer | Generative AI | LLMs | AI Agents</h3>
-            <p class="bio">AI Engineer specializing in Generative AI, Large Language Models, and Agentic AI systems. I
-                build advanced AI solutions leveraging LangChain, LangGraph, and Retrieval-Augmented Generation (RAG),
-                backed by FastAPI and LLMOps best practices.</p>
+            <h3 class="role typing-effect">Generative AI Engineer | LLM Fine-tuning | RAG Pipelines | Multimodal AI</h3>
+            <p class="bio">Results-driven Generative AI Engineer specializing in LLM fine-tuning, Retrieval-Augmented Generation (RAG), and multimodal AI systems. Proven hands-on experience building production-grade GenAI pipelines with LangChain, HuggingFace, and Diffusion Models. Strong foundation in MLOps with FastAPI, Docker, and CI/CD.</p>
             <div class="cta-buttons">
                 <a href="#experience" class="btn primary-btn"><i class="fa-solid fa-briefcase"></i> View Experience</a>
                 <a href="https://github.com/AIMindCrafter" target="_blank" rel="noopener noreferrer" class="btn secondary-btn"><i
@@ -221,116 +219,81 @@ agent_instance.run(<span style="color: #98c379;">"Analyze and summarize context 
                 class="figma-gradient-text">Projects</span></h2>
         <div class="projects-grid">
 
-            <!-- Project 1 -->
+            <!-- Project 1: MRI Brain Tumor -->
             <div class="project-card glass-card">
                 <div class="project-header">
-                    <h3><i class="fa-solid fa-credit-card" style="margin-right: 8px;"></i>Credit Card Fraud</h3>
-                    <span class="badge ml">Machine Learning</span>
-                </div>
-                <p class="project-goal"><strong>Goal:</strong> Identify fraudulent transactions from an imbalanced
-                    dataset.</p>
-                <p class="project-impact">Handles real-world stakes and classification under extreme uncertainty.</p>
-                <div class="tech-stack">
-                    <span>Python</span><span>scikit-learn</span><span>XGBoost</span><span>SMOTE</span>
-                </div>
-            </div>
-
-            <!-- Project 2 -->
-            <div class="project-card glass-card">
-                <div class="project-header">
-                    <h3><i class="fa-solid fa-users" style="margin-right: 8px;"></i>Customer Churn</h3>
-                    <span class="badge ds">Data Science</span>
-                </div>
-                <p class="project-goal"><strong>Goal:</strong> Predict whether a customer is likely to leave a
-                    SaaS/Telecom service.</p>
-                <p class="project-impact">Focuses on feature engineering and interpretability of model decisions.</p>
-                <div class="tech-stack">
-                    <span>pandas</span><span>LightGBM</span><span>SHAP</span>
-                </div>
-            </div>
-
-            <!-- Project 3 -->
-            <div class="project-card glass-card">
-                <div class="project-header">
-                    <h3><i class="fa-solid fa-film" style="margin-right: 8px;"></i>Movie Recommender</h3>
-                    <span class="badge rs">Recommenders</span>
-                </div>
-                <p class="project-goal"><strong>Goal:</strong> Recommend movies based on user preferences and historical
-                    behavior.</p>
-                <p class="project-impact">Utilizes collaborative filtering and matrix factorization for e-commerce
-                    engines.</p>
-                <div class="tech-stack">
-                    <span>Python</span><span>Surprise</span><span>LightFM</span>
-                </div>
-            </div>
-
-            <!-- Project 4 -->
-            <div class="project-card glass-card">
-                <div class="project-header">
-                    <h3><i class="fa-brands fa-twitter" style="margin-right: 8px;"></i>Tweet Sentiment</h3>
-                    <span class="badge nlp">NLP</span>
-                </div>
-                <p class="project-goal"><strong>Goal:</strong> Classify tweet sentiment as positive, neutral, or
-                    negative.</p>
-                <p class="project-impact">Core NLP foundations expandable to hate speech or political analysis.</p>
-                <div class="tech-stack">
-                    <span>NLTK</span><span>spaCy</span><span>Transformers</span><span>BERT</span>
-                </div>
-            </div>
-
-            <!-- Project 5 -->
-            <div class="project-card glass-card">
-                <div class="project-header">
-                    <h3><i class="fa-solid fa-chart-line" style="margin-right: 8px;"></i>Time Series Forecast</h3>
-                    <span class="badge ts">Time Series</span>
-                </div>
-                <p class="project-goal"><strong>Goal:</strong> Forecast future Yahoo Finance values using historical
-                    data.</p>
-                <p class="project-impact">Analyzes trends and seasonality critical for smart financial forecasting.</p>
-                <div class="tech-stack">
-                    <span>Prophet</span><span>ARIMA</span><span>LSTM</span>
-                </div>
-            </div>
-
-            <!-- Project 6 -->
-            <div class="project-card glass-card">
-                <div class="project-header">
-                    <h3><i class="fa-solid fa-image" style="margin-right: 8px;"></i>Image Classification</h3>
+                    <h3><i class="fa-solid fa-brain" style="margin-right: 8px;"></i>MRI Brain Tumor Detection</h3>
                     <span class="badge cv">Computer Vision</span>
                 </div>
-                <p class="project-goal"><strong>Goal:</strong> Classify natural images into exact categories using deep
-                    learning.</p>
-                <p class="project-impact">Applies CNN architectures, transfer learning, and checks for overfitting.</p>
+                <p class="project-goal"><strong>Goal:</strong> 4-class MRI tumor classification (Glioma, Meningioma, Pituitary, No Tumor) with clinical-grade explainability.</p>
+                <p class="project-impact">Achieved 97%+ validation accuracy on 7,023 Kaggle MRI images with Grad-CAM overlays; deployed as a Gradio app on HuggingFace Spaces.</p>
                 <div class="tech-stack">
-                    <span>TensorFlow</span><span>PyTorch</span><span>OpenCV</span>
+                    <span>EfficientNetB2</span><span>TensorFlow</span><span>Grad-CAM</span><span>Gradio</span><span>HuggingFace</span>
                 </div>
             </div>
 
-            <!-- Project 7 -->
+            <!-- Project 2: Multimodal LLM Fine-tuning -->
             <div class="project-card glass-card">
                 <div class="project-header">
-                    <h3><i class="fa-solid fa-file-contract" style="margin-right: 8px;"></i>Resume Parser</h3>
-                    <span class="badge nlp">Applied NLP</span>
+                    <h3><i class="fa-solid fa-file-image" style="margin-right: 8px;"></i>Multimodal LLM Fine-tuning</h3>
+                    <span class="badge genai">Generative AI</span>
                 </div>
-                <p class="project-goal"><strong>Goal:</strong> Extract structured info from resumes and match to job
-                    descriptions.</p>
-                <p class="project-impact">Combines text classification, Regex, and vector similarity search.</p>
+                <p class="project-goal"><strong>Goal:</strong> Fine-tune Qwen2-VL (7B) for structured extraction from invoice and medical report document images.</p>
+                <p class="project-impact">Significant improvement in field-level extraction accuracy over zero-shot baseline; deployed to HuggingFace Spaces with a Gradio interface.</p>
                 <div class="tech-stack">
-                    <span>spaCy</span><span>FAISS</span><span>scikit-learn</span>
+                    <span>Qwen2-VL</span><span>LoRA</span><span>PEFT</span><span>HuggingFace</span><span>Gradio</span>
                 </div>
             </div>
 
-            <!-- Project 8 -->
+            <!-- Project 3: QLoRA LLM Fine-tuning -->
             <div class="project-card glass-card">
                 <div class="project-header">
-                    <h3><i class="fa-solid fa-chart-pie" style="margin-right: 8px;"></i>EDA Dashboard</h3>
-                    <span class="badge viz">Data Viz</span>
+                    <h3><i class="fa-solid fa-microchip" style="margin-right: 8px;"></i>QLoRA LLM Domain Fine-tuning</h3>
+                    <span class="badge genai">Generative AI</span>
                 </div>
-                <p class="project-goal"><strong>Goal:</strong> Build an interactive dashboard visualizing key dataset
-                    insights.</p>
-                <p class="project-impact">Focuses on communication and storytelling to drive business decisions.</p>
+                <p class="project-goal"><strong>Goal:</strong> Fine-tune LLaMA 3 (8B) on a domain-specific instruction dataset with minimal VRAM using 4-bit quantization.</p>
+                <p class="project-impact">Cut VRAM usage by 70% to run entirely on free Kaggle T4 GPUs; merged PEFT adapters and published to HuggingFace Hub with live Spaces demo.</p>
                 <div class="tech-stack">
-                    <span>Plotly</span><span>Dash</span><span>Streamlit</span>
+                    <span>LLaMA 3</span><span>Unsloth</span><span>QLoRA</span><span>PEFT</span><span>HuggingFace</span>
+                </div>
+            </div>
+
+            <!-- Project 4: Multi-PDF RAG -->
+            <div class="project-card glass-card">
+                <div class="project-header">
+                    <h3><i class="fa-solid fa-magnifying-glass-chart" style="margin-right: 8px;"></i>Multi-PDF RAG Research Assistant</h3>
+                    <span class="badge rag">RAG</span>
+                </div>
+                <p class="project-goal"><strong>Goal:</strong> End-to-end RAG pipeline ingesting multiple PDFs and answering natural language queries with source citation.</p>
+                <p class="project-impact">Semantic search with cosine similarity reranking; deployed as a Streamlit app with session-based conversation history and multi-document Q&amp;A.</p>
+                <div class="tech-stack">
+                    <span>LangChain</span><span>ChromaDB</span><span>Gemini API</span><span>Streamlit</span>
+                </div>
+            </div>
+
+            <!-- Project 5: Stable Diffusion Fine-tuning -->
+            <div class="project-card glass-card">
+                <div class="project-header">
+                    <h3><i class="fa-solid fa-palette" style="margin-right: 8px;"></i>Stable Diffusion Fine-tuning</h3>
+                    <span class="badge genai">Generative AI</span>
+                </div>
+                <p class="project-goal"><strong>Goal:</strong> Fine-tune SD v1.5 with DreamBooth; integrate ControlNet for pose-conditioned generation and a VAE-based anomaly detector.</p>
+                <p class="project-impact">Full pipeline — text-to-image, image-to-image, inpainting — wrapped in a Gradio app on HuggingFace Spaces with prompt control and one-click export.</p>
+                <div class="tech-stack">
+                    <span>Diffusers</span><span>DreamBooth</span><span>ControlNet</span><span>VAE</span><span>Gradio</span>
+                </div>
+            </div>
+
+            <!-- Project 6: MLOps Pipeline -->
+            <div class="project-card glass-card">
+                <div class="project-header">
+                    <h3><i class="fa-brands fa-docker" style="margin-right: 8px;"></i>End-to-End MLOps Pipeline</h3>
+                    <span class="badge mlops">MLOps</span>
+                </div>
+                <p class="project-goal"><strong>Goal:</strong> Complete CI/CD pipeline auto-building and pushing Docker images to GHCR on every commit with automated testing and MLflow versioning.</p>
+                <p class="project-impact">FastAPI REST endpoint for real-time ML inference with preprocessing pipelines, health checks, and structured logging at production scale.</p>
+                <div class="tech-stack">
+                    <span>GitHub Actions</span><span>Docker</span><span>FastAPI</span><span>MLflow</span><span>GHCR</span>
                 </div>
             </div>
 
@@ -351,10 +314,9 @@ agent_instance.run(<span style="color: #98c379;">"Analyze and summarize context 
                     </div>
                 </div>
                 <ul class="job-highlights">
-                    <li>Developed and deployed backend features as a Python developer for robust web scale operations.
-                    </li>
-                    <li>Collaborated on software engineering improvements leveraging FastAPI and RESTful principles.
-                    </li>
+                    <li>Developing and maintaining backend services and REST APIs using Python and FastAPI to support AI-driven product features.</li>
+                    <li>Collaborating with cross-functional teams to design scalable system architectures for production-grade deployments.</li>
+                    <li>Contributing to intelligent automation workflow infrastructure with robust error handling and logging systems.</li>
                 </ul>
             </div>
 
@@ -367,8 +329,9 @@ agent_instance.run(<span style="color: #98c379;">"Analyze and summarize context 
                     </div>
                 </div>
                 <ul class="job-highlights">
-                    <li>Optimized predictive ML models using Python, improving overall data processing accuracy.</li>
-                    <li>Engineered autonomous ML deployment pipelines maintaining model consistency.</li>
+                    <li>Developed and optimized predictive ML models using Python, Scikit-learn, and TensorFlow, improving prediction accuracy by 15%.</li>
+                    <li>Automated daily data ingestion and processing pipelines using Linux Shell Scripting and Cron jobs, reducing manual effort by 30%.</li>
+                    <li>Performed rigorous EDA on large datasets and visualized trends with Matplotlib/Seaborn for non-technical stakeholders.</li>
                 </ul>
             </div>
 
@@ -381,10 +344,9 @@ agent_instance.run(<span style="color: #98c379;">"Analyze and summarize context 
                     </div>
                 </div>
                 <ul class="job-highlights">
-                    <li>Conducted rigorous data cleaning, preprocessing, and exploratory data analysis using Python.
-                    </li>
-                    <li>Developed and evaluated classification and prediction models, improving analytical capabilities.
-                    </li>
+                    <li>Designed intelligent systems using Python frameworks to build autonomous agents capable of multi-step planning and decision-making.</li>
+                    <li>Developed production-grade RAG pipelines with FastAPI and vector databases, achieving high retrieval accuracy and low latency.</li>
+                    <li>Containerized services with Docker and deployed scalable prototypes on Linux-based cloud environments.</li>
                 </ul>
             </div>
 
@@ -397,9 +359,8 @@ agent_instance.run(<span style="color: #98c379;">"Analyze and summarize context 
                     </div>
                 </div>
                 <ul class="job-highlights">
-                    <li>Led insights extraction using machine learning capabilities to enhance predictive efficiency.
-                    </li>
-                    <li>Documented analytical workflows and presented data-driven findings to technical leads.</li>
+                    <li>Conducted data cleaning, preprocessing, and EDA using Python to significantly enhance data quality for downstream ML tasks.</li>
+                    <li>Developed and evaluated ML models for classification and prediction, delivering measurable improvements in analytical capabilities.</li>
                 </ul>
             </div>
         </div>
@@ -408,29 +369,49 @@ agent_instance.run(<span style="color: #98c379;">"Analyze and summarize context 
                 class="figma-gradient-text">Certifications</span></h2>
         <div class="certifications-grid">
             <div class="cert-card glass-card">
-                <div class="cert-icon"><i class="fa-solid fa-robot"></i></div>
-                <h4>IBM AI Engineering</h4>
-                <p>Python, PyTorch & TensorFlow</p>
-            </div>
-            <div class="cert-card glass-card">
-                <div class="cert-icon"><i class="fa-solid fa-star"></i></div>
-                <h4>Gemini Certified Univ. Student</h4>
-                <p>Google Cloud</p>
-            </div>
-            <div class="cert-card glass-card">
-                <div class="cert-icon"><i class="fa-solid fa-network-wired"></i></div>
-                <h4>LFS158: Intro to Kubernetes</h4>
-                <p>Linux Foundation</p>
+                <div class="cert-icon"><i class="fa-solid fa-database"></i></div>
+                <h4>Oracle GenAI Professional</h4>
+                <p>1Z0-1127-25 &mdash; Oracle University</p>
             </div>
             <div class="cert-card glass-card">
                 <div class="cert-icon"><i class="fa-solid fa-brain"></i></div>
                 <h4>IBM GenAI Engineering</h4>
-                <p>LangChain & Watsonx</p>
+                <p>LangChain & Watsonx &mdash; Coursera</p>
+            </div>
+            <div class="cert-card glass-card">
+                <div class="cert-icon"><i class="fa-solid fa-robot"></i></div>
+                <h4>IBM AI Engineering</h4>
+                <p>PyTorch & TensorFlow &mdash; Coursera</p>
+            </div>
+            <div class="cert-card glass-card">
+                <div class="cert-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                <h4>ML Specialization</h4>
+                <p>Stanford / DeepLearning.AI &mdash; Coursera</p>
+            </div>
+            <div class="cert-card glass-card">
+                <div class="cert-icon"><i class="fa-solid fa-comment-dots"></i></div>
+                <h4>NLP Specialization</h4>
+                <p>DeepLearning.AI &mdash; Coursera</p>
+            </div>
+            <div class="cert-card glass-card">
+                <div class="cert-icon"><i class="fa-solid fa-chart-bar"></i></div>
+                <h4>AI Engineer for Data Scientists</h4>
+                <p>Associate &mdash; DataCamp</p>
             </div>
             <div class="cert-card glass-card">
                 <div class="cert-icon"><i class="fa-solid fa-cloud"></i></div>
                 <h4>Microsoft AI & ML Engineering</h4>
-                <p>Microsoft Azure</p>
+                <p>Microsoft</p>
+            </div>
+            <div class="cert-card glass-card">
+                <div class="cert-icon"><i class="fa-solid fa-star"></i></div>
+                <h4>Gemini Certified Univ. Student</h4>
+                <p>Google</p>
+            </div>
+            <div class="cert-card glass-card">
+                <div class="cert-icon"><i class="fa-solid fa-network-wired"></i></div>
+                <h4>Intro to Kubernetes (LFS158)</h4>
+                <p>Linux Foundation</p>
             </div>
         </div>
     </section>
