@@ -72,19 +72,12 @@
                     style="position: absolute; bottom: -50px; right: -50px; width: 200px; height: 200px; background: rgba(157,78,221,0.2); filter: blur(50px); z-index: 0; pointer-events: none;">
                 </div>
 
-                <!-- Subtle 3D transparent overlay -->
-                <div
-                    style="position: absolute; right: -15%; top: 5%; width: 55%; height: 100%; z-index: 0; pointer-events: none; transform: perspective(1000px) rotateY(-20deg) scale(1.1); filter: drop-shadow(-15px 25px 35px rgba(0,0,0,0.6));">
-                    <img src="preview.png" alt="Profile Overlay"
-                        onerror="this.style.display='none'"
-                        style="width: 100%; height: 100%; object-fit: cover; mix-blend-mode: luminosity; opacity: 0.8; -webkit-mask-image: linear-gradient(to left bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 80%); mask-image: linear-gradient(to left bottom, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 80%); border-radius: 20px;">
-                </div>
 
                 <div style="z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 1.2rem;">
-                    <div
+                    <div id="profilePhotoWrapper"
                         style="width: 210px; height: 210px; border-radius: 50%; border: 4px solid #f97316; padding: 4px; background: rgba(255,255,255,0.04); box-shadow: 0 14px 32px rgba(0,0,0,0.5); overflow: hidden;">
                         <img src="preview.png" alt="Muhammad Zeeshan - AI Engineer"
-                            onerror="this.style.background='linear-gradient(135deg,#f97316,#b14cff)'; this.style.display='block';"
+                            onerror="this.style.display='none'; document.getElementById('profilePhotoWrapper').style.background='linear-gradient(135deg,#ff6b00,#f59e0b,#c026d3,#7c3aed)'"
                             style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                     </div>
 
