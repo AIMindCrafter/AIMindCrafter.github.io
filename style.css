@@ -302,32 +302,31 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 0.9rem 2rem;
+    padding: 0.75rem 1.5rem;
     border-radius: 50px;
     font-family: var(--font-body);
     font-weight: 600;
+    font-size: 0.95rem;
     text-decoration: none;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
 }
 
 .primary-btn {
-    background: linear-gradient(110deg, #ff6b00, #f59e0b, #c026d3, #7c3aed);
-    background-size: 200% 200%;
-    animation: btn-shimmer 4s ease infinite;
+    background: linear-gradient(90deg, #f97316, #06b6d4, #b14cff);
     color: #fff;
     border: none;
-    border-radius: 30px;
+    border-radius: 50px;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 18px rgba(255, 107, 0, 0.28), 0 2px 8px rgba(124, 58, 237, 0.22);
+    box-shadow: 0 4px 20px rgba(249, 115, 22, 0.35), 0 2px 10px rgba(177, 76, 255, 0.25);
 }
 
 .primary-btn::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.12) 50%, transparent 100%);
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.18) 50%, transparent 100%);
     transform: translateX(-100%);
     transition: transform 0.5s ease;
 }
@@ -338,26 +337,24 @@ h1, h2, h3, h4, h5, h6 {
 
 .primary-btn:hover {
     transform: scale(1.06) translateY(-3px);
-    box-shadow: 0 12px 32px rgba(192, 38, 211, 0.45), 0 4px 12px rgba(255, 107, 0, 0.35);
+    box-shadow: 0 14px 36px rgba(177, 76, 255, 0.5), 0 5px 16px rgba(249, 115, 22, 0.4);
 }
 
 .secondary-btn {
-    background: linear-gradient(135deg, #ff6b00, #f59e0b, #c026d3, #7c3aed);
-    background-size: 200% 200%;
-    animation: btn-shimmer 4s ease infinite;
+    background: linear-gradient(90deg, #f97316, #06b6d4, #b14cff);
     color: #fff;
     border: none;
-    border-radius: 30px;
+    border-radius: 50px;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 18px rgba(255, 107, 0, 0.25), 0 2px 8px rgba(124, 58, 237, 0.2);
+    box-shadow: 0 4px 20px rgba(249, 115, 22, 0.3), 0 2px 10px rgba(177, 76, 255, 0.2);
 }
 
 .secondary-btn::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.18) 50%, transparent 100%);
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.18) 50%, transparent 100%);
     transform: translateX(-100%);
     transition: transform 0.5s ease;
 }
@@ -369,7 +366,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .secondary-btn:hover {
     transform: scale(1.06) translateY(-3px);
-    box-shadow: 0 14px 36px rgba(192, 38, 211, 0.5), 0 5px 14px rgba(255, 107, 0, 0.4);
+    box-shadow: 0 14px 36px rgba(177, 76, 255, 0.5), 0 5px 16px rgba(249, 115, 22, 0.4);
 }
 
 .secondary-btn:hover::before {
@@ -378,17 +375,15 @@ h1, h2, h3, h4, h5, h6 {
 
 .card-gradient-btn {
     padding: 0.62rem 1.25rem;
-    border: 1px solid transparent;
-    border-radius: 26px;
+    border: none;
+    border-radius: 50px;
     font-weight: 700;
     font-size: 0.8rem;
     letter-spacing: 0.8px;
     text-transform: uppercase;
     color: #fff;
-    background: linear-gradient(110deg, #ff6b00, #f59e0b, #c026d3, #7c3aed);
-    background-size: 200% 200%;
-    animation: btn-shimmer 4s ease infinite;
-    box-shadow: 0 6px 20px rgba(255, 107, 0, 0.3), 0 2px 8px rgba(124, 58, 237, 0.25);
+    background: linear-gradient(90deg, #f97316, #06b6d4, #b14cff);
+    box-shadow: 0 4px 18px rgba(249, 115, 22, 0.3), 0 2px 8px rgba(177, 76, 255, 0.22);
     position: relative;
     overflow: hidden;
 }
@@ -397,7 +392,7 @@ h1, h2, h3, h4, h5, h6 {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%);
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.18) 50%, transparent 100%);
     transform: translateX(-100%);
     transition: transform 0.5s ease;
 }
@@ -407,8 +402,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .card-gradient-btn:hover {
-    transform: scale(1.05) translateY(-2px);
-    box-shadow: 0 12px 30px rgba(192, 38, 211, 0.45), 0 4px 12px rgba(255, 107, 0, 0.35);
+    transform: scale(1.06) translateY(-3px);
+    box-shadow: 0 14px 36px rgba(177, 76, 255, 0.5), 0 5px 16px rgba(249, 115, 22, 0.4);
 }
 
 /* Hero Section */
@@ -470,7 +465,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .cta-buttons {
     display: flex;
-    gap: 1rem;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
 }
 
 /* Hero Graphics & Animations */
