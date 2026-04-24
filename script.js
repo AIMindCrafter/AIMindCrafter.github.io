@@ -306,7 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 14. Contact Form — JS-handled mailto redirect (replaces broken HTML form POST)
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
             const name = document.getElementById('senderName').value.trim();
@@ -324,25 +324,60 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
-            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-            const mailtoLink = `mailto:321muhammadkamran@gmail.com?subject=${subject}&body=${body}`;
+            // Web3Forms integration
+            const accessKey = window.ENV && window.ENV.WEB3FORMS_ACCESS_KEY;
+            
+            if (!accessKey) {
+                alert("Web3Forms Access Key is missing in env.js. Please add it to send emails directly.");
+                return;
+            }
 
-            window.location.href = mailtoLink;
-
-            // Show success feedback
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fa-solid fa-check"></i> Opening Email Client...';
-            submitBtn.style.background = 'linear-gradient(90deg, #22c55e, #06b6d4)';
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+            submitBtn.style.background = 'linear-gradient(90deg, #6b7280, #374151)';
             submitBtn.disabled = true;
 
-            setTimeout(() => {
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        access_key: accessKey,
+                        name: name,
+                        email: email,
+                        message: message,
+                        subject: `Portfolio Contact from ${name}`
+                    })
+                });
+
+                const result = await response.json();
+                if (response.status === 200) {
+                    submitBtn.innerHTML = '<i class="fa-solid fa-check"></i> Message Sent!';
+                    submitBtn.style.background = 'linear-gradient(90deg, #22c55e, #06b6d4)';
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.style.background = '';
+                        submitBtn.disabled = false;
+                        contactForm.reset();
+                    }, 3000);
+                } else {
+                    console.error(result);
+                    alert("Failed to send message: " + result.message);
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.style.background = '';
+                    submitBtn.disabled = false;
+                }
+            } catch (error) {
+                console.error(error);
+                alert("An error occurred while sending the message.");
                 submitBtn.innerHTML = originalText;
                 submitBtn.style.background = '';
                 submitBtn.disabled = false;
-                contactForm.reset();
-            }, 3000);
+            }
         });
     }
 
