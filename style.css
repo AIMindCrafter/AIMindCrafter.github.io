@@ -9,7 +9,7 @@
     --secondary: #9d4edd; /* Deep Agency Purple */
     --glass-border: rgba(255, 255, 255, 0.08);
     --glass-bg: rgba(255, 255, 255, 0.03);
-    --card-bg: rgba(25, 22, 35, 0.8);
+    --card-bg: linear-gradient(145deg, rgba(38, 30, 56, 0.95), rgba(20, 16, 30, 0.95));
     
     --font-heading: 'Montserrat', sans-serif;
     --font-body: 'Montserrat', sans-serif;
