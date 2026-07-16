@@ -63,6 +63,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetId = this.getAttribute('href');
             if (targetId.startsWith('#')) {
                 e.preventDefault();
+                if (targetId === '#chat-bot') {
+                    const floatingChatWidget = document.getElementById('floatingChatWidget');
+                    if (floatingChatWidget) {
+                        floatingChatWidget.classList.remove('hidden');
+                        const input = document.getElementById('chatInput');
+                        if (input) input.focus();
+                        const history = document.getElementById('chatHistory');
+                        if (history) history.scrollTop = history.scrollHeight;
+                        
+                        // Hide badge
+                        const badge = document.querySelector('.chat-badge-pulse');
+                        if (badge) badge.style.display = 'none';
+                    }
+                    return;
+                }
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     const navHeight = document.getElementById('mainNavbar').offsetHeight;
@@ -439,22 +454,93 @@ document.addEventListener('DOMContentLoaded', () => {
         chip.addEventListener('click', () => {
             const queryText = chip.getAttribute('data-chat-query');
             if (queryText) {
-                // Scroll to chatbot section smoothly
-                const chatSection = document.getElementById('chat-bot');
-                if (chatSection) {
-                    const navHeight = document.getElementById('mainNavbar').offsetHeight;
-                    const elementPosition = chatSection.getBoundingClientRect().top + window.scrollY;
-                    const offsetPosition = elementPosition - navHeight;
+                // Open chatbot widget
+                const floatingChatWidget = document.getElementById('floatingChatWidget');
+                if (floatingChatWidget) {
+                    floatingChatWidget.classList.remove('hidden');
+                    const input = document.getElementById('chatInput');
+                    if (input) input.focus();
+                    const history = document.getElementById('chatHistory');
+                    if (history) history.scrollTop = history.scrollHeight;
                     
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
+                    // Hide badge
+                    const badge = document.querySelector('.chat-badge-pulse');
+                    if (badge) badge.style.display = 'none';
                 }
                 // Trigger message handler
                 handleUserMessage(queryText);
             }
         });
+    });
+
+    // Floating Quick Controls Actions
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    const scrollBottomBtn = document.getElementById('scrollBottomBtn');
+    const chatbotToggleBtn = document.getElementById('chatbotToggleBtn');
+    const closeChatBtn = document.getElementById('closeChatBtn');
+    const floatingChatWidget = document.getElementById('floatingChatWidget');
+
+    // Scroll to Top / Scroll to Bottom
+    if (scrollTopBtn) {
+        // Toggle visibility based on scroll position
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.style.opacity = '1';
+                scrollTopBtn.style.pointerEvents = 'auto';
+            } else {
+                scrollTopBtn.style.opacity = '0';
+                scrollTopBtn.style.pointerEvents = 'none';
+            }
+        });
+        // Initial state
+        scrollTopBtn.style.opacity = '0';
+        scrollTopBtn.style.pointerEvents = 'none';
+        scrollTopBtn.style.transition = 'opacity 0.2s ease';
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    if (scrollBottomBtn) {
+        scrollBottomBtn.addEventListener('click', () => {
+            window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+        });
+    }
+
+    // Toggle Floating Chat Widget
+    if (chatbotToggleBtn && floatingChatWidget) {
+        chatbotToggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isHidden = floatingChatWidget.classList.toggle('hidden');
+            if (!isHidden) {
+                // Focus input and scroll chat
+                const input = document.getElementById('chatInput');
+                if (input) input.focus();
+                const history = document.getElementById('chatHistory');
+                if (history) history.scrollTop = history.scrollHeight;
+                
+                // Hide badge
+                const badge = chatbotToggleBtn.querySelector('.chat-badge-pulse');
+                if (badge) badge.style.display = 'none';
+            }
+        });
+    }
+
+    if (closeChatBtn && floatingChatWidget) {
+        closeChatBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            floatingChatWidget.classList.add('hidden');
+        });
+    }
+
+    // Close chat if clicked outside
+    document.addEventListener('click', (e) => {
+        if (floatingChatWidget && !floatingChatWidget.classList.contains('hidden')) {
+            if (!floatingChatWidget.contains(e.target) && !chatbotToggleBtn.contains(e.target)) {
+                floatingChatWidget.classList.add('hidden');
+            }
+        }
     });
 
     // Call 3D initialization

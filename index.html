@@ -224,42 +224,6 @@
             </div>
         </section>
 
-        <!-- Interactive AI Chat Section -->
-        <section class="chat-section section-scroll-reveal" id="chat-bot">
-            <div class="container">
-                <div class="brutalist-card chat-console-card">
-                    <div class="console-header">
-                        <div class="console-controls">
-                            <span class="dot red"></span>
-                            <span class="dot yellow"></span>
-                            <span class="dot green"></span>
-                        </div>
-                        <span class="console-title">zeeshan_ai_assistant.sh</span>
-                        <div class="console-status"><span class="pulse-dot"></span> LIVE</div>
-                    </div>
-                    <div class="console-body" id="chatHistory">
-                        <div class="bot-msg">
-                            <p>Hi! I'm Zeeshan's AI Assistant. Ask me anything about his projects, experience, or skills, or click a suggestion below to start.</p>
-                        </div>
-                    </div>
-                    <div class="console-input-area">
-                        <div class="console-chips">
-                            <button class="chip-btn" data-query="What is Zeeshan's current role?">💼 Current Role</button>
-                            <button class="chip-btn" data-query="List some of his notable projects.">🚀 Key Projects</button>
-                            <button class="chip-btn" data-query="What certifications does he hold?">🎓 Certifications</button>
-                            <button class="chip-btn" data-query="What is his technical stack?">🛠️ Tech Stack</button>
-                        </div>
-                        <form id="chatForm" class="chat-form">
-                            <input type="text" id="chatInput" placeholder="Type a message..." autocomplete="off" required>
-                            <button type="submit" class="chat-submit-btn" aria-label="Send message">
-                                <i class="fa-solid fa-paper-plane"></i>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-
 
 
         <!-- Projects Grid -->
@@ -726,6 +690,56 @@
             </div>
         </div>
     </footer>
+
+    <!-- Floating Page Controls -->
+    <div class="floating-controls" aria-label="Quick Actions">
+        <!-- Scroll Up & Down Button Group -->
+        <div class="scroll-navigation">
+            <button id="scrollTopBtn" class="floating-btn" title="Scroll to Top" aria-label="Scroll to Top">
+                <i class="fa-solid fa-arrow-up"></i>
+            </button>
+            <button id="scrollBottomBtn" class="floating-btn" title="Scroll to Bottom" aria-label="Scroll to Bottom">
+                <i class="fa-solid fa-arrow-down"></i>
+            </button>
+        </div>
+
+        <!-- Floating Chatbot Toggle Button -->
+        <button id="chatbotToggleBtn" class="floating-btn chat-trigger-btn" title="Ask AI Assistant" aria-label="Ask AI Assistant">
+            <i class="fa-solid fa-comments"></i>
+            <span class="chat-badge-pulse"></span>
+        </button>
+
+        <!-- Floating Chat Widget Drawer -->
+        <div id="floatingChatWidget" class="brutalist-card floating-chat-card hidden">
+            <div class="chat-widget-header">
+                <div class="console-controls">
+                    <span class="dot red" id="closeChatBtn" title="Close Chat"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                </div>
+                <span class="console-title">zeeshan_ai.sh</span>
+                <div class="console-status"><span class="pulse-dot"></span> LIVE</div>
+            </div>
+            <div class="console-body" id="chatHistory">
+                <div class="bot-msg">
+                    <p>Hi! I'm Zeeshan's AI Assistant. Ask me anything about his projects, experience, or skills, or click a suggestion below to start.</p>
+                </div>
+            </div>
+            <div class="console-input-area">
+                <div class="console-chips">
+                    <button class="chip-btn" data-query="What is Zeeshan's current role?">💼 Current Role</button>
+                    <button class="chip-btn" data-query="List some of his notable projects.">🚀 Key Projects</button>
+                    <button class="chip-btn" data-query="What is his technical stack?">🛠️ Tech Stack</button>
+                </div>
+                <form id="chatForm" class="chat-form">
+                    <input type="text" id="chatInput" placeholder="Type a message..." autocomplete="off" required>
+                    <button type="submit" class="chat-submit-btn" aria-label="Send message">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>

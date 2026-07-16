@@ -2004,3 +2004,137 @@ html[data-theme="dark"] .neural-network-viz {
     transform: translateY(1px) scale(0.98);
     box-shadow: 1px 1px 0px var(--shadow-color);
 }
+
+/* ==========================================================================
+   FLOATING QUICK CONTROLS & CHAT WIDGET
+   ========================================================================== */
+.floating-controls {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.75rem;
+    z-index: 999;
+}
+
+.scroll-navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.floating-btn {
+    border: var(--brutalist-border);
+    box-shadow: 3px 3px 0px var(--shadow-color);
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.floating-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px var(--shadow-color);
+}
+
+.floating-btn:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0px var(--shadow-color);
+}
+
+#scrollTopBtn { background-color: var(--color-cyan); }
+#scrollBottomBtn { background-color: var(--color-pink); }
+#chatbotToggleBtn { 
+    background-color: var(--color-yellow); 
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    font-size: 1.35rem;
+    position: relative;
+    box-shadow: 4px 4px 0px var(--shadow-color);
+}
+
+#chatbotToggleBtn:hover {
+    box-shadow: 6px 6px 0px var(--shadow-color);
+}
+
+.chat-badge-pulse {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 10px;
+    height: 10px;
+    background-color: var(--color-green);
+    border: 1.5px solid var(--border-color);
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(126, 217, 87, 0.7);
+    animation: blink 2s infinite;
+}
+
+.floating-chat-card {
+    position: absolute;
+    bottom: 64px;
+    right: 0;
+    width: 360px;
+    height: 480px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--brutalist-shadow-hover);
+    transform-origin: bottom right;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, visibility 0.25s ease;
+    z-index: 1000;
+}
+
+.floating-chat-card.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.8) translateY(20px);
+    pointer-events: none;
+}
+
+.chat-widget-header {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-bottom: var(--brutalist-border);
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+html[data-theme="dark"] .chat-widget-header {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#closeChatBtn {
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+#closeChatBtn:hover {
+    background-color: var(--color-pink) !important;
+}
+
+@media (max-width: 480px) {
+    .floating-controls {
+        bottom: 1rem;
+        right: 1rem;
+    }
+    .floating-chat-card {
+        width: calc(100vw - 2rem);
+        right: 0;
+        bottom: 60px;
+        height: 420px;
+    }
+}
