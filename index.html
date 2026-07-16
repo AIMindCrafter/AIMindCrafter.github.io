@@ -26,6 +26,9 @@
     </script>
 </head>
 <body>
+    <!-- 3D Canvas Background -->
+    <canvas id="canvas3d" aria-hidden="true"></canvas>
+
     <!-- Cartoon Floating Background Shapes -->
     <div class="cartoon-shapes" aria-hidden="true">
         <div class="shape shape-circle shape-orange" style="top: 12%; left: 8%;"></div>
@@ -47,7 +50,6 @@
         <div class="nav-center" role="navigation" aria-label="Main Navigation">
             <a href="#about">About</a>
             <a href="#chat-bot">AI Assistant</a>
-            <a href="#playground">Playground</a>
             <a href="#projects">Projects</a>
             <a href="#experience">Experience</a>
             <a href="#skills">Skills</a>
@@ -71,7 +73,6 @@
     <div class="mobile-nav" id="mobileNav" aria-hidden="true">
         <a href="#about">About</a>
         <a href="#chat-bot">AI Assistant</a>
-        <a href="#playground">Playground</a>
         <a href="#projects">Projects</a>
         <a href="#experience">Experience</a>
         <a href="#skills">Skills</a>
@@ -93,7 +94,6 @@
                     </p>
                     <div class="hero-btn-grid">
                         <a href="#projects" class="hero-grid-btn btn-cyan">AI Projects</a>
-                        <a href="#playground" class="hero-grid-btn btn-blue">Playground</a>
                         <a href="#skills" class="hero-grid-btn btn-orange">Skills Cloud</a>
                         <a href="#experience" class="hero-grid-btn btn-green">See Experience</a>
                     </div>
@@ -174,68 +174,7 @@
             </div>
         </section>
 
-        <!-- Playground Section -->
-        <section class="playground-section section-scroll-reveal" id="playground">
-            <div class="container">
-                <div class="section-title-box">
-                    <h2 class="section-heading">AI Models & Code Playground</h2>
-                </div>
-                
-                <div class="playground-grid">
-                    <!-- Cards Grid -->
-                    <div class="capabilities-cards">
-                        <div class="brutalist-card cap-card">
-                            <div class="cap-icon pink-bg"><i class="fa-solid fa-brain"></i></div>
-                            <h3>LLMs & Fine-Tuning</h3>
-                            <p>Extensive experience fine-tuning and prompting Large Language Models (Llama 3, Qwen 2.5, GPT-4) utilizing QLoRA and PEFT bounds to resolve specific domains.</p>
-                        </div>
-                        <div class="brutalist-card cap-card">
-                            <div class="cap-icon cyan-bg"><i class="fa-solid fa-cubes"></i></div>
-                            <h3>RAG Architectures</h3>
-                            <p>Building Retrieval-Augmented Generation workflows. Hooking up vector indexes (Pinecone, ChromaDB) with metadata queries and semantic reranking pipelines.</p>
-                        </div>
-                        <div class="brutalist-card cap-card">
-                            <div class="cap-icon orange-bg"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-                            <h3>Diffusion & Multi-Modal</h3>
-                            <p>Fine-tuning Stable Diffusion checkpoints using DreamBooth and ControlNet, and structuring OCR document data with Qwen2-VL.</p>
-                        </div>
-                    </div>
 
-                    <!-- Code Runner -->
-                    <div class="brutalist-card code-terminal-card">
-                        <div class="console-header">
-                            <div class="console-controls">
-                                <span class="dot red"></span>
-                                <span class="dot yellow"></span>
-                                <span class="dot green"></span>
-                            </div>
-                            <span class="console-title">agent_pipeline.py</span>
-                            <button id="runCodeBtn" class="run-pipeline-btn"><i class="fa-solid fa-play"></i> Run Agent</button>
-                        </div>
-                        <div class="code-editor-body">
-<pre><code><span class="keyword">from</span> langchain.agents <span class="keyword">import</span> initialize_agent, AgentType
-<span class="keyword">from</span> langchain.llms <span class="keyword">import</span> OpenAI
-
-<span class="keyword">def</span> <span class="function">build_ai_agent</span>():
-    llm = OpenAI(temperature=<span class="number">0.7</span>)
-    agent = initialize_agent(
-        tools=[], 
-        llm=llm, 
-        agent=AgentType.ZERO_SHOT_REACT, 
-        verbose=<span class="keyword">True</span>
-    )
-    <span class="keyword">return</span> agent
-
-agent_instance = build_ai_agent()
-agent_instance.run(<span class="string">"Analyze context."</span>)</code></pre>
-                        </div>
-                        <div class="console-execution-output" id="consoleOutput">
-                            <span class="output-placeholder">// Press "Run Agent" to compile pipeline...</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- Projects Grid -->
         <section class="projects-section section-scroll-reveal" id="projects">
@@ -348,14 +287,14 @@ agent_instance.run(<span class="string">"Analyze context."</span>)</code></pre>
                     <!-- Project 6 -->
                     <div class="brutalist-card project-card">
                         <div class="project-img-wrapper">
-                            <img src="preview.png" alt="End-to-End MLOps Pipeline" onerror="this.src='https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&fit=crop&w=600&q=80'">
+                            <img src="preview.png" alt="End-to-End DevOps Pipeline" onerror="this.src='https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&fit=crop&w=600&q=80'">
                             <div class="project-hover-overlay">
                                 <a href="https://github.com/AIMindCrafter" target="_blank" class="overlay-link-btn"><i class="fa-brands fa-github"></i> Repository</a>
                             </div>
                         </div>
                         <div class="project-info">
-                            <span class="tech-pill category-pill">MLOps</span>
-                            <h3>End-to-End MLOps Pipeline</h3>
+                            <span class="tech-pill category-pill">DevOps</span>
+                            <h3>End-to-End DevOps Pipeline</h3>
                             <p>Constructed a fully automated CI/CD flow package-building FastAPI apps, executing unit testing suites, and pushing image tags to GitHub Packages.</p>
                             <div class="tech-tags">
                                 <span class="tech-pill">Docker</span>
@@ -435,16 +374,11 @@ agent_instance.run(<span class="string">"Analyze context."</span>)</code></pre>
                         <h3><i class="fa-solid fa-code"></i> Engineering & ML</h3>
                         <div class="skills-flex">
                             <span class="skill-tag">Python</span>
-                            <span class="skill-tag">Rust</span>
-                            <span class="skill-tag">C++</span>
                             <span class="skill-tag">FastAPI</span>
-                            <span class="skill-tag">Flask</span>
                             <span class="skill-tag">Django</span>
                             <span class="skill-tag">Docker</span>
-                            <span class="skill-tag">MLOps</span>
                             <span class="skill-tag">Azure</span>
                             <span class="skill-tag">PostgreSQL</span>
-                            <span class="skill-tag">Kubernetes</span>
                         </div>
                     </div>
 
@@ -476,7 +410,6 @@ agent_instance.run(<span class="string">"Analyze context."</span>)</code></pre>
                         <span class="cert-card-badge">ML Specialization (Stanford / DeepLearning.AI)</span>
                         <span class="cert-card-badge">AI Engineer for Data Scientists (DataCamp)</span>
                         <span class="cert-card-badge">Gemini Certified Univ. Student (Google)</span>
-                        <span class="cert-card-badge">Intro to Kubernetes LFS158 (Linux Foundation)</span>
                     </div>
                 </div>
             </div>
@@ -533,7 +466,6 @@ agent_instance.run(<span class="string">"Analyze context."</span>)</code></pre>
                 </div>
                 <div class="footer-links">
                     <a href="#about">About</a>
-                    <a href="#playground">Playground</a>
                     <a href="#projects">Projects</a>
                     <a href="#experience">Experience</a>
                     <a href="#skills">Skills</a>
@@ -547,6 +479,7 @@ agent_instance.run(<span class="string">"Analyze context."</span>)</code></pre>
     </footer>
 
     <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="env.js"></script>
     <script src="script.js"></script>
 </body>

@@ -34,6 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         }
+
+        // Trigger 3D color update
+        if (typeof update3DThemeColors === 'function') {
+            update3DThemeColors(theme);
+        }
     }
 
     /* ==========================================================================
@@ -114,53 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* ==========================================================================
-       4. CODE RUNNER PIEPELINE SIMULATION
-       ========================================================================== */
-    const runCodeBtn = document.getElementById('runCodeBtn');
-    const consoleOutput = document.getElementById('consoleOutput');
-    let isRunningCode = false;
-
-    if (runCodeBtn && consoleOutput) {
-        runCodeBtn.addEventListener('click', () => {
-            if (isRunningCode) return;
-            isRunningCode = true;
-            runCodeBtn.disabled = true;
-            runCodeBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Running...';
-            
-            consoleOutput.innerHTML = '';
-            
-            const lines = [
-                { text: "> python agent_pipeline.py", delay: 0, color: "var(--text-secondary)" },
-                { text: "[INFO] Initializing Gemini LLM backend (gemini-2.5-flash)...", delay: 500, color: "var(--color-blue)" },
-                { text: "[INFO] Loading RAG parameters & vector DB keys...", delay: 1000, color: "var(--color-blue)" },
-                { text: "[SUCCESS] Ingested 4,210 document embeddings from Pinecone index.", delay: 1500, color: "var(--color-green)" },
-                { text: "[INFO] Starting Zero-Shot Agent Planner...", delay: 2000, color: "var(--color-blue)" },
-                { text: "[THOUGHT] Goal: 'Analyze context.' Search workspace files.", delay: 2400, color: "var(--color-yellow)" },
-                { text: "[ACTION] Calling Tool: file_search(Query: 'MRI brain model specs')", delay: 2800, color: "var(--color-orange)" },
-                { text: "[SUCCESS] Found file specs: EfficientNetB2 classification (97% accuracy).", delay: 3300, color: "var(--color-green)" },
-                { text: "[RESULT] 'Analysis complete. The loaded model resolves MRI tumors across 4 categories.'", delay: 3800, color: "var(--color-cyan)" },
-                { text: "[SUCCESS] Pipeline run finished in 4.12s.", delay: 4200, color: "var(--color-green)" }
-            ];
-
-            lines.forEach(line => {
-                setTimeout(() => {
-                    const lineDiv = document.createElement('div');
-                    lineDiv.className = 'console-log-line';
-                    lineDiv.style.color = line.color;
-                    lineDiv.textContent = line.text;
-                    consoleOutput.appendChild(lineDiv);
-                    consoleOutput.scrollTop = consoleOutput.scrollHeight;
-                }, line.delay);
-            });
-
-            setTimeout(() => {
-                isRunningCode = false;
-                runCodeBtn.disabled = false;
-                runCodeBtn.innerHTML = '<i class="fa-solid fa-play"></i> Run Agent';
-            }, 4400);
-        });
-    }
 
     /* ==========================================================================
        5. GEMINI AI RESUME BOT INTERACTION
@@ -182,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
       * Languages: Python, Rust, C++
       * Frameworks: FastAPI, Flask, Django, LangChain, LangGraph
       * ML & AI: Fine-Tuning (PEFT, QLoRA), RAG Architectures, Vector Databases (Pinecone, ChromaDB), Stable Diffusion (DreamBooth, ControlNet), Multi-Modal AI (Qwen2-VL)
-      * Dev & Cloud: Azure, Docker, GitHub Actions, PostgreSQL, Kubernetes
+      * Dev & Cloud: Azure, Docker, GitHub Actions, PostgreSQL
     - Experience:
       * Algotix AI (Jan 2026 - Present): Software Engineer Intern & Backend Developer. Builds agentic microservices and distributed LLM frameworks.
       * Deep Embed (Nov 2024 - Jan 2026): Machine Learning Engineer. Developed multi-modal structured extraction systems.
@@ -194,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
       * QLoRA LLM Fine-tuning: LLaMA 3 (8B) domain fine-tuning with Unsloth in 4-bit quantization.
       * Multi-PDF RAG Assistant: Ingests documents with metadata matching, source citations, and LangChain query orchestration.
       * Stable Diffusion DreamBooth: Diffusers pipeline with ControlNet constraints.
-      * End-to-End MLOps: Automated Docker packaging and test execution using GitHub Actions.
+      * End-to-End DevOps: Automated Docker packaging and test execution using GitHub Actions.
     - Certifications:
       * Oracle Cloud Infrastructure 2025 Certified Generative AI Professional (https://catalog-education.oracle.com/ords/certview/sharebadge?id=47DFC2B0FDD8B9686774D2A52CE6C48160030D827B64546EFBF6751B57D8C23C)
       * IBM GenAI Engineering with Python, LangChain & Watsonx (https://www.coursera.org/account/accomplishments/specialization/804C7OR70CY9)
@@ -206,7 +164,6 @@ document.addEventListener('DOMContentLoaded', () => {
       * ML Specialization (Stanford / DeepLearning.AI)
       * AI Engineer for Data Scientists (DataCamp)
       * Gemini Certified University Student (Google)
-      * Intro to Kubernetes LFS158 (Linux Foundation)
     - Links & Contact:
       * Email: muhammadzeshan.covers@gmail.com
       * Phone/WhatsApp: 03256257787 (https://wa.me/923256257787)
@@ -342,7 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         if (q.includes('skill') || q.includes('stack') || q.includes('tech') || q.includes('python') || q.includes('rust') || q.includes('fastapi')) {
-            return "Zeeshan's core skills are:\n\n- **Languages**: Python, Rust, C++\n- **Generative AI**: Fine-Tuning (PEFT, QLoRA), Advanced RAG systems, LangChain, LangGraph, Stable Diffusion, and Multi-modal extraction.\n- **MLOps & DevOps**: Docker, Azure Cloud Services, FastAPI, and GitHub Actions CI/CD pipelines.";
+            return "Zeeshan's core skills are:\n\n- **Languages**: Python, Rust, C++\n- **Generative AI**: Fine-Tuning (PEFT, QLoRA), Advanced RAG systems, LangChain, LangGraph, Stable Diffusion, and Multi-modal extraction.\n- **DevOps & Cloud**: Docker, Azure Cloud Services, FastAPI, and GitHub Actions CI/CD pipelines.";
         }
         
         if (q.includes('contact') || q.includes('email') || q.includes('linkedin') || q.includes('reach') || q.includes('social')) {
@@ -378,7 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       6. CONTACT FORM SUBMISSION (WEB3FORMS API)
+       6. CONTACT FORM SUBMISSION (FORMSUBMIT.CO)
        ========================================================================== */
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
@@ -400,15 +357,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            const accessKey = window.ENV && window.ENV.WEB3FORMS_ACCESS_KEY;
-            
-            if (!accessKey || accessKey === "") {
-                alert("Web3Forms Access Key is missing in env.js. Message sending is currently in mock mode.");
-                console.log("Form submitted locally:", { name, email, message });
-                contactForm.reset();
-                return;
-            }
-
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             const originalHTML = submitBtn.innerHTML;
             
@@ -416,23 +364,22 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.disabled = true;
 
             try {
-                const response = await fetch('https://api.web3forms.com/submit', {
+                const response = await fetch('https://formsubmit.co/ajax/muhammadzeshan.covers@gmail.com', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                         'Accept': 'application/json'
                     },
                     body: JSON.stringify({
-                        access_key: accessKey,
                         name: name,
                         email: email,
                         message: message,
-                        subject: `Portfolio Contact from ${name}`
+                        _subject: `New Portfolio Message from ${name}`
                     })
                 });
 
                 const result = await response.json();
-                if (response.status === 200) {
+                if (response.ok) {
                     submitBtn.innerHTML = 'MESSAGE SENT! <i class="fa-solid fa-check"></i>';
                     setTimeout(() => {
                         submitBtn.innerHTML = originalHTML;
@@ -441,7 +388,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }, 3000);
                 } else {
                     console.error(result);
-                    alert("Failed to send message: " + result.message);
+                    alert("Failed to send message: " + (result.message || "Unknown error"));
                     submitBtn.innerHTML = originalHTML;
                     submitBtn.disabled = false;
                 }
@@ -452,5 +399,232 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitBtn.disabled = false;
             }
         });
+    }
+
+    // Call 3D initialization
+    init3DAnimation();
+
+    /* ==========================================================================
+       7. 3D PLEXUS BACKGROUND ANIMATION
+       ========================================================================== */
+    let scene, camera, renderer, pointCloud, lineSegments;
+    let particlePositions, particleData = [];
+    const maxParticleCount = 80;
+    let pointsGeometry, lineGeometry;
+    const r = 800; // bounding box radius
+    const rHalf = r / 2;
+    
+    // Mouse interaction variables
+    let targetRotationX = 0;
+    let targetRotationY = 0;
+    let mouseX = 0;
+    let mouseY = 0;
+    let windowHalfX = window.innerWidth / 2;
+    let windowHalfY = window.innerHeight / 2;
+
+    function init3DAnimation() {
+        const canvas = document.getElementById('canvas3d');
+        if (!canvas) return;
+
+        // Scene
+        scene = new THREE.Scene();
+
+        // Camera
+        camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 4000);
+        camera.position.z = 1200;
+
+        // Renderer
+        renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        // Group container
+        const group = new THREE.Group();
+        scene.add(group);
+
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+        const colorsConfig = getThemeColors(currentTheme);
+
+        // Create particles
+        pointsGeometry = new THREE.BufferGeometry();
+        lineGeometry = new THREE.BufferGeometry();
+
+        particlePositions = new Float32Array(maxParticleCount * 3);
+
+        for (let i = 0; i < maxParticleCount; i++) {
+            const x = Math.random() * r - rHalf;
+            const y = Math.random() * r - rHalf;
+            const z = Math.random() * r - rHalf;
+
+            particlePositions[i * 3] = x;
+            particlePositions[i * 3 + 1] = y;
+            particlePositions[i * 3 + 2] = z;
+
+            // add velocity
+            particleData.push({
+                velocity: new THREE.Vector3(
+                    (-1 + Math.random() * 2) * 0.8,
+                    (-1 + Math.random() * 2) * 0.8,
+                    (-1 + Math.random() * 2) * 0.8
+                )
+            });
+        }
+
+        pointsGeometry.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+
+        // Create Materials
+        const pMaterial = new THREE.PointsMaterial({
+            color: colorsConfig.particleColor,
+            size: 6,
+            transparent: true,
+            opacity: 0.8,
+            sizeAttenuation: true
+        });
+
+        pointCloud = new THREE.Points(pointsGeometry, pMaterial);
+        group.add(pointCloud);
+
+        // Lines Geometry & Material
+        const maxConnections = maxParticleCount * maxParticleCount;
+        const linePositions = new Float32Array(maxConnections * 3);
+        const lineColors = new Float32Array(maxConnections * 3);
+
+        lineGeometry.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
+        lineGeometry.setAttribute('color', new THREE.BufferAttribute(lineColors, 3));
+
+        const lMaterial = new THREE.LineBasicMaterial({
+            color: colorsConfig.lineColor,
+            transparent: true,
+            opacity: colorsConfig.lineOpacity,
+            blending: THREE.NormalBlending,
+            linewidth: 1
+        });
+
+        lineSegments = new THREE.LineSegments(lineGeometry, lMaterial);
+        group.add(lineSegments);
+
+        // Mouse listener
+        document.addEventListener('mousemove', onDocumentMouseMove);
+        window.addEventListener('resize', onWindowResize);
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Update particles position
+            for (let i = 0; i < maxParticleCount; i++) {
+                particlePositions[i * 3] += particleData[i].velocity.x;
+                particlePositions[i * 3 + 1] += particleData[i].velocity.y;
+                particlePositions[i * 3 + 2] += particleData[i].velocity.z;
+
+                // Bounce check
+                if (particlePositions[i * 3] < -rHalf || particlePositions[i * 3] > rHalf) {
+                    particleData[i].velocity.x = -particleData[i].velocity.x;
+                }
+                if (particlePositions[i * 3 + 1] < -rHalf || particlePositions[i * 3 + 1] > rHalf) {
+                    particleData[i].velocity.y = -particleData[i].velocity.y;
+                }
+                if (particlePositions[i * 3 + 2] < -rHalf || particlePositions[i * 3 + 2] > rHalf) {
+                    particleData[i].velocity.z = -particleData[i].velocity.z;
+                }
+            }
+
+            pointsGeometry.attributes.position.needsUpdate = true;
+
+            // Lines updates
+            const positionsArr = lineGeometry.attributes.position.array;
+            const colorsArr = lineGeometry.attributes.color.array;
+
+            let lineIndex = 0;
+            const minDistance = 150;
+
+            for (let i = 0; i < maxParticleCount; i++) {
+                for (let j = i + 1; j < maxParticleCount; j++) {
+                    const dx = particlePositions[i * 3] - particlePositions[j * 3];
+                    const dy = particlePositions[i * 3 + 1] - particlePositions[j * 3 + 1];
+                    const dz = particlePositions[i * 3 + 2] - particlePositions[j * 3 + 2];
+                    const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+
+                    if (dist < minDistance) {
+                        // Add line segment endpoints
+                        positionsArr[lineIndex * 3] = particlePositions[i * 3];
+                        positionsArr[lineIndex * 3 + 1] = particlePositions[i * 3 + 1];
+                        positionsArr[lineIndex * 3 + 2] = particlePositions[i * 3 + 2];
+
+                        positionsArr[(lineIndex + 1) * 3] = particlePositions[j * 3];
+                        positionsArr[(lineIndex + 1) * 3 + 1] = particlePositions[j * 3 + 1];
+                        positionsArr[(lineIndex + 1) * 3 + 2] = particlePositions[j * 3 + 2];
+
+                        // Set alpha color based on proximity
+                        const alpha = 1.0 - (dist / minDistance);
+                        colorsArr[lineIndex * 3] = alpha;
+                        colorsArr[lineIndex * 3 + 1] = alpha;
+                        colorsArr[lineIndex * 3 + 2] = alpha;
+
+                        colorsArr[(lineIndex + 1) * 3] = alpha;
+                        colorsArr[(lineIndex + 1) * 3 + 1] = alpha;
+                        colorsArr[(lineIndex + 1) * 3 + 2] = alpha;
+
+                        lineIndex += 2;
+                    }
+                }
+            }
+
+            lineGeometry.setDrawRange(0, lineIndex);
+            lineGeometry.attributes.position.needsUpdate = true;
+            lineGeometry.attributes.color.needsUpdate = true;
+
+            // Slow idle rotation
+            group.rotation.y += 0.0005;
+
+            // Rotate based on mouse
+            targetRotationY = (mouseX - windowHalfX) * 0.0003;
+            targetRotationX = (mouseY - windowHalfY) * 0.0003;
+
+            group.rotation.y += (targetRotationY - group.rotation.y) * 0.05;
+            group.rotation.x += (targetRotationX - group.rotation.x) * 0.05;
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+    }
+
+    function getThemeColors(theme) {
+        if (theme === 'dark') {
+            return {
+                particleColor: new THREE.Color(0x00F2FE), // Glowing cyan
+                lineColor: new THREE.Color(0x00F2FE),
+                lineOpacity: 0.15
+            };
+        } else {
+            return {
+                particleColor: new THREE.Color(0x1E1E1E), // Dark charcoal
+                lineColor: new THREE.Color(0x1E1E1E),
+                lineOpacity: 0.08
+            };
+        }
+    }
+
+    function update3DThemeColors(theme) {
+        if (!pointCloud || !lineSegments) return;
+        const colorsConfig = getThemeColors(theme);
+        pointCloud.material.color.copy(colorsConfig.particleColor);
+        lineSegments.material.color.copy(colorsConfig.lineColor);
+        lineSegments.material.opacity = colorsConfig.lineOpacity;
+    }
+
+    function onDocumentMouseMove(event) {
+        mouseX = event.clientX;
+        mouseY = event.clientY;
+    }
+
+    function onWindowResize() {
+        windowHalfX = window.innerWidth / 2;
+        windowHalfY = window.innerHeight / 2;
+        if (camera && renderer) {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
     }
 });
