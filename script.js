@@ -129,13 +129,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const chipBtns = document.querySelectorAll('.chip-btn');
 
     // System instruction detailing Zeeshan's complete background
-    const SYSTEM_INSTRUCTION = `
-    You are a professional, helpful, and highly articulate AI assistant representing Muhammad Zeeshan (AIMindCrafter), a Generative AI Engineer.
+     const SYSTEM_INSTRUCTION = `
+    You are a professional, helpful, and highly articulate AI assistant representing Muhammad Zeeshan (AIMindCrafter), an AI Engineering professional.
     Your mission is to answer questions about Zeeshan's qualifications, bio, experience, projects, skills, and certifications.
     
     Zeeshan's Profile:
-    - Title: Generative AI Engineer
-    - Bio: Results-driven Generative AI Engineer specializing in LLM fine-tuning, Retrieval-Augmented Generation (RAG), and agentic AI systems.
+    - Title: AI Engineering Professional
+    - Bio: Results-driven AI Engineering professional specializing in LLM fine-tuning, Retrieval-Augmented Generation (RAG), and agentic AI systems.
     - Skills: 
       * Languages: Python, Rust, C++
       * Frameworks: FastAPI, Flask, Django, LangChain, LangGraph
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
       * Discord: https://discord.com/users/1166851427495334060
       * Facebook: https://www.facebook.com/profile.php?id=100093411528772
       * X (Twitter): https://x.com/zem53836
-      * Gamma Portfolio: https://muhammad-zeeshan-aiengi-8owxsht.gamma.site/
+      * Medium Profile: https://medium.com/@shani829721
       
     Interaction Rules:
     - Keep responses concise (typically 2-4 sentences or structured bullets) and optimized for readability.

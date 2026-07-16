@@ -125,6 +125,7 @@ body {
     box-shadow: 3.5px 3.5px 0px var(--shadow-color);
     opacity: var(--shape-opacity);
     animation: shape-drift 12s infinite ease-in-out;
+    pointer-events: none;
 }
 
 .shape-circle {
@@ -367,12 +368,9 @@ body {
 }
 
 .hero-container {
-    max-width: 1280px;
+    max-width: 850px;
     margin: 0 auto;
     padding: 0 2.5rem;
-    display: grid;
-    grid-template-columns: 1.25fr 0.75fr;
-    gap: 3rem;
 }
 
 /* Welcome Card details */
@@ -1480,11 +1478,6 @@ html[data-theme="dark"] .project-hover-overlay {
    RESPONSIVE LAYOUTS
    ========================================================================== */
 @media (max-width: 1024px) {
-    .hero-container {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-    }
-    
     .playground-grid {
         grid-template-columns: 1fr;
         gap: 2.5rem;
@@ -1725,7 +1718,7 @@ html[data-theme="dark"] .project-hover-overlay {
 /* Pink background submit button */
 .pink-bg-btn {
     background-color: var(--color-pink) !important;
-    color: #FFFFFF !important;
+    color: #1E1E1E !important;
 }
 
 /* Right Scan Connect */
