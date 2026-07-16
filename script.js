@@ -8,6 +8,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (typeof update3DThemeColors === 'function') {
             update3DThemeColors(initialTheme);
         }
+        // Sync theme toggle button icon on load
+        const btn = document.getElementById('themeToggle');
+        if (btn) {
+            const icon = btn.querySelector('i');
+            if (icon) {
+                if (initialTheme === 'light') {
+                    icon.className = 'fa-solid fa-moon';
+                } else {
+                    icon.className = 'fa-solid fa-sun';
+                }
+            }
+        }
     }, 100);
 
     // Listen to theme changes from the inline head toggler
@@ -421,14 +433,29 @@ document.addEventListener('DOMContentLoaded', () => {
         type();
     }
 
-    // Click to Run Console simulator
-    const runCodeBtn = document.getElementById('runCodeBtn');
-    const consoleBody = document.querySelector('.console-body code');
-    if (runCodeBtn && consoleBody) {
-        runCodeBtn.addEventListener('click', () => {
-            consoleBody.innerHTML = `root@aimindcrafter:~$ python run_agent.py\n[INFO] Initializing LangGraph multi-agent team...\n[INFO] Loading fine-tuned Qwen2-VL model...\n[SUCCESS] Extraction pipeline complete.\nOutput: "Agentic workflow successfully verified!"`;
+    // Overlapping Chatbot Helper Chips click handlers
+    const overlapChips = document.querySelectorAll('.overlap-chip');
+    overlapChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            const queryText = chip.getAttribute('data-chat-query');
+            if (queryText) {
+                // Scroll to chatbot section smoothly
+                const chatSection = document.getElementById('chat-bot');
+                if (chatSection) {
+                    const navHeight = document.getElementById('mainNavbar').offsetHeight;
+                    const elementPosition = chatSection.getBoundingClientRect().top + window.scrollY;
+                    const offsetPosition = elementPosition - navHeight;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+                // Trigger message handler
+                handleUserMessage(queryText);
+            }
         });
-    }
+    });
 
     // Call 3D initialization
     init3DAnimation();

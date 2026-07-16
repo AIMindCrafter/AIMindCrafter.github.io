@@ -372,8 +372,14 @@ body {
     margin: 0 auto;
     padding: 0 2.5rem;
     display: grid;
-    grid-template-columns: 1.25fr 0.75fr;
+    grid-template-columns: 1fr;
     gap: 3rem;
+}
+
+@media (min-width: 1025px) {
+    .hero-container {
+        grid-template-columns: 1.25fr 0.75fr;
+    }
 }
 
 /* Welcome Card details */
@@ -1929,88 +1935,72 @@ html[data-theme="dark"] .neural-network-viz {
 }
 
 /* ==========================================================================
-   DEV CONSOLE SIMULATOR STYLING
+   OVERLAPPING CHATBOT BUTTONS STYLING
    ========================================================================== */
-.console-container {
+.chatbot-helper-container {
+    margin-top: 2rem;
+    padding: 1.25rem;
+    background: var(--bg-card);
     border: var(--brutalist-border);
-    background-color: #1E1E1E;
     box-shadow: var(--brutalist-shadow);
     border-radius: 8px;
-    overflow: hidden;
-    margin-top: 1.75rem;
-    display: flex;
-    flex-direction: column;
-}
-
-.console-header {
-    background-color: rgba(255, 255, 255, 0.08);
-    border-bottom: 2.5px solid var(--border-color);
-    padding: 0.65rem 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.console-dots {
-    display: flex;
-    gap: 0.4rem;
-}
-
-.console-dots .dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    display: inline-block;
-}
-
-.console-dots .dot.red { background-color: #FF5F56; }
-.console-dots .dot.yellow { background-color: #FFBD2E; }
-.console-dots .dot.green { background-color: #27C93F; }
-
-.console-title {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: #888888;
-    font-weight: 700;
-}
-
-.run-btn {
-    background-color: var(--color-yellow);
-    border: 1.5px solid #1E1E1E;
-    box-shadow: 2px 2px 0px #000000;
-    color: #1E1E1E;
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    font-weight: 700;
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.1s;
-}
-
-.run-btn:hover {
-    transform: translate(-1px, -1px);
-    box-shadow: 3px 3px 0px #000000;
-}
-
-.run-btn:active {
-    transform: translate(1px, 1px);
-    box-shadow: 1px 1px 0px #000000;
-}
-
-.console-body {
-    padding: 1rem;
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: #00FF66;
-    background-color: #1E1E1E;
-    min-height: 110px;
-    overflow-x: auto;
     text-align: left;
 }
 
-.console-body pre {
-    margin: 0;
-    white-space: pre-wrap;
-    word-break: break-all;
+.helper-title {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 900;
+    color: var(--text-secondary);
+    display: block;
+    margin-bottom: 0.85rem;
+    letter-spacing: 0.05em;
+}
+
+.overlapping-chips-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 0.5rem 0.25rem 0.75rem;
+    scrollbar-width: none; /* Hide scrollbar Firefox */
+}
+
+.overlapping-chips-grid::-webkit-scrollbar {
+    display: none; /* Hide scrollbar Chrome/Safari/Webkit */
+}
+
+.overlap-chip {
+    flex-shrink: 0;
+    font-family: var(--font-body);
+    font-weight: 900;
+    font-size: 0.85rem;
+    border: var(--brutalist-border);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 2.5px 2.5px 0px var(--shadow-color);
+    transition: transform 0.2s ease, margin-left 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    white-space: nowrap;
+}
+
+/* Overlapping effect starting from the second button */
+.overlap-chip:not(:first-child) {
+    margin-left: -12px;
+}
+
+.overlap-chip.btn-cyan { background-color: var(--color-cyan); color: #1E1E1E; z-index: 1; }
+.overlap-chip.btn-blue { background-color: var(--color-blue); color: #1E1E1E; z-index: 2; }
+.overlap-chip.btn-orange { background-color: var(--color-orange); color: #1E1E1E; z-index: 3; }
+.overlap-chip.btn-yellow { background-color: var(--color-yellow); color: #1E1E1E; z-index: 4; }
+
+.overlap-chip:hover {
+    z-index: 10 !important;
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 4.5px 4.5px 0px var(--shadow-color);
+}
+
+.overlap-chip:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: 1px 1px 0px var(--shadow-color);
 }
