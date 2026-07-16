@@ -1,519 +1,577 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIMindCrafter | AI & Data Science Portfolio</title>
+    <title>Muhammad Zeeshan | Generative AI Engineer Portfolio</title>
     <meta name="description" content="Portfolio of Muhammad Zeeshan - AI Engineer specializing in Generative AI, LLMs, and Agentic AI systems.">
-    <meta property="og:title" content="AIMindCrafter | AI & Data Science Portfolio">
-    <meta property="og:description" content="AI Engineer specializing in Generative AI, Large Language Models, and Agentic AI systems.">
-    <meta property="og:image" content="preview.png">
-    <meta property="og:type" content="website">
-    <link rel="icon" type="image/png" href="preview.png">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    
+    <!-- Fonts & Icons -->
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@700&f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    
+    <!-- Inline Theme Script to Prevent FOUC -->
+    <meta name="color-scheme" content="light dark">
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            if (savedTheme === 'dark') {
+                document.documentElement.style.colorScheme = 'dark';
+            } else {
+                document.documentElement.style.colorScheme = 'light';
+            }
+        })();
+    </script>
 </head>
-
 <body>
-    <!-- Navigation -->
-    <nav class="glass-nav">
-        <div class="nav-content">
-            <h1 class="logo"><i class="fa-solid fa-brain"
-                    style="color: var(--accent); margin-right: 8px;"></i><span class="logo-gradient">AIMindCrafter</span></h1>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#about"><i class="fa-solid fa-user"></i> About</a></li>
-                <li><a href="#projects"><i class="fa-solid fa-code"></i> Projects</a></li>
-                <li><a href="#experience"><i class="fa-solid fa-briefcase"></i> Experience</a></li>
-                <li><a href="#skills"><i class="fa-solid fa-bolt"></i> Skills</a></li>
-                <li><a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a></li>
-                <li><button id="themeToggle" class="btn secondary-btn"
-                        style="padding: 0.5rem 1rem; margin-left: 1rem; border-radius: 20px;"><i
-                            class="fa-solid fa-moon"></i></button></li>
-            </ul>
+    <!-- Cartoon Floating Background Shapes -->
+    <div class="cartoon-shapes" aria-hidden="true">
+        <div class="shape shape-circle shape-orange" style="top: 12%; left: 8%;"></div>
+        <div class="shape shape-pill shape-blue" style="top: 20%; left: 24%;"></div>
+        <div class="shape shape-block shape-green" style="top: 28%; left: 48%;">AI</div>
+        <div class="shape shape-pill shape-pink" style="top: 38%; left: 65%;"></div>
+        <div class="shape shape-cube shape-yellow" style="top: 15%; right: 6%;"></div>
+        <div class="shape shape-square shape-cyan" style="top: 35%; right: 18%;"></div>
+        <div class="shape shape-circle shape-pink" style="bottom: 12%; left: 5%;"></div>
+        <div class="shape shape-pill shape-yellow" style="bottom: 25%; right: 8%;"></div>
+    </div>
+
+    <!-- Navigation Header -->
+    <nav class="nav" id="mainNavbar">
+        <div class="nav-brand-container">
+            <div class="logo-box">MZ</div>
+            <span class="nav-brand-name">Muhammad Zeeshan _</span>
+        </div>
+        <div class="nav-center" role="navigation" aria-label="Main Navigation">
+            <a href="#about">About</a>
+            <a href="#chat-bot">AI Assistant</a>
+            <a href="#playground">Playground</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="nav-right">
+            <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle theme" title="Toggle theme">
+                <i class="fa-solid fa-sun"></i>
+            </button>
+            <div class="desktop-social">
+                <a href="https://github.com/AIMindCrafter" target="_blank" aria-label="GitHub Profile"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/muhammad-zeshan-6b66a7350/" target="_blank" aria-label="LinkedIn Profile"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
             <button class="hamburger" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
+                <i class="fa-solid fa-bars"></i>
             </button>
         </div>
     </nav>
 
-    <!-- Agency Ambient Background -->
-    <div class="ambient-blur blur-orange"></div>
-    <div class="ambient-blur blur-purple"></div>
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+        <a href="#about">About</a>
+        <a href="#chat-bot">AI Assistant</a>
+        <a href="#playground">Playground</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+    </div>
 
-    <!-- Hero Section -->
-    <header class="hero" id="about">
-        <div class="hero-content">
-            <h2 class="greeting">Hello, I'm</h2>
-            <h1 class="name figma-gradient-text">Muhammad Zeeshan</h1>
-            <h3 class="role typing-effect">Generative AI Engineer | LLM Fine-tuning | RAG Pipelines | Multimodal AI</h3>
-            <p class="bio">Results-driven Generative AI Engineer specializing in LLM fine-tuning, Retrieval-Augmented Generation (RAG), and multimodal AI systems. Proven hands-on experience building production-grade GenAI pipelines with LangChain, HuggingFace, and Diffusion Models. Strong foundation in MLOps with FastAPI, Docker, and CI/CD.</p>
-            <div class="cta-buttons">
-                <a href="Muhammad_zeeshan_malik_GenAI_Engineer_final.pdf" download="Muhammad_Zeeshan_Resume.pdf" class="btn primary-btn"><i class="fa-solid fa-file-arrow-down"></i> Download Resume</a>
-                <a href="https://github.com/AIMindCrafter" target="_blank" rel="noopener noreferrer" class="btn secondary-btn"><i
-                        class="fa-brands fa-github"></i> GitHub Profile</a>
-            </div>
-        </div>
-        <div class="hero-graphic" style="display: flex; justify-content: flex-end; align-items: center;">
-
-            <!-- Profile Card -->
-            <div class="glass-card figma-hero-card"
-                style="width: 100%; max-width: 500px; min-height: 620px; padding: 3.5rem 3rem; position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 1.2rem; justify-content: center; align-items: center; text-align: center;">
-
-                <!-- Inner Glow for the card specifically -->
-                <div
-                    style="position: absolute; top: -50px; left: -50px; width: 200px; height: 200px; background: rgba(255,152,0,0.25); filter: blur(60px); z-index: 0; pointer-events: none;">
-                </div>
-                <div
-                    style="position: absolute; bottom: -50px; right: -50px; width: 200px; height: 200px; background: rgba(157,78,221,0.2); filter: blur(50px); z-index: 0; pointer-events: none;">
-                </div>
-
-
-                <div style="z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 1.2rem;">
-                    <div id="profilePhotoWrapper"
-                        style="width: 210px; height: 210px; border-radius: 50%; border: 4px solid #f97316; padding: 4px; background: rgba(255,255,255,0.04); box-shadow: 0 14px 32px rgba(0,0,0,0.5); overflow: hidden;">
-                        <img src="preview.png" alt="Muhammad Zeeshan - AI Engineer"
-                            onerror="this.style.display='none'; document.getElementById('profilePhotoWrapper').style.background='linear-gradient(135deg,#ff6b00,#f59e0b,#c026d3,#7c3aed)'"
-                            style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-                    </div>
-
-                    <h3 class="figma-gradient-text" style="font-size: 2.2rem; font-weight: 700; letter-spacing: -0.3px;">AI Engineer</h3>
-
-                    <div class="hero-card-actions" style="display: flex; gap: 0.85rem; flex-wrap: wrap; justify-content: center; margin-top: 0.4rem;">
-                        <a href="Muhammad_zeeshan_malik_GenAI_Engineer_final.pdf" download="Muhammad_Zeeshan_Resume.pdf" class="btn card-gradient-btn"><i class="fa-solid fa-file-arrow-down" style="margin-right:4px;"></i>Resume</a>
-                        <a href="#contact" class="btn card-gradient-btn">Cover Letter</a>
+    <!-- Main Container -->
+    <main class="main-content" id="about">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-container">
+                <!-- Left Welcome Card -->
+                <div class="brutalist-card hero-welcome-card section-scroll-reveal">
+                    <div class="badge-pink">AI & GENERATIVE ENGINEER</div>
+                    <h1 class="hero-main-title">Welcome to my Portfolio</h1>
+                    <div class="separator-dot"></div>
+                    <p class="hero-description">
+                        I am an AI, Generative, and Data Science professional focused on building smart, data-driven agentic solutions. I work with machine learning, software development, and retrieval-augmented generation (RAG) pipelines to turn complex data into useful insights and practical applications.
+                    </p>
+                    <div class="hero-btn-grid">
+                        <a href="#projects" class="hero-grid-btn btn-cyan">AI Projects</a>
+                        <a href="#playground" class="hero-grid-btn btn-blue">Playground</a>
+                        <a href="#skills" class="hero-grid-btn btn-orange">Skills Cloud</a>
+                        <a href="#experience" class="hero-grid-btn btn-green">See Experience</a>
                     </div>
                 </div>
-            </div>
-        </div>
-    </header>
 
-    <!-- Generative AI Models Section -->
-    <section class="models-section" id="models" style="max-width: 1200px; margin: 0 auto; padding: 6rem 2rem;">
-        <h2 class="section-title"><i class="fa-solid fa-microchip"></i> Generative AI <span
-                class="figma-gradient-text">Models</span></h2>
-        <div class="models-grid"
-            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-
-            <div class="glass-card card-purple">
-                <div class="feature-icon-wrapper">🤖</div>
-                <h3 class="card-title" style="font-size:1.8rem; margin-bottom:1rem;">LLMs (GPT, Llama, Claude)</h3>
-                <p class="card-desc">Extensive experience fine-tuning and prompting state-of-the-art Large Language
-                    Models for complex reasoning and generation tasks.</p>
-            </div>
-
-            <div class="glass-card card-dark">
-                <div class="feature-icon-wrapper">🖼️</div>
-                <h3 class="card-title" style="font-size:1.8rem; margin-bottom:1rem;">Diffusion Models</h3>
-                <p class="card-desc">Building and deploying Stable Diffusion pipelines for high-fidelity generative AI
-                    image creation and manipulation.</p>
-            </div>
-
-            <div class="glass-card card-green">
-                <div class="feature-icon-wrapper">🧠</div>
-                <h3 class="card-title" style="font-size:1.8rem; margin-bottom:1rem;">RAG Architectures</h3>
-                <p class="card-desc">Developing Retrieval-Augmented Generation systems connecting robust vector
-                    databases like Pinecone scaling knowledge context.</p>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Simplified Code / Agent UI Section (MetaMask Style) -->
-    <section class="code-section" id="simplified-code"
-        style="max-width: 1200px; margin: 0 auto; padding: 6rem 2rem; display: flex; flex-wrap: wrap; gap: 5rem; align-items: center;">
-        <div class="code-text" style="flex: 1; min-width: 300px;">
-            <h2
-                style="font-size: 3.5rem; margin-bottom: 1.5rem; font-family: var(--font-heading); color: var(--text-primary);">
-                Simplified <span class="figma-gradient-text">code</span></h2>
-            <p style="font-size: 1.15rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 2.5rem;">
-                Bundles all complex AI agents into a single interface. One integration for deployment and inference.
-                Smaller package size and fewer lines of code for AI engineers and data scientists. Integrated seamlessly
-                with FastAPI, LangChain, and robust RAG infrastructure.
-            </p>
-            <div class="tech-icons"
-                style="display: flex; gap: 1.8rem; color: var(--text-secondary); font-size: 1.8rem;">
-                <i class="fa-brands fa-python" style="transition: color 0.3s ease; cursor: pointer;"
-                    onmouseover="this.style.color='var(--accent)'"
-                    onmouseout="this.style.color='var(--text-secondary)'"></i>
-                <i class="fa-solid fa-server" style="transition: color 0.3s ease; cursor: pointer;"
-                    onmouseover="this.style.color='var(--accent)'"
-                    onmouseout="this.style.color='var(--text-secondary)'"></i>
-                <i class="fa-solid fa-network-wired" style="transition: color 0.3s ease; cursor: pointer;"
-                    onmouseover="this.style.color='var(--accent)'"
-                    onmouseout="this.style.color='var(--text-secondary)'"></i>
-                <i class="fa-solid fa-microchip" style="transition: color 0.3s ease; cursor: pointer;"
-                    onmouseover="this.style.color='var(--accent)'"
-                    onmouseout="this.style.color='var(--text-secondary)'"></i>
-            </div>
-        </div>
-
-        <div class="code-editor"
-            style="flex: 1.5; min-width: 280px; background: #0a0a0f; border-radius: 16px; border: 1px solid #222; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
-            <div class="editor-header"
-                style="background: #15151a; padding: 1rem 1.5rem; display: flex; align-items: center; border-bottom: 1px solid #222;">
-                <div class="mac-dots" style="display: flex; gap: 8px; margin-right: 3rem;">
-                    <span
-                        style="width: 12px; height: 12px; border-radius: 50%; background: #ff5f56; opacity: 0.8;"></span>
-                    <span
-                        style="width: 12px; height: 12px; border-radius: 50%; background: #ffbd2e; opacity: 0.8;"></span>
-                    <span
-                        style="width: 12px; height: 12px; border-radius: 50%; background: #27c93f; opacity: 0.8;"></span>
-                </div>
-                <div class="editor-tabs"
-                    style="display: flex; gap: 1.5rem; color: #888; font-size: 0.9rem; font-family: var(--font-body); font-weight: 500;">
-                    <span
-                        style="color: #fff; background: rgba(255,255,255,0.08); padding: 0.4rem 1rem; border-radius: 6px; display: flex; align-items: center; gap: 6px;"><i
-                            class="fa-brands fa-python"></i> Python</span>
-                    <span style="display: flex; align-items: center; gap: 6px; cursor: pointer; transition: color 0.2s;"
-                        onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'"><i
-                            class="fa-solid fa-link"></i> LangChain</span>
-                    <span style="display: flex; align-items: center; gap: 6px; cursor: pointer; transition: color 0.2s;"
-                        onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#888'"><i
-                            class="fa-solid fa-server"></i> FastAPI</span>
+                <!-- Right Contact & Info Card -->
+                <div class="brutalist-card hero-contact-card section-scroll-reveal">
+                    <h2>Contact & Profiles</h2>
+                    <ul class="contact-profile-list">
+                        <li>
+                            <span class="label">LOCATION</span>
+                            <span class="value"><i class="fa-solid fa-location-dot"></i> Lahore, Pakistan</span>
+                        </li>
+                        <li>
+                            <span class="label">WHATSAPP</span>
+                            <span class="value"><a href="https://wa.me/923256257787" target="_blank"><i class="fa-brands fa-whatsapp"></i> 03256257787</a></span>
+                        </li>
+                        <li>
+                            <span class="label">EMAIL</span>
+                            <span class="value"><a href="mailto:muhammadzeshan.covers@gmail.com"><i class="fa-solid fa-envelope"></i> muhammadzeshan.covers@gmail.com</a></span>
+                        </li>
+                        <li>
+                            <span class="label">GITHUB</span>
+                            <span class="value"><a href="https://github.com/AIMindCrafter" target="_blank"><i class="fa-brands fa-github"></i> AIMindCrafter</a></span>
+                        </li>
+                        <li>
+                            <span class="label">LINKEDIN</span>
+                            <span class="value"><a href="https://www.linkedin.com/in/muhammad-zeshan-6b66a7350/" target="_blank"><i class="fa-brands fa-linkedin"></i> Muhammad Zeeshan</a></span>
+                        </li>
+                        <li>
+                            <span class="label">UPWORK</span>
+                            <span class="value"><a href="https://www.upwork.com/freelancers/~01ea1cf7ff4a012351" target="_blank"><i class="fa-solid fa-briefcase"></i> Upwork Profile</a></span>
+                        </li>
+                        <li>
+                            <span class="label">STACK OVERFLOW</span>
+                            <span class="value"><a href="https://stackoverflow.com/users/22225216/zeeshan-malik" target="_blank"><i class="fa-brands fa-stack-overflow"></i> Zeeshan Malik</a></span>
+                        </li>
+                        <li>
+                            <span class="label">KAGGLE</span>
+                            <span class="value"><a href="https://kaggle.com/zeeshanmalik" target="_blank"><i class="fa-solid fa-chart-line"></i> Zeeshan Malik</a></span>
+                        </li>
+                        <li>
+                            <span class="label">REDDIT</span>
+                            <span class="value"><a href="https://www.reddit.com/user/MuhammadZeeshan73/" target="_blank"><i class="fa-brands fa-reddit"></i> MuhammadZeeshan73</a></span>
+                        </li>
+                        <li>
+                            <span class="label">DISCORD</span>
+                            <span class="value"><a href="https://discord.com/users/1166851427495334060" target="_blank"><i class="fa-brands fa-discord"></i> Discord Profile</a></span>
+                        </li>
+                        <li>
+                            <span class="label">FACEBOOK</span>
+                            <span class="value"><a href="https://www.facebook.com/profile.php?id=100093411528772" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook Profile</a></span>
+                        </li>
+                        <li>
+                            <span class="label">X (TWITTER)</span>
+                            <span class="value"><a href="https://x.com/zem53836" target="_blank"><i class="fa-brands fa-x-twitter"></i> @zem53836</a></span>
+                        </li>
+                        <li>
+                            <span class="label">GAMMA PORTFOLIO</span>
+                            <span class="value"><a href="https://muhammad-zeeshan-aiengi-8owxsht.gamma.site/" target="_blank"><i class="fa-solid fa-globe"></i> Gamma Site</a></span>
+                        </li>
+                    </ul>
+                    
+                    <a href="Muhammad_zeeshan_malik_GenAI_Engineer_final.pdf" download="Muhammad_Zeeshan_Resume.pdf" class="download-cv-btn">
+                        <i class="fa-solid fa-download"></i> DOWNLOAD RESUME
+                    </a>
                 </div>
             </div>
-            <div class="editor-body"
-                style="padding: 1.5rem; padding-left: 0; color: #abb2bf; font-size: 0.95rem; line-height: 1.8; overflow-x: auto; font-family: 'Courier New', Courier, monospace; display: flex;">
-                <div class="line-numbers"
-                    style="color: #4b5263; text-align: right; padding-right: 1.5rem; user-select: none; border-right: 1px solid #282c34; margin-right: 1.5rem; min-width: 40px;">
-                    1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17
-                </div>
-                <pre style="margin: 0; white-space: pre;">
-<span style="color: #c678dd;">from</span> langchain.agents <span style="color: #c678dd;">import</span> initialize_agent, AgentType
-<span style="color: #c678dd;">from</span> langchain.llms <span style="color: #c678dd;">import</span> OpenAI
+        </section>
 
-<span style="color: #c678dd;">def</span> <span style="color: #61afef;">build_ai_agent</span>():
-    <span style="color: #5c6370; font-style: italic;"># Connect robust AI models with a single interface.</span>
-    <span style="color: #e5c07b;">llm</span> = OpenAI(temperature=<span style="color: #d19a66;">0.7</span>)
-    
-    <span style="color: #e5c07b;">agent</span> = initialize_agent(
+        <!-- Interactive AI Chat Section -->
+        <section class="chat-section section-scroll-reveal" id="chat-bot">
+            <div class="container">
+                <div class="brutalist-card chat-console-card">
+                    <div class="console-header">
+                        <div class="console-controls">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <span class="console-title">zeeshan_ai_assistant.sh</span>
+                        <div class="console-status"><span class="pulse-dot"></span> LIVE</div>
+                    </div>
+                    <div class="console-body" id="chatHistory">
+                        <div class="bot-msg">
+                            <p>Hi! I'm Zeeshan's AI Assistant. Ask me anything about his projects, experience, or skills, or click a suggestion below to start.</p>
+                        </div>
+                    </div>
+                    <div class="console-input-area">
+                        <div class="console-chips">
+                            <button class="chip-btn" data-query="What is Zeeshan's current role?">💼 Current Role</button>
+                            <button class="chip-btn" data-query="List some of his notable projects.">🚀 Key Projects</button>
+                            <button class="chip-btn" data-query="What certifications does he hold?">🎓 Certifications</button>
+                            <button class="chip-btn" data-query="What is his technical stack?">🛠️ Tech Stack</button>
+                        </div>
+                        <form id="chatForm" class="chat-form">
+                            <input type="text" id="chatInput" placeholder="Type a message..." autocomplete="off" required>
+                            <button type="submit" class="chat-submit-btn" aria-label="Send message">
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Playground Section -->
+        <section class="playground-section section-scroll-reveal" id="playground">
+            <div class="container">
+                <div class="section-title-box">
+                    <h2 class="section-heading">AI Models & Code Playground</h2>
+                </div>
+                
+                <div class="playground-grid">
+                    <!-- Cards Grid -->
+                    <div class="capabilities-cards">
+                        <div class="brutalist-card cap-card">
+                            <div class="cap-icon pink-bg"><i class="fa-solid fa-brain"></i></div>
+                            <h3>LLMs & Fine-Tuning</h3>
+                            <p>Extensive experience fine-tuning and prompting Large Language Models (Llama 3, Qwen 2.5, GPT-4) utilizing QLoRA and PEFT bounds to resolve specific domains.</p>
+                        </div>
+                        <div class="brutalist-card cap-card">
+                            <div class="cap-icon cyan-bg"><i class="fa-solid fa-cubes"></i></div>
+                            <h3>RAG Architectures</h3>
+                            <p>Building Retrieval-Augmented Generation workflows. Hooking up vector indexes (Pinecone, ChromaDB) with metadata queries and semantic reranking pipelines.</p>
+                        </div>
+                        <div class="brutalist-card cap-card">
+                            <div class="cap-icon orange-bg"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                            <h3>Diffusion & Multi-Modal</h3>
+                            <p>Fine-tuning Stable Diffusion checkpoints using DreamBooth and ControlNet, and structuring OCR document data with Qwen2-VL.</p>
+                        </div>
+                    </div>
+
+                    <!-- Code Runner -->
+                    <div class="brutalist-card code-terminal-card">
+                        <div class="console-header">
+                            <div class="console-controls">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <span class="console-title">agent_pipeline.py</span>
+                            <button id="runCodeBtn" class="run-pipeline-btn"><i class="fa-solid fa-play"></i> Run Agent</button>
+                        </div>
+                        <div class="code-editor-body">
+<pre><code><span class="keyword">from</span> langchain.agents <span class="keyword">import</span> initialize_agent, AgentType
+<span class="keyword">from</span> langchain.llms <span class="keyword">import</span> OpenAI
+
+<span class="keyword">def</span> <span class="function">build_ai_agent</span>():
+    llm = OpenAI(temperature=<span class="number">0.7</span>)
+    agent = initialize_agent(
         tools=[], 
         llm=llm, 
-        agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, 
-        verbose=<span style="color: #d19a66;">True</span>
+        agent=AgentType.ZERO_SHOT_REACT, 
+        verbose=<span class="keyword">True</span>
     )
-    
-    <span style="color: #c678dd;">return</span> agent
+    <span class="keyword">return</span> agent
 
-<span style="color: #e5c07b;">agent_instance</span> = build_ai_agent()
-agent_instance.run(<span style="color: #98c379;">"Analyze and summarize context via RAG pipeline."</span>)</pre>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="projects-section" id="projects">
-        <h2 class="section-title"><i class="fa-solid fa-laptop-code"></i> Featured <span
-                class="figma-gradient-text">Projects</span></h2>
-        <div class="projects-grid">
-
-            <!-- Project 1: MRI Brain Tumor -->
-            <div class="project-card glass-card">
-                <div class="project-header">
-                    <h3><i class="fa-solid fa-brain" style="margin-right: 8px;"></i>MRI Brain Tumor Detection</h3>
-                    <span class="badge cv">Computer Vision</span>
-                </div>
-                <p class="project-goal"><strong>Goal:</strong> 4-class MRI tumor classification (Glioma, Meningioma, Pituitary, No Tumor) with clinical-grade explainability.</p>
-                <p class="project-impact">Achieved 97%+ validation accuracy on 7,023 Kaggle MRI images with Grad-CAM overlays; deployed as a Gradio app on HuggingFace Spaces.</p>
-                <div class="tech-stack">
-                    <span>EfficientNetB2</span><span>TensorFlow</span><span>Grad-CAM</span><span>Gradio</span><span>HuggingFace</span>
-                </div>
-            </div>
-
-            <!-- Project 2: Multimodal LLM Fine-tuning -->
-            <div class="project-card glass-card">
-                <div class="project-header">
-                    <h3><i class="fa-solid fa-file-image" style="margin-right: 8px;"></i>Multimodal LLM Fine-tuning</h3>
-                    <span class="badge genai">Generative AI</span>
-                </div>
-                <p class="project-goal"><strong>Goal:</strong> Fine-tune Qwen2-VL (7B) for structured extraction from invoice and medical report document images.</p>
-                <p class="project-impact">Significant improvement in field-level extraction accuracy over zero-shot baseline; deployed to HuggingFace Spaces with a Gradio interface.</p>
-                <div class="tech-stack">
-                    <span>Qwen2-VL</span><span>LoRA</span><span>PEFT</span><span>HuggingFace</span><span>Gradio</span>
-                </div>
-            </div>
-
-            <!-- Project 3: QLoRA LLM Fine-tuning -->
-            <div class="project-card glass-card">
-                <div class="project-header">
-                    <h3><i class="fa-solid fa-microchip" style="margin-right: 8px;"></i>QLoRA LLM Domain Fine-tuning</h3>
-                    <span class="badge genai">Generative AI</span>
-                </div>
-                <p class="project-goal"><strong>Goal:</strong> Fine-tune LLaMA 3 (8B) on a domain-specific instruction dataset with minimal VRAM using 4-bit quantization.</p>
-                <p class="project-impact">Cut VRAM usage by 70% to run entirely on free Kaggle T4 GPUs; merged PEFT adapters and published to HuggingFace Hub with live Spaces demo.</p>
-                <div class="tech-stack">
-                    <span>LLaMA 3</span><span>Unsloth</span><span>QLoRA</span><span>PEFT</span><span>HuggingFace</span>
-                </div>
-            </div>
-
-            <!-- Project 4: Multi-PDF RAG -->
-            <div class="project-card glass-card">
-                <div class="project-header">
-                    <h3><i class="fa-solid fa-magnifying-glass-chart" style="margin-right: 8px;"></i>Multi-PDF RAG Research Assistant</h3>
-                    <span class="badge rag">RAG</span>
-                </div>
-                <p class="project-goal"><strong>Goal:</strong> End-to-end RAG pipeline ingesting multiple PDFs and answering natural language queries with source citation.</p>
-                <p class="project-impact">Semantic search with cosine similarity reranking; deployed as a Streamlit app with session-based conversation history and multi-document Q&amp;A.</p>
-                <div class="tech-stack">
-                    <span>LangChain</span><span>ChromaDB</span><span>Gemini API</span><span>Streamlit</span>
-                </div>
-            </div>
-
-            <!-- Project 5: Stable Diffusion Fine-tuning -->
-            <div class="project-card glass-card">
-                <div class="project-header">
-                    <h3><i class="fa-solid fa-palette" style="margin-right: 8px;"></i>Stable Diffusion Fine-tuning</h3>
-                    <span class="badge genai">Generative AI</span>
-                </div>
-                <p class="project-goal"><strong>Goal:</strong> Fine-tune SD v1.5 with DreamBooth; integrate ControlNet for pose-conditioned generation and a VAE-based anomaly detector.</p>
-                <p class="project-impact">Full pipeline — text-to-image, image-to-image, inpainting — wrapped in a Gradio app on HuggingFace Spaces with prompt control and one-click export.</p>
-                <div class="tech-stack">
-                    <span>Diffusers</span><span>DreamBooth</span><span>ControlNet</span><span>VAE</span><span>Gradio</span>
-                </div>
-            </div>
-
-            <!-- Project 6: MLOps Pipeline -->
-            <div class="project-card glass-card">
-                <div class="project-header">
-                    <h3><i class="fa-brands fa-docker" style="margin-right: 8px;"></i>End-to-End MLOps Pipeline</h3>
-                    <span class="badge mlops">MLOps</span>
-                </div>
-                <p class="project-goal"><strong>Goal:</strong> Complete CI/CD pipeline auto-building and pushing Docker images to GHCR on every commit with automated testing and MLflow versioning.</p>
-                <p class="project-impact">FastAPI REST endpoint for real-time ML inference with preprocessing pipelines, health checks, and structured logging at production scale.</p>
-                <div class="tech-stack">
-                    <span>GitHub Actions</span><span>Docker</span><span>FastAPI</span><span>MLflow</span><span>GHCR</span>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Experience & Certifications Section -->
-    <section class="experience-section" id="experience">
-        <h2 class="section-title"><i class="fa-solid fa-building"></i> Professional <span
-                class="figma-gradient-text">Experience</span></h2>
-        <div class="experience-container">
-            <!-- Job 1 -->
-            <div class="job-card glass-card">
-                <div class="job-header">
-                    <div>
-                        <h3>Software Engineer Intern & Backend Developer</h3>
-                        <p class="company">Algotix AI | Jan 2026 – Present</p>
-                    </div>
-                </div>
-                <ul class="job-highlights">
-                    <li>Developing and maintaining backend services and REST APIs using Python and FastAPI to support AI-driven product features.</li>
-                    <li>Collaborating with cross-functional teams to design scalable system architectures for production-grade deployments.</li>
-                    <li>Contributing to intelligent automation workflow infrastructure with robust error handling and logging systems.</li>
-                </ul>
-            </div>
-
-            <!-- Job 2 -->
-            <div class="job-card glass-card">
-                <div class="job-header">
-                    <div>
-                        <h3>Machine Learning Engineer</h3>
-                        <p class="company">Deep Embed | Nov 2024 – Jan 2026</p>
-                    </div>
-                </div>
-                <ul class="job-highlights">
-                    <li>Developed and optimized predictive ML models using Python, Scikit-learn, and TensorFlow, improving prediction accuracy by 15%.</li>
-                    <li>Automated daily data ingestion and processing pipelines using Linux Shell Scripting and Cron jobs, reducing manual effort by 30%.</li>
-                    <li>Performed rigorous EDA on large datasets and visualized trends with Matplotlib/Seaborn for non-technical stakeholders.</li>
-                </ul>
-            </div>
-
-            <!-- Job 3 -->
-            <div class="job-card glass-card">
-                <div class="job-header">
-                    <div>
-                        <h3>Data Science Intern</h3>
-                        <p class="company">Arch Technologies | Nov 2025 – Dec 2025</p>
-                    </div>
-                </div>
-                <ul class="job-highlights">
-                    <li>Designed intelligent systems using Python frameworks to build autonomous agents capable of multi-step planning and decision-making.</li>
-                    <li>Developed production-grade RAG pipelines with FastAPI and vector databases, achieving high retrieval accuracy and low latency.</li>
-                    <li>Containerized services with Docker and deployed scalable prototypes on Linux-based cloud environments.</li>
-                </ul>
-            </div>
-
-            <!-- Job 4 -->
-            <div class="job-card glass-card">
-                <div class="job-header">
-                    <div>
-                        <h3>Data Scientist</h3>
-                        <p class="company">CodeAlpha | Oct 2025 – Nov 2025</p>
-                    </div>
-                </div>
-                <ul class="job-highlights">
-                    <li>Conducted data cleaning, preprocessing, and EDA using Python to significantly enhance data quality for downstream ML tasks.</li>
-                    <li>Developed and evaluated ML models for classification and prediction, delivering measurable improvements in analytical capabilities.</li>
-                </ul>
-            </div>
-        </div>
-
-        <h2 class="section-title" style="margin-top: 4rem;"><i class="fa-solid fa-award"></i> Key <span
-                class="figma-gradient-text">Certifications</span></h2>
-        <div class="certifications-grid">
-            <div class="cert-card glass-card">
-                <div class="cert-icon"><i class="fa-solid fa-database"></i></div>
-                <h4>Oracle GenAI Professional</h4>
-                <p>1Z0-1127-25 &mdash; Oracle University</p>
-            </div>
-            <div class="cert-card glass-card">
-                <div class="cert-icon"><i class="fa-solid fa-brain"></i></div>
-                <h4>IBM GenAI Engineering</h4>
-                <p>LangChain & Watsonx &mdash; Coursera</p>
-            </div>
-            <div class="cert-card glass-card">
-                <div class="cert-icon"><i class="fa-solid fa-robot"></i></div>
-                <h4>IBM AI Engineering</h4>
-                <p>PyTorch & TensorFlow &mdash; Coursera</p>
-            </div>
-            <div class="cert-card glass-card">
-                <div class="cert-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-                <h4>ML Specialization</h4>
-                <p>Stanford / DeepLearning.AI &mdash; Coursera</p>
-            </div>
-            <div class="cert-card glass-card">
-                <div class="cert-icon"><i class="fa-solid fa-comment-dots"></i></div>
-                <h4>NLP Specialization</h4>
-                <p>DeepLearning.AI &mdash; Coursera</p>
-            </div>
-            <div class="cert-card glass-card">
-                <div class="cert-icon"><i class="fa-solid fa-chart-bar"></i></div>
-                <h4>AI Engineer for Data Scientists</h4>
-                <p>Associate &mdash; DataCamp</p>
-            </div>
-            <div class="cert-card glass-card">
-                <div class="cert-icon"><i class="fa-solid fa-cloud"></i></div>
-                <h4>Microsoft AI & ML Engineering</h4>
-                <p>Microsoft</p>
-            </div>
-            <div class="cert-card glass-card">
-                <div class="cert-icon"><i class="fa-solid fa-star"></i></div>
-                <h4>Gemini Certified Univ. Student</h4>
-                <p>Google</p>
-            </div>
-            <div class="cert-card glass-card">
-                <div class="cert-icon"><i class="fa-solid fa-network-wired"></i></div>
-                <h4>Intro to Kubernetes (LFS158)</h4>
-                <p>Linux Foundation</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section class="skills-section" id="skills">
-        <h2 class="section-title"><i class="fa-solid fa-bolt"></i> Core <span
-                class="figma-gradient-text">Competencies</span></h2>
-        <div class="skills-container glass-card">
-            <div class="skill-category">
-                <h3><i class="fa-solid fa-database" style="margin-right: 8px;"></i>Core Engineering & ML</h3>
-                <div class="skill-bar-container">
-                    <div class="skill-name">Python / Rust / C++</div>
-                    <div class="skill-bar">
-                        <div class="fill" style="width: 95%;"></div>
-                    </div>
-                </div>
-                <div class="skill-bar-container">
-                    <div class="skill-name">Flask / FastAPI / Django</div>
-                    <div class="skill-bar">
-                        <div class="fill" style="width: 90%;"></div>
-                    </div>
-                </div>
-                <div class="skill-bar-container">
-                    <div class="skill-name">Microsoft Azure / Cloud Infrastructure</div>
-                    <div class="skill-bar">
-                        <div class="fill" style="width: 85%;"></div>
+agent_instance = build_ai_agent()
+agent_instance.run(<span class="string">"Analyze context."</span>)</code></pre>
+                        </div>
+                        <div class="console-execution-output" id="consoleOutput">
+                            <span class="output-placeholder">// Press "Run Agent" to compile pipeline...</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="skill-category">
-                <h3><i class="fa-solid fa-microchip" style="margin-right: 8px;"></i>Generative AI & Agentic Systems</h3>
-                <div class="skill-bar-container">
-                    <div class="skill-name">LLMs / RAG / Prompt Engineering</div>
-                    <div class="skill-bar">
-                        <div class="fill" style="width: 98%;"></div>
-                    </div>
-                </div>
-                <div class="skill-bar-container">
-                    <div class="skill-name">LangChain / LangGraph / Agents</div>
-                    <div class="skill-bar">
-                        <div class="fill" style="width: 95%;"></div>
-                    </div>
-                </div>
-                <div class="skill-bar-container">
-                    <div class="skill-name">LLMOps / Production AI Deployment</div>
-                    <div class="skill-bar">
-                        <div class="fill" style="width: 92%;"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section class="contact-section" id="contact">
-        <h2 class="section-title"><i class="fa-solid fa-paper-plane"></i> Get In <span
-                class="figma-gradient-text">Touch</span></h2>
-        <p style="margin-bottom: 2rem; color: var(--text-secondary); font-size: 1.1rem; text-align: center;">
-            I'm currently open for new opportunities. Whether you have a question or just want to connect, my inbox
-            is always open.
-        </p>
-        <div class="contact-cards">
-            <div class="contact-card glass-card">
-                <h3 class="contact-card-title">Send a Message</h3>
-                <form class="contact-form" id="contactForm" novalidate>
-                    <input type="text" id="senderName" name="name" placeholder="Your Name" required>
-                    <input type="email" id="senderEmail" name="email" placeholder="Your Email" required>
-                    <textarea id="senderMessage" name="message" rows="5" placeholder="Your Message" required></textarea>
-                    <button type="submit" class="btn primary-btn" style="justify-self: center; min-width: 220px;">Send Message</button>
-                </form>
-            </div>
+        <!-- Projects Grid -->
+        <section class="projects-section section-scroll-reveal" id="projects">
+            <div class="container">
+                <div class="section-title-box">
+                    <h2 class="section-heading">Featured Projects</h2>
+                </div>
+                
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <div class="brutalist-card project-card">
+                        <div class="project-img-wrapper">
+                            <img src="preview.png" alt="Brain Tumor Detection" onerror="this.src='https://images.unsplash.com/photo-1576086213369-97a306dca665?auto=format&fit=crop&w=600&q=80'">
+                            <div class="project-hover-overlay">
+                                <a href="https://github.com/AIMindCrafter" target="_blank" class="overlay-link-btn"><i class="fa-brands fa-github"></i> Repository</a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="tech-pill category-pill">Computer Vision</span>
+                            <h3>Brain Tumor Detection</h3>
+                            <p>4-class MRI tumor classification with clinical-grade explainability using Grad-CAM. Achieved 97%+ accuracy on 7,023 MRI images.</p>
+                            <div class="tech-tags">
+                                <span class="tech-pill">EfficientNetB2</span>
+                                <span class="tech-pill">TensorFlow</span>
+                                <span class="tech-pill">Grad-CAM</span>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="contact-card glass-card">
-                <h3 class="contact-card-title">Quick Links</h3>
-                <div class="contact-links">
-                    <a href="mailto:321muhammadkamran@gmail.com" class="btn secondary-btn"><i class="fa-solid fa-envelope"
-                            style="color: var(--accent); margin-right: 8px;"></i>321muhammadkamran@gmail.com</a>
-                    <a href="https://linkedin.com/in/muhammadzeeshan-6b66a7350" target="_blank" rel="noopener noreferrer" class="btn secondary-btn"><i
-                            class="fa-brands fa-linkedin" style="color: var(--accent); margin-right: 8px;"></i>LinkedIn
-                        Profile</a>
-                    <a href="https://muhammad-zeeshan-aiengi-8owxsht.gamma.site/" target="_blank" rel="noopener noreferrer"
-                        class="btn secondary-btn"><i class="fa-solid fa-globe"
-                            style="color: var(--accent); margin-right: 8px;"></i>Gamma Portfolio</a>
-                    <a href="https://github.com/AIMindCrafter" target="_blank" rel="noopener noreferrer" class="btn secondary-btn"><i
-                            class="fa-brands fa-github" style="color: var(--accent); margin-right: 8px;"></i>GitHub
-                        Profile</a>
+                    <!-- Project 2 -->
+                    <div class="brutalist-card project-card">
+                        <div class="project-img-wrapper">
+                            <img src="preview.png" alt="Multimodal LLM Fine-tuning" onerror="this.src='https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80'">
+                            <div class="project-hover-overlay">
+                                <a href="https://github.com/AIMindCrafter" target="_blank" class="overlay-link-btn"><i class="fa-brands fa-github"></i> Repository</a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="tech-pill category-pill">Generative AI</span>
+                            <h3>Multimodal LLM Fine-tuning</h3>
+                            <p>Fine-tuned Qwen2-VL (7B) utilizing LoRA and PEFT techniques for highly structured OCR and data extraction from invoices and medical documents.</p>
+                            <div class="tech-tags">
+                                <span class="tech-pill">Qwen2-VL</span>
+                                <span class="tech-pill">LoRA</span>
+                                <span class="tech-pill">PEFT</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="brutalist-card project-card">
+                        <div class="project-img-wrapper">
+                            <img src="preview.png" alt="QLoRA LLM Fine-tuning" onerror="this.src='https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=600&q=80'">
+                            <div class="project-hover-overlay">
+                                <a href="https://github.com/AIMindCrafter" target="_blank" class="overlay-link-btn"><i class="fa-brands fa-github"></i> Repository</a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="tech-pill category-pill">LLMOps</span>
+                            <h3>QLoRA LLM Fine-tuning</h3>
+                            <p>Fine-tuned LLaMA 3 (8B) models on domain-specific instructional datasets using Unsloth. Optimized quantization bounds for reduced memory footprints.</p>
+                            <div class="tech-tags">
+                                <span class="tech-pill">LLaMA 3</span>
+                                <span class="tech-pill">Unsloth</span>
+                                <span class="tech-pill">HuggingFace</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4 -->
+                    <div class="brutalist-card project-card">
+                        <div class="project-img-wrapper">
+                            <img src="preview.png" alt="Multi-PDF RAG Assistant" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80'">
+                            <div class="project-hover-overlay">
+                                <a href="https://github.com/AIMindCrafter" target="_blank" class="overlay-link-btn"><i class="fa-brands fa-github"></i> Repository</a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="tech-pill category-pill">RAG Architectures</span>
+                            <h3>Multi-PDF RAG Assistant</h3>
+                            <p>End-to-end RAG pipeline parsing massive PDF archives and querying databases with semantic relevance thresholds, metadata citations, and custom LLM synthesis.</p>
+                            <div class="tech-tags">
+                                <span class="tech-pill">LangChain</span>
+                                <span class="tech-pill">ChromaDB</span>
+                                <span class="tech-pill">Gemini</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 5 -->
+                    <div class="brutalist-card project-card">
+                        <div class="project-img-wrapper">
+                            <img src="preview.png" alt="Stable Diffusion DreamBooth" onerror="this.src='https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?auto=format&fit=crop&w=600&q=80'">
+                            <div class="project-hover-overlay">
+                                <a href="https://github.com/AIMindCrafter" target="_blank" class="overlay-link-btn"><i class="fa-brands fa-github"></i> Repository</a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="tech-pill category-pill">Computer Vision</span>
+                            <h3>Stable Diffusion Fine-tuning</h3>
+                            <p>Fine-tuned SD v1.5 with DreamBooth for customized image syntheses and integrated ControlNet architectures to map pose and geometric contours.</p>
+                            <div class="tech-tags">
+                                <span class="tech-pill">Diffusers</span>
+                                <span class="tech-pill">DreamBooth</span>
+                                <span class="tech-pill">ControlNet</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 6 -->
+                    <div class="brutalist-card project-card">
+                        <div class="project-img-wrapper">
+                            <img src="preview.png" alt="End-to-End MLOps Pipeline" onerror="this.src='https://images.unsplash.com/photo-1607799279861-4dd421887fb3?auto=format&fit=crop&w=600&q=80'">
+                            <div class="project-hover-overlay">
+                                <a href="https://github.com/AIMindCrafter" target="_blank" class="overlay-link-btn"><i class="fa-brands fa-github"></i> Repository</a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="tech-pill category-pill">MLOps</span>
+                            <h3>End-to-End MLOps Pipeline</h3>
+                            <p>Constructed a fully automated CI/CD flow package-building FastAPI apps, executing unit testing suites, and pushing image tags to GitHub Packages.</p>
+                            <div class="tech-tags">
+                                <span class="tech-pill">Docker</span>
+                                <span class="tech-pill">FastAPI</span>
+                                <span class="tech-pill">GitHub Actions</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- Professional Experience Timeline -->
+        <section class="experience-section section-scroll-reveal" id="experience">
+            <div class="container">
+                <div class="section-title-box">
+                    <h2 class="section-heading">Professional Experience</h2>
+                </div>
+                
+                <div class="timeline">
+                    <!-- Exp Item 1 -->
+                    <div class="timeline-container left-side">
+                        <div class="timeline-node"></div>
+                        <div class="brutalist-card timeline-card">
+                            <span class="timeline-date-pill">Jan 2026 – Present</span>
+                            <h3>Software Engineer Intern & Backend Developer</h3>
+                            <h4 class="company-sub">Algotix AI</h4>
+                            <p>Developing agentic AI microservices and REST endpoint systems. Building core backend architecture supporting distributed LLM orchestration layers.</p>
+                        </div>
+                    </div>
+
+                    <!-- Exp Item 2 -->
+                    <div class="timeline-container right-side">
+                        <div class="timeline-node"></div>
+                        <div class="brutalist-card timeline-card">
+                            <span class="timeline-date-pill">Nov 2024 – Jan 2026</span>
+                            <h3>Machine Learning Engineer</h3>
+                            <h4 class="company-sub">Deep Embed</h4>
+                            <p>Developed structured data extraction pipelines using multi-modal LLMs. Fine-tuned foundation models for business document classification and custom structured schema outputs.</p>
+                        </div>
+                    </div>
+
+                    <!-- Exp Item 3 -->
+                    <div class="timeline-container left-side">
+                        <div class="timeline-node"></div>
+                        <div class="brutalist-card timeline-card">
+                            <span class="timeline-date-pill">Nov 2025 – Dec 2025</span>
+                            <h3>Data Science Intern</h3>
+                            <h4 class="company-sub">Arch Technologies</h4>
+                            <p>Conducted predictive modeling audits, analyzed customer churn parameters, and automated analytical reports using Python and visual dashboard frameworks.</p>
+                        </div>
+                    </div>
+
+                    <!-- Exp Item 4 -->
+                    <div class="timeline-container right-side">
+                        <div class="timeline-node"></div>
+                        <div class="brutalist-card timeline-card">
+                            <span class="timeline-date-pill">Oct 2025 – Nov 2025</span>
+                            <h3>Data Scientist</h3>
+                            <h4 class="company-sub">CodeAlpha</h4>
+                            <p>Built classification models and descriptive statistics architectures mapping business KPIs. Optimized batch data parsing speeds across localized SQL servers.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills & Badges -->
+        <section class="skills-section section-scroll-reveal" id="skills">
+            <div class="container">
+                <div class="section-title-box">
+                    <h2 class="section-heading">Core Competencies & Badges</h2>
+                </div>
+                
+                <div class="skills-grid">
+                    <div class="brutalist-card skills-cat-card">
+                        <h3><i class="fa-solid fa-code"></i> Engineering & ML</h3>
+                        <div class="skills-flex">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Rust</span>
+                            <span class="skill-tag">C++</span>
+                            <span class="skill-tag">FastAPI</span>
+                            <span class="skill-tag">Flask</span>
+                            <span class="skill-tag">Django</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">MLOps</span>
+                            <span class="skill-tag">Azure</span>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">Kubernetes</span>
+                        </div>
+                    </div>
+
+                    <div class="brutalist-card skills-cat-card">
+                        <h3><i class="fa-solid fa-robot"></i> Generative AI</h3>
+                        <div class="skills-flex">
+                            <span class="skill-tag">LLMs (Llama, GPT, Qwen)</span>
+                            <span class="skill-tag">Fine-Tuning (PEFT, QLoRA)</span>
+                            <span class="skill-tag">LangChain & LangGraph</span>
+                            <span class="skill-tag">RAG Architectures</span>
+                            <span class="skill-tag">Vector DBs (Pinecone, Chroma)</span>
+                            <span class="skill-tag">Stable Diffusion</span>
+                            <span class="skill-tag">Prompt Engineering</span>
+                            <span class="skill-tag">Multi-Modal AI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="brutalist-card certifications-container">
+                    <h3><i class="fa-solid fa-award"></i> Professional Certifications</h3>
+                    <div class="certs-flex">
+                        <span class="cert-card-badge">Oracle GenAI Professional (1Z0-1127-25)</span>
+                        <span class="cert-card-badge">IBM GenAI Engineering (LangChain & Watsonx)</span>
+                        <span class="cert-card-badge">IBM AI Engineering (PyTorch & TensorFlow)</span>
+                        <span class="cert-card-badge">ML Specialization (Stanford / DeepLearning.AI)</span>
+                        <span class="cert-card-badge">NLP Specialization (DeepLearning.AI)</span>
+                        <span class="cert-card-badge">AI Engineer for Data Scientists (DataCamp)</span>
+                        <span class="cert-card-badge">Microsoft AI & ML Engineering</span>
+                        <span class="cert-card-badge">Gemini Certified Univ. Student (Google)</span>
+                        <span class="cert-card-badge">Intro to Kubernetes LFS158 (Linux Foundation)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section section-scroll-reveal" id="contact">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-greeting">
+                        <p class="tag-pink">CONNECT WITH ME</p>
+                        <h2>Let's build something intelligent.</h2>
+                        <p class="contact-p">
+                            Interested in collaborating on agentic workflows, fine-tuning large language models, or setting up a robust RAG environment? Fill out the form or reach out directly via email.
+                        </p>
+                    </div>
+
+                    <div class="brutalist-card contact-form-card">
+                        <form id="contactForm" class="brutalist-form">
+                            <div class="form-input-group">
+                                <label for="senderName">YOUR NAME</label>
+                                <input type="text" id="senderName" name="name" required placeholder="John Doe">
+                            </div>
+                            <div class="form-input-group">
+                                <label for="senderEmail">YOUR EMAIL</label>
+                                <input type="email" id="senderEmail" name="email" required placeholder="john@example.com">
+                            </div>
+                            <div class="form-input-group">
+                                <label for="senderMessage">YOUR MESSAGE</label>
+                                <textarea id="senderMessage" name="message" rows="4" required placeholder="Tell me about your project..."></textarea>
+                            </div>
+                            <button type="submit" class="form-submit-btn">
+                                <i class="fa-solid fa-paper-plane"></i> SEND MESSAGE
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <h2>Let's Build the Future</h2>
-            <p>Connect with me on <a href="https://github.com/AIMindCrafter" target="_blank" rel="noopener noreferrer"
-                    style="color: var(--accent); text-decoration: none;">GitHub</a>.</p>
-            <p class="copyright">&copy; 2026 AIMindCrafter. All rights reserved.</p>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-layout">
+                <div class="footer-left">
+                    <h2 class="footer-logo">AIMINDCRAFTER</h2>
+                    <p>Architecting Agentic Workflows & Multi-Modal Pipelines</p>
+                    <div class="footer-social-row">
+                        <a href="https://github.com/AIMindCrafter" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/muhammad-zeshan-6b66a7350/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="mailto:muhammadzeshan.covers@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <a href="#about">About</a>
+                    <a href="#playground">Playground</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#skills">Skills</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AIMindCrafter. All rights reserved.</p>
+                <div class="accent-year">2026</div>
+            </div>
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <a href="#" class="back-to-top" id="backToTopBtn" aria-label="Scroll to top">
-        <i class="fa-solid fa-chevron-up"></i>
-    </a>
-
+    <!-- Scripts -->
     <script src="env.js"></script>
     <script src="script.js"></script>
 </body>
-
 </html>
