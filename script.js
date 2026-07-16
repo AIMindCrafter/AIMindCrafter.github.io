@@ -196,11 +196,17 @@ document.addEventListener('DOMContentLoaded', () => {
       * Stable Diffusion DreamBooth: Diffusers pipeline with ControlNet constraints.
       * End-to-End MLOps: Automated Docker packaging and test execution using GitHub Actions.
     - Certifications:
-      * Oracle GenAI Professional (1Z0-1127-25)
-      * IBM GenAI Engineering & AI Engineering
-      * Stanford / DeepLearning.AI ML Specialization
-      * NLP Specialization (DeepLearning.AI)
+      * Oracle Cloud Infrastructure 2025 Certified Generative AI Professional (https://catalog-education.oracle.com/ords/certview/sharebadge?id=47DFC2B0FDD8B9686774D2A52CE6C48160030D827B64546EFBF6751B57D8C23C)
+      * IBM GenAI Engineering with Python, LangChain & Watsonx (https://www.coursera.org/account/accomplishments/specialization/804C7OR70CY9)
+      * IBM AI Engineering with Python, PyTorch & TensorFlow (https://www.coursera.org/account/accomplishments/specialization/ZU65K4VB9MYS)
+      * Microsoft AI & ML Engineering (https://www.coursera.org/account/accomplishments/professional-cert/AMRVK1WWXGW5)
+      * Natural Language Processing (NLP Specialization) (https://www.coursera.org/account/accomplishments/specialization/FFCUX2XHJQZS)
+      * Deep Learning Specialization (https://www.coursera.org/account/accomplishments/specialization/FFN4ZP2DO68S)
+      * Pak Angels HEC Generative AI Training Course Promising Performer (https://quiz.ideagist.com/ideagist-certificate/?cert_hash=4286ca139c35cb6d)
+      * ML Specialization (Stanford / DeepLearning.AI)
+      * AI Engineer for Data Scientists (DataCamp)
       * Gemini Certified University Student (Google)
+      * Intro to Kubernetes LFS158 (Linux Foundation)
     - Links & Contact:
       * Email: muhammadzeshan.covers@gmail.com
       * Phone/WhatsApp: 03256257787 (https://wa.me/923256257787)
