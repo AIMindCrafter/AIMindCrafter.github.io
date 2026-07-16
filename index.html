@@ -23,6 +23,31 @@
                 document.documentElement.style.colorScheme = 'light';
             }
         })();
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            document.documentElement.style.colorScheme = newTheme;
+            localStorage.setItem('theme', newTheme);
+            
+            // Update icon on the button
+            const btn = document.getElementById('themeToggle');
+            if (btn) {
+                const icon = btn.querySelector('i');
+                if (icon) {
+                    if (newTheme === 'light') {
+                        icon.className = 'fa-solid fa-moon';
+                    } else {
+                        icon.className = 'fa-solid fa-sun';
+                    }
+                }
+            }
+            
+            // Dispatch event for Three.js theme updates
+            const event = new CustomEvent('themeChanged', { detail: { theme: newTheme } });
+            window.dispatchEvent(event);
+        }
     </script>
 </head>
 <body>
@@ -57,8 +82,8 @@
             <a href="#contact">Contact</a>
         </div>
         <div class="nav-right">
-            <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle theme" title="Toggle theme">
-                <i class="fa-solid fa-sun"></i>
+            <button id="themeToggle" class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle theme" title="Toggle theme">
+                <i class="fa-solid fa-moon"></i>
             </button>
             <div class="desktop-social">
                 <a href="https://github.com/AIMindCrafter" target="_blank" aria-label="GitHub Profile"><i class="fa-brands fa-github"></i></a>
@@ -85,8 +110,15 @@
     <main class="main-content" id="about">
         <!-- Hero Section -->
         <section class="hero-section">
+            <!-- Typewriter Banner -->
+            <div class="typewriter-banner-container">
+                <div class="brutalist-card typewriter-banner">
+                    <span id="typewriter-text"></span><span class="typewriter-cursor">|</span>
+                </div>
+            </div>
+
             <div class="hero-container">
-                <!-- Center Welcome Card -->
+                <!-- Left Welcome Card -->
                 <div class="brutalist-card hero-welcome-card section-scroll-reveal">
                     <div class="badge-pink">AI & GENERATIVE ENGINEER</div>
                     <h1 class="hero-main-title">Welcome to my Portfolio</h1>
@@ -96,10 +128,101 @@
                     </p>
                     <div class="hero-btn-grid">
                         <a href="#projects" class="hero-grid-btn btn-cyan">AI Projects</a>
-                        <a href="#skills" class="hero-grid-btn btn-orange">Skills Cloud</a>
+                        <a href="#projects" class="hero-grid-btn btn-blue">Software Projects</a>
+                        <a href="#skills" class="hero-grid-btn btn-orange">Data Science</a>
                         <a href="#experience" class="hero-grid-btn btn-green">See Experience</a>
+                        <a href="#articles" class="hero-grid-btn btn-pink">Articles</a>
+                        <a href="#skills" class="hero-grid-btn btn-yellow">Certifications</a>
                     </div>
-                    <a href="Muhammad_zeeshan_malik_GenAI_Engineer_final.pdf" download="Muhammad_Zeeshan_Resume.pdf" class="download-cv-btn" style="margin-top: 1.75rem;">
+                    
+                    <!-- Console Card -->
+                    <div class="console-container">
+                        <div class="console-header">
+                            <div class="console-dots">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <span class="console-title">dev console</span>
+                            <button class="run-btn" id="runCodeBtn">CLICK TO RUN</button>
+                        </div>
+                        <div class="console-body">
+                            <pre><code class="language-python"># Run query against agentic workflow...</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Contact & Info Card -->
+                <div class="brutalist-card hero-contact-card section-scroll-reveal">
+                    <h2>Contact & Profiles</h2>
+                    <ul class="contact-profile-list">
+                        <li>
+                            <span class="label">LOCATION</span>
+                            <span class="dots"></span>
+                            <span class="value"><i class="fa-solid fa-location-dot"></i> Lahore, Pakistan</span>
+                        </li>
+                        <li>
+                            <span class="label">PHONE NUMBER</span>
+                            <span class="dots"></span>
+                            <span class="value"><a href="https://wa.me/923256257787" target="_blank"><i class="fa-brands fa-whatsapp"></i> +92 325 625 7787</a></span>
+                        </li>
+                        <li>
+                            <span class="label">EMAIL</span>
+                            <span class="dots"></span>
+                            <span class="value"><a href="mailto:muhammadzeshan.covers@gmail.com"><i class="fa-solid fa-envelope"></i> My Email</a></span>
+                        </li>
+                        <li>
+                            <span class="label">GITHUB</span>
+                            <span class="dots"></span>
+                            <span class="value"><a href="https://github.com/AIMindCrafter" target="_blank"><i class="fa-brands fa-github"></i> My GitHub</a></span>
+                        </li>
+                        <li>
+                            <span class="label">LINKEDIN</span>
+                            <span class="dots"></span>
+                            <span class="value"><a href="https://www.linkedin.com/in/muhammad-zeshan-6b66a7350/" target="_blank"><i class="fa-brands fa-linkedin"></i> My LinkedIn</a></span>
+                        </li>
+                        <li>
+                            <span class="label">UPWORK</span>
+                            <span class="dots"></span>
+                            <span class="value"><a href="https://www.upwork.com/freelancers/~01ea1cf7ff4a012351" target="_blank"><i class="fa-solid fa-briefcase"></i> My Upwork</a></span>
+                        </li>
+                        <li>
+                            <span class="label">STACK OVERFLOW</span>
+                            <span class="dots"></span>
+                            <span class="value"><a href="https://stackoverflow.com/users/22225216/zeeshan-malik" target="_blank"><i class="fa-brands fa-stack-overflow"></i> My StackOverflow</a></span>
+                        </li>
+                        <li>
+                            <span class="label">KAGGLE</span>
+                            <span class="dots"></span>
+                            <span class="value"><a href="https://kaggle.com/zeeshanmalik" target="_blank"><i class="fa-solid fa-chart-line"></i> My Kaggle</a></span>
+                        </li>
+                        <li>
+                            <span class="label">REDDIT</span>
+                            <span class="dots"></span>
+                            <span class="value"><a href="https://www.reddit.com/user/MuhammadZeeshan73/" target="_blank"><i class="fa-brands fa-reddit"></i> My Reddit</a></span>
+                        </li>
+                        <li>
+                            <span class="label">DISCORD</span>
+                            <span class="dots"></span>
+                            <span class="value"><a href="https://discord.com/users/1166851427495334060" target="_blank"><i class="fa-brands fa-discord"></i> My Discord</a></span>
+                        </li>
+                        <li>
+                            <span class="label">FACEBOOK</span>
+                            <span class="dots"></span>
+                            <span class="value"><a href="https://www.facebook.com/profile.php?id=100093411528772" target="_blank"><i class="fa-brands fa-facebook"></i> My Facebook</a></span>
+                        </li>
+                        <li>
+                            <span class="label">X (TWITTER)</span>
+                            <span class="dots"></span>
+                            <span class="value"><a href="https://x.com/zem53836" target="_blank"><i class="fa-brands fa-x-twitter"></i> My X</a></span>
+                        </li>
+                        <li>
+                            <span class="label">MEDIUM</span>
+                            <span class="dots"></span>
+                            <span class="value"><a href="https://medium.com/@shani829721" target="_blank"><i class="fa-solid fa-pen-nib"></i> My Medium</a></span>
+                        </li>
+                    </ul>
+                    <a href="Muhammad_zeeshan_malik_GenAI_Engineer_final.pdf" download="Muhammad_Zeeshan_Resume.pdf" class="download-cv-btn">
                         <i class="fa-solid fa-download"></i> DOWNLOAD RESUME
                     </a>
                 </div>

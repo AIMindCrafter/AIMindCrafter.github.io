@@ -1,45 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
     /* ==========================================================================
-       1. THEME SWITCHER LOGIC
+       1. THEME SWITCHER LOGIC & 3D SYNC
        ========================================================================== */
-    const themeToggleBtn = document.getElementById('themeToggle');
-    
-    // Set theme on load
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    setTheme(savedTheme);
-
-    if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            setTheme(newTheme);
-        });
-    }
-
-    function setTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        document.documentElement.style.colorScheme = theme;
-        localStorage.setItem('theme', theme);
-        
-        // Update toggle button icon
-        if (themeToggleBtn) {
-            const icon = themeToggleBtn.querySelector('i');
-            if (icon) {
-                if (theme === 'light') {
-                    // In light theme, show moon icon to switch to dark theme
-                    icon.className = 'fa-solid fa-moon';
-                } else {
-                    // In dark theme, show sun icon to switch to light theme
-                    icon.className = 'fa-solid fa-sun';
-                }
-            }
-        }
-
-        // Trigger 3D color update
+    // Sync initial 3D background colors on load
+    const initialTheme = document.documentElement.getAttribute('data-theme') || 'light';
+    setTimeout(() => {
         if (typeof update3DThemeColors === 'function') {
-            update3DThemeColors(theme);
+            update3DThemeColors(initialTheme);
         }
-    }
+    }, 100);
+
+    // Listen to theme changes from the inline head toggler
+    window.addEventListener('themeChanged', (e) => {
+        if (typeof update3DThemeColors === 'function') {
+            update3DThemeColors(e.detail.theme);
+        }
+    });
 
     /* ==========================================================================
        2. INTERSECTION OBSERVER FOR FADE-IN REVEALS (FALLBACK)
@@ -398,6 +374,59 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitBtn.innerHTML = originalHTML;
                 submitBtn.disabled = false;
             }
+        });
+    }
+
+    /* ==========================================================================
+       6b. TYPEWRITER EFFECT & DEV CONSOLE RUNNER
+       ========================================================================== */
+    // Typewriter effect
+    const typewriterElement = document.getElementById('typewriter-text');
+    if (typewriterElement) {
+        const words = [
+            "I build intelligent systems.",
+            "I fine-tune large language models.",
+            "I engineer agentic workflows.",
+            "I deploy multi-modal pipelines."
+        ];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+
+        function type() {
+            const currentWord = words[wordIndex];
+            if (isDeleting) {
+                typewriterElement.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+                typingSpeed = 50;
+            } else {
+                typewriterElement.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+                typingSpeed = 100;
+            }
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                typingSpeed = 2000; // Pause at full word
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typingSpeed = 500; // Pause before typing next word
+            }
+
+            setTimeout(type, typingSpeed);
+        }
+        
+        type();
+    }
+
+    // Click to Run Console simulator
+    const runCodeBtn = document.getElementById('runCodeBtn');
+    const consoleBody = document.querySelector('.console-body code');
+    if (runCodeBtn && consoleBody) {
+        runCodeBtn.addEventListener('click', () => {
+            consoleBody.innerHTML = `root@aimindcrafter:~$ python run_agent.py\n[INFO] Initializing LangGraph multi-agent team...\n[INFO] Loading fine-tuned Qwen2-VL model...\n[SUCCESS] Extraction pipeline complete.\nOutput: "Agentic workflow successfully verified!"`;
         });
     }
 
