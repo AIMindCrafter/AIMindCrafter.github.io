@@ -990,7 +990,7 @@ html[data-theme="dark"] .console-execution-output {
 
 .project-img-wrapper {
     position: relative;
-    aspect-ratio: 16/10;
+    aspect-ratio: 16/8;
     overflow: hidden;
     border-bottom: var(--brutalist-border);
     background-color: rgba(0, 0, 0, 0.05);
@@ -1050,7 +1050,7 @@ html[data-theme="dark"] .project-hover-overlay {
 }
 
 .project-info {
-    padding: 1.75rem;
+    padding: 1.15rem;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -1070,21 +1070,21 @@ html[data-theme="dark"] .project-hover-overlay {
 .category-pill {
     background-color: var(--color-pink);
     color: #FFFFFF;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.45rem;
 }
 
 .project-info h3 {
     font-family: var(--font-heading);
     font-size: 1.35rem;
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.35rem;
 }
 
 .project-info p {
     font-size: 0.85rem;
     color: var(--text-secondary);
     line-height: 1.5;
-    margin-bottom: 1.25rem;
+    margin-bottom: 0.75rem;
 }
 
 .tech-tags {
@@ -1545,3 +1545,396 @@ html[data-theme="dark"] .project-hover-overlay {
         gap: 2rem;
     }
 }
+
+/* ==========================================================================
+   ARTICLES SECTION
+   ========================================================================== */
+.articles-section {
+    padding: 6rem 0;
+}
+
+.articles-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+
+.article-card {
+    padding: 2rem;
+}
+
+.article-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.85rem;
+}
+
+.article-date {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+.article-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.article-title a {
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.article-title a:hover {
+    color: var(--color-pink);
+}
+
+.article-excerpt {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+}
+
+.read-article-link {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+    width: fit-content;
+}
+
+.read-article-link i {
+    transition: transform 0.2s;
+}
+
+.read-article-link:hover {
+    color: var(--color-pink);
+}
+
+.read-article-link:hover i {
+    transform: translateX(5px);
+}
+
+/* ==========================================================================
+   REDESIGNED CONTACT & SCAN LAYOUT
+   ========================================================================== */
+.form-main-title {
+    font-family: var(--font-heading);
+    font-size: 2.25rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 0.75rem;
+}
+
+.form-sub-text {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+}
+
+.form-badge-btn-container {
+    margin-bottom: 2rem;
+}
+
+.form-badge-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--color-cyan);
+    color: #1E1E1E;
+    border: var(--brutalist-border);
+    box-shadow: 3px 3px 0px var(--shadow-color);
+    padding: 0.5rem 1rem;
+    font-family: var(--font-body);
+    font-weight: 900;
+    font-size: 0.85rem;
+    border-radius: 99px;
+    letter-spacing: 0.02em;
+}
+
+/* Mock reCAPTCHA styling */
+.mock-recaptcha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1.5px solid var(--border-color);
+    background-color: var(--bg-base);
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    margin-bottom: 1.25rem;
+    max-width: 320px;
+}
+
+.recaptcha-checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.recaptcha-checkbox-container input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    accent-color: #3b82f6;
+}
+
+.recaptcha-text {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+.recaptcha-logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.recaptcha-logo-container img {
+    width: 26px;
+    height: 26px;
+}
+
+.recaptcha-policies {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.55rem;
+    color: var(--text-secondary);
+    line-height: 1.2;
+}
+
+.recaptcha-policies a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.recaptcha-policies a:hover {
+    text-decoration: underline;
+}
+
+/* Pink background submit button */
+.pink-bg-btn {
+    background-color: var(--color-pink) !important;
+    color: #FFFFFF !important;
+}
+
+/* Right Scan Connect */
+.scan-connect-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.scan-card h2 {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+}
+
+.scan-sub-text {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.qr-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.qr-box-card {
+    border: 2px dashed var(--border-color);
+    background-color: rgba(0, 0, 0, 0.02);
+    border-radius: 8px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+html[data-theme="dark"] .qr-box-card {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.qr-box-card h3 {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 900;
+    margin-bottom: 0.85rem;
+    letter-spacing: 0.02em;
+}
+
+.qr-image-wrapper {
+    background-color: #FFFFFF;
+    border: var(--brutalist-border);
+    padding: 0.5rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+}
+
+.qr-image-wrapper img {
+    width: 120px;
+    height: 120px;
+    display: block;
+}
+
+.qr-action-btn {
+    width: 100%;
+    border: var(--brutalist-border);
+    box-shadow: 2.5px 2.5px 0px var(--shadow-color);
+    padding: 0.65rem;
+    font-size: 0.75rem;
+    font-weight: 900;
+    font-family: var(--font-body);
+    text-decoration: none;
+    text-align: center;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    transition: all 0.15s;
+}
+
+.qr-action-btn:hover {
+    transform: translate(-1.5px, -1.5px);
+    box-shadow: 3.5px 3.5px 0px var(--shadow-color);
+}
+
+.qr-action-btn:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0px var(--shadow-color);
+}
+
+.btn-yellow { background-color: var(--color-yellow); color: #1E1E1E; }
+.btn-green { background-color: var(--color-green); color: #1E1E1E; }
+
+/* AI model inference widget styling */
+.inference-card {
+    padding: 1.5rem;
+}
+
+.inference-header {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 1rem;
+}
+
+.inference-icon {
+    font-size: 1.35rem;
+    color: var(--color-pink);
+}
+
+.inference-titles h3 {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.inference-titles p {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+}
+
+.neural-network-viz {
+    background-color: rgba(0, 0, 0, 0.03);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+html[data-theme="dark"] .neural-network-viz {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Connection Signal Flows */
+@keyframes dash {
+    to {
+        stroke-dashoffset: -20;
+    }
+}
+.dash-line {
+    stroke-dashoffset: 0;
+    animation: dash 1.5s linear infinite;
+}
+
+/* Pulsing Nodes */
+@keyframes pulse-node {
+    0% { r: 5px; opacity: 0.75; }
+    50% { r: 7.5px; opacity: 1; fill: var(--color-cyan); }
+    100% { r: 5px; opacity: 0.75; }
+}
+.node {
+    fill: var(--bg-card);
+    stroke: var(--border-color);
+    stroke-width: 2px;
+}
+.input-node { animation: pulse-node 3s ease-in-out infinite; animation-delay: 0s; }
+.hidden-node { animation: pulse-node 3s ease-in-out infinite; animation-delay: 0.8s; }
+.output-node { animation: pulse-node 3s ease-in-out infinite; animation-delay: 1.6s; }
+
+.target-node {
+    fill: var(--color-pink);
+    stroke: var(--border-color);
+    stroke-width: 2.5px;
+    animation: pulse-node 2.5s ease-in-out infinite;
+    animation-delay: 2.2s;
+}
+
+/* ==========================================================================
+   FOOTER PLATFORM EMOJI BADGES
+   ========================================================================== */
+.footer-emoji-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--border-color);
+    box-shadow: 2px 2px 0px var(--shadow-color);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 1.15rem;
+    transition: all 0.15s;
+    background-color: var(--bg-card);
+}
+
+.footer-emoji-badge:hover {
+    transform: translate(-1.5px, -1.5px);
+    box-shadow: 3.5px 3.5px 0px var(--shadow-color);
+}
+
+.footer-emoji-badge:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0px var(--shadow-color);
+}
+
+.badge-blue:hover { background-color: var(--color-blue); }
+.badge-dark:hover { background-color: var(--border-color); color: var(--bg-base); }
+.badge-green:hover { background-color: var(--color-green); }
+.badge-orange:hover { background-color: var(--color-orange); }
+.badge-pink:hover { background-color: var(--color-pink); }
+.badge-cyan:hover { background-color: var(--color-cyan); }

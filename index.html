@@ -53,6 +53,7 @@
             <a href="#projects">Projects</a>
             <a href="#experience">Experience</a>
             <a href="#skills">Skills</a>
+            <a href="#articles">Articles</a>
             <a href="#contact">Contact</a>
         </div>
         <div class="nav-right">
@@ -76,6 +77,7 @@
         <a href="#projects">Projects</a>
         <a href="#experience">Experience</a>
         <a href="#skills">Skills</a>
+        <a href="#articles">Articles</a>
         <a href="#contact">Contact</a>
     </div>
 
@@ -415,36 +417,190 @@
             </div>
         </section>
 
+        <!-- Articles Section -->
+        <section class="articles-section section-scroll-reveal" id="articles">
+            <div class="container">
+                <div class="section-title-box">
+                    <h2 class="section-heading">Technical Articles & Insights</h2>
+                </div>
+                
+                <div class="articles-list">
+                    <!-- Article 1 -->
+                    <article class="brutalist-card article-card">
+                        <div class="article-meta">
+                            <span class="article-date"><i class="fa-solid fa-calendar-days"></i> June 2026</span>
+                            <span class="tech-pill category-pill">Fine-Tuning</span>
+                        </div>
+                        <h3 class="article-title"><a href="https://gamma.app/" target="_blank">Fine-Tuning Llama 3 on Consumer Hardware: A QLoRA Guide</a></h3>
+                        <p class="article-excerpt">A comprehensive, step-by-step walkthrough detailing how to fine-tune Llama 3 (8B) models on localized desktop configurations utilizing Unsloth, PEFT, and 4-bit quantization bounds to achieve specialized domains.</p>
+                        <a href="https://gamma.app/" target="_blank" class="read-article-link">Read Article <i class="fa-solid fa-arrow-right-long"></i></a>
+                    </article>
+
+                    <!-- Article 2 -->
+                    <article class="brutalist-card article-card">
+                        <div class="article-meta">
+                            <span class="article-date"><i class="fa-solid fa-calendar-days"></i> April 2026</span>
+                            <span class="tech-pill category-pill">Agents</span>
+                        </div>
+                        <h3 class="article-title"><a href="https://gamma.app/" target="_blank">Orchestrating Complex AI Agent Workflows with LangGraph</a></h3>
+                        <p class="article-excerpt">Exploring stateful, multi-agent frameworks using LangGraph. Learn how to map human-in-the-loop validation checkpoints, circular routing dependencies, and automated vector database retrieval loops.</p>
+                        <a href="https://gamma.app/" target="_blank" class="read-article-link">Read Article <i class="fa-solid fa-arrow-right-long"></i></a>
+                    </article>
+
+                    <!-- Article 3 -->
+                    <article class="brutalist-card article-card">
+                        <div class="article-meta">
+                            <span class="article-date"><i class="fa-solid fa-calendar-days"></i> February 2026</span>
+                            <span class="tech-pill category-pill">Multi-Modal</span>
+                        </div>
+                        <h3 class="article-title"><a href="https://gamma.app/" target="_blank">Structured OCR Data Extraction Using Qwen2-VL Model</a></h3>
+                        <p class="article-excerpt">An engineer's deep dive into using multi-modal visual language models (VLMs) to convert highly complex invoices, tables, and handwritten medical scripts into standardized, validated JSON formats.</p>
+                        <a href="https://gamma.app/" target="_blank" class="read-article-link">Read Article <i class="fa-solid fa-arrow-right-long"></i></a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
         <!-- Contact Section -->
         <section class="contact-section section-scroll-reveal" id="contact">
             <div class="container">
                 <div class="contact-grid">
-                    <div class="contact-greeting">
-                        <p class="tag-pink">CONNECT WITH ME</p>
-                        <h2>Let's build something intelligent.</h2>
-                        <p class="contact-p">
-                            Interested in collaborating on agentic workflows, fine-tuning large language models, or setting up a robust RAG environment? Fill out the form or reach out directly via email.
-                        </p>
-                    </div>
-
+                    <!-- Left Form Card -->
                     <div class="brutalist-card contact-form-card">
+                        <h2 class="form-main-title">Interested in collaborating?</h2>
+                        <p class="form-sub-text">I'm always open to new opportunities and interesting projects. Feel free to reach out!</p>
+                        
+                        <div class="form-badge-btn-container">
+                            <span class="form-badge-btn">GET IN TOUCH <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+
                         <form id="contactForm" class="brutalist-form">
                             <div class="form-input-group">
-                                <label for="senderName">YOUR NAME</label>
-                                <input type="text" id="senderName" name="name" required placeholder="John Doe">
+                                <label for="senderName">NAME</label>
+                                <input type="text" id="senderName" name="name" required placeholder="Your name">
                             </div>
                             <div class="form-input-group">
-                                <label for="senderEmail">YOUR EMAIL</label>
-                                <input type="email" id="senderEmail" name="email" required placeholder="john@example.com">
+                                <label for="senderEmail">EMAIL</label>
+                                <input type="email" id="senderEmail" name="email" required placeholder="your.email@example.com">
                             </div>
                             <div class="form-input-group">
-                                <label for="senderMessage">YOUR MESSAGE</label>
-                                <textarea id="senderMessage" name="message" rows="4" required placeholder="Tell me about your project..."></textarea>
+                                <label for="senderMessage">MESSAGE</label>
+                                <textarea id="senderMessage" name="message" rows="4" required placeholder="Tell me about your project or idea..."></textarea>
                             </div>
-                            <button type="submit" class="form-submit-btn">
-                                <i class="fa-solid fa-paper-plane"></i> SEND MESSAGE
+                            
+                            <!-- Mock reCAPTCHA for Visual Consistency -->
+                            <div class="mock-recaptcha">
+                                <div class="recaptcha-checkbox-container">
+                                    <input type="checkbox" id="recaptchaCheck" required>
+                                    <label for="recaptchaCheck" class="recaptcha-text">I'm not a robot</label>
+                                </div>
+                                <div class="recaptcha-logo-container">
+                                    <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA">
+                                    <div class="recaptcha-policies">
+                                        <span>reCAPTCHA</span>
+                                        <a href="https://policies.google.com/privacy" target="_blank">Privacy</a> - 
+                                        <a href="https://policies.google.com/terms" target="_blank">Terms</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="form-submit-btn pink-bg-btn">
+                                SEND MESSAGE
                             </button>
                         </form>
+                    </div>
+
+                    <!-- Right Scan & Connect Cards -->
+                    <div class="scan-connect-container">
+                        <div class="brutalist-card scan-card">
+                            <h2>Scan & Connect</h2>
+                            <p class="scan-sub-text">Use these QR codes for my CV and WhatsApp contact.</p>
+                            
+                            <div class="qr-grid">
+                                <!-- CV QR Box -->
+                                <div class="qr-box-card">
+                                    <h3>CV QR Code</h3>
+                                    <div class="qr-image-wrapper">
+                                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://aimindcrafter.github.io/Muhammad_zeeshan_malik_GenAI_Engineer_final.pdf" alt="CV QR Code">
+                                    </div>
+                                    <a href="Muhammad_zeeshan_malik_GenAI_Engineer_final.pdf" download="Muhammad_Zeeshan_Resume.pdf" class="qr-action-btn btn-yellow">
+                                        <i class="fa-solid fa-arrow-up-right-from-square"></i> VIEW CV
+                                    </a>
+                                </div>
+                                
+                                <!-- WhatsApp QR Box -->
+                                <div class="qr-box-card">
+                                    <h3>WhatsApp QR Code</h3>
+                                    <div class="qr-image-wrapper">
+                                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wa.me/923256257787" alt="WhatsApp QR Code">
+                                    </div>
+                                    <a href="https://wa.me/923256257787" target="_blank" class="qr-action-btn btn-green">
+                                        <i class="fa-brands fa-whatsapp"></i> WHATSAPP
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- AI Model Inference Visualization Card -->
+                        <div class="brutalist-card inference-card">
+                            <div class="inference-header">
+                                <span class="inference-icon"><i class="fa-solid fa-network-wired"></i></span>
+                                <div class="inference-titles">
+                                    <h3>AI model inference</h3>
+                                    <p>neural - prediction</p>
+                                </div>
+                            </div>
+                            <!-- Neural Network SVG Animation -->
+                            <div class="neural-network-viz">
+                                <svg width="100%" height="120" viewBox="0 0 400 120">
+                                    <!-- Connections -->
+                                    <!-- Input to Hidden -->
+                                    <line x1="40" y1="30" x2="160" y2="20" stroke="var(--border-color)" stroke-width="1.5" stroke-dasharray="4,4" class="dash-line"></line>
+                                    <line x1="40" y1="30" x2="160" y2="60" stroke="var(--border-color)" stroke-width="1.5" stroke-dasharray="4,4" class="dash-line"></line>
+                                    <line x1="40" y1="30" x2="160" y2="100" stroke="var(--border-color)" stroke-width="1.5" stroke-dasharray="4,4" class="dash-line"></line>
+                                    
+                                    <line x1="40" y1="60" x2="160" y2="20" stroke="var(--border-color)" stroke-width="1.5" stroke-dasharray="4,4" class="dash-line"></line>
+                                    <line x1="40" y1="60" x2="160" y2="60" stroke="var(--border-color)" stroke-width="1.5" stroke-dasharray="4,4" class="dash-line"></line>
+                                    <line x1="40" y1="60" x2="160" y2="100" stroke="var(--border-color)" stroke-width="1.5" stroke-dasharray="4,4" class="dash-line"></line>
+                                    
+                                    <line x1="40" y1="90" x2="160" y2="20" stroke="var(--border-color)" stroke-width="1.5" stroke-dasharray="4,4" class="dash-line"></line>
+                                    <line x1="40" y1="90" x2="160" y2="60" stroke="var(--border-color)" stroke-width="1.5" stroke-dasharray="4,4" class="dash-line"></line>
+                                    <line x1="40" y1="90" x2="160" y2="100" stroke="var(--border-color)" stroke-width="1.5" stroke-dasharray="4,4" class="dash-line"></line>
+                                    
+                                    <!-- Hidden to Output -->
+                                    <line x1="160" y1="20" x2="280" y2="40" stroke="var(--border-color)" stroke-width="1.5" stroke-dasharray="4,4" class="dash-line"></line>
+                                    <line x1="160" y1="20" x2="280" y2="80" stroke="var(--border-color)" stroke-width="1.5" stroke-dasharray="4,4" class="dash-line"></line>
+                                    
+                                    <line x1="160" y1="60" x2="280" y2="40" stroke="var(--border-color)" stroke-width="1.5" stroke-dasharray="4,4" class="dash-line"></line>
+                                    <line x1="160" y1="60" x2="280" y2="80" stroke="var(--border-color)" stroke-width="1.5" stroke-dasharray="4,4" class="dash-line"></line>
+                                    
+                                    <line x1="160" y1="100" x2="280" y2="40" stroke="var(--border-color)" stroke-width="1.5" stroke-dasharray="4,4" class="dash-line"></line>
+                                    <line x1="160" y1="100" x2="280" y2="80" stroke="var(--border-color)" stroke-width="1.5" stroke-dasharray="4,4" class="dash-line"></line>
+                                    
+                                    <!-- Output to Target -->
+                                    <line x1="280" y1="40" x2="360" y2="60" stroke="var(--border-color)" stroke-width="1.5" stroke-dasharray="4,4" class="dash-line"></line>
+                                    <line x1="280" y1="80" x2="360" y2="60" stroke="var(--border-color)" stroke-width="1.5" stroke-dasharray="4,4" class="dash-line"></line>
+
+                                    <!-- Nodes (Grouped circles with delay animations) -->
+                                    <!-- Input Layer -->
+                                    <circle cx="40" cy="30" r="6" class="node input-node"></circle>
+                                    <circle cx="40" cy="60" r="6" class="node input-node"></circle>
+                                    <circle cx="40" cy="90" r="6" class="node input-node"></circle>
+                                    
+                                    <!-- Hidden Layer -->
+                                    <circle cx="160" cy="20" r="6" class="node hidden-node"></circle>
+                                    <circle cx="160" cy="60" r="6" class="node hidden-node"></circle>
+                                    <circle cx="160" cy="100" r="6" class="node hidden-node"></circle>
+                                    
+                                    <!-- Output Layer -->
+                                    <circle cx="280" cy="40" r="6" class="node output-node"></circle>
+                                    <circle cx="280" cy="80" r="6" class="node output-node"></circle>
+                                    
+                                    <!-- Final Target Node -->
+                                    <circle cx="360" cy="60" r="8" class="node target-node"></circle>
+                                </svg>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -459,9 +615,17 @@
                     <h2 class="footer-logo">AIMINDCRAFTER</h2>
                     <p>Architecting Agentic Workflows & Multi-Modal Pipelines</p>
                     <div class="footer-social-row">
-                        <a href="https://github.com/AIMindCrafter" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/muhammad-zeshan-6b66a7350/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-                        <a href="mailto:muhammadzeshan.covers@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                        <a href="https://github.com/AIMindCrafter" target="_blank" title="GitHub" class="footer-emoji-badge badge-dark">💻</a>
+                        <a href="https://www.linkedin.com/in/muhammad-zeshan-6b66a7350/" target="_blank" title="LinkedIn" class="footer-emoji-badge badge-blue">💼</a>
+                        <a href="https://www.upwork.com/freelancers/~01ea1cf7ff4a012351" target="_blank" title="Upwork" class="footer-emoji-badge badge-green">🟢</a>
+                        <a href="https://stackoverflow.com/users/22225216/zeeshan-malik" target="_blank" title="Stack Overflow" class="footer-emoji-badge badge-orange">🥞</a>
+                        <a href="https://kaggle.com/zeeshanmalik" target="_blank" title="Kaggle" class="footer-emoji-badge badge-blue">📊</a>
+                        <a href="https://www.reddit.com/user/MuhammadZeeshan73/" target="_blank" title="Reddit" class="footer-emoji-badge badge-pink">🤖</a>
+                        <a href="https://discord.com/users/1166851427495334060" target="_blank" title="Discord" class="footer-emoji-badge badge-blue">💬</a>
+                        <a href="https://www.facebook.com/profile.php?id=100093411528772" target="_blank" title="Facebook" class="footer-emoji-badge badge-blue">👥</a>
+                        <a href="https://x.com/zem53836" target="_blank" title="X (Twitter)" class="footer-emoji-badge badge-dark">🐦</a>
+                        <a href="https://muhammad-zeeshan-aiengi-8owxsht.gamma.site/" target="_blank" title="Gamma Portfolio" class="footer-emoji-badge badge-cyan">🌐</a>
+                        <a href="mailto:muhammadzeshan.covers@gmail.com" title="Email" class="footer-emoji-badge badge-pink">✉️</a>
                     </div>
                 </div>
                 <div class="footer-links">
@@ -469,6 +633,7 @@
                     <a href="#projects">Projects</a>
                     <a href="#experience">Experience</a>
                     <a href="#skills">Skills</a>
+                    <a href="#articles">Articles</a>
                 </div>
             </div>
             <div class="footer-bottom">
