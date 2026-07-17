@@ -145,8 +145,8 @@ document.addEventListener('DOMContentLoaded', () => {
       * ML & AI: Fine-Tuning (PEFT, QLoRA), RAG Architectures, Vector Databases (Pinecone, ChromaDB), Stable Diffusion (DreamBooth, ControlNet), Multi-Modal AI (Qwen2-VL)
       * Dev & Cloud: Azure, Docker, GitHub Actions, PostgreSQL
     - Experience:
-      * Algotix AI (Jan 2026 - Present): Software Engineer Intern & Backend Developer. Builds agentic microservices and distributed LLM frameworks.
-      * Deep Embed (Nov 2024 - Jan 2026): Machine Learning Engineer. Developed multi-modal structured extraction systems.
+      * Algotix AI (Jan 2026 - Mar 2026): Software Engineer Intern. Architected and optimized backend services using Python and FastAPI, and built robust validation/logging workflows.
+      * Deep Embed Lab (Dec 2024 - August 2025): Machine Learning Engineer. Designed and optimized predictive ML/DL models using PyTorch/TensorFlow, and automated daily data ingestion/processing pipelines.
       * Arch Technologies (Nov 2025 - Dec 2025): Data Science Intern. Automates analytical pipelines and business KPI projections.
       * CodeAlpha (Oct 2025 - Nov 2025): Data Scientist. Built data classification models.
     - Top Projects:
@@ -290,7 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const q = query.toLowerCase();
         
         if (q.includes('role') || q.includes('current') || q.includes('intern') || q.includes('algotix') || q.includes('where do you work')) {
-            return "Zeeshan is currently working as a **Software Engineer Intern & Backend Developer** at **Algotix AI** (started Jan 2026). His tasks involve developing agentic AI microservices and distributed LLM frameworks.";
+            return "Zeeshan worked as a **Software Engineer Intern** at **Algotix AI** (Jan 2026 – Mar 2026). His tasks involved architecting and optimizing backend services using Python and FastAPI, reducing service response latency by 20%, and building robust validation and logging workflows.";
         }
         
         if (q.includes('project') || q.includes('work') || q.includes('build') || q.includes('mri') || q.includes('detection') || q.includes('qwen') || q.includes('rag') || q.includes('voice') || q.includes('agent') || q.includes('vehicle') || q.includes('traffic') || q.includes('fyp')) {
@@ -309,7 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return "You can reach Zeeshan directly at **muhammadzeshan.covers@gmail.com** or connect via [LinkedIn](https://www.linkedin.com/in/muhammad-zeshan-6b66a7350/). You can also click the Download Resume button.";
         }
         
-        return "I am Zeeshan's AI Assistant. Feel free to query me about:\n\n- His **Current Role** at Algotix AI\n- His **Notable Projects** (MRI Detection, LLM Fine-tuning, RAG)\n- His **Professional Certifications** (Oracle, IBM, Stanford)\n- His **Tech Stack** (Python, Rust, LangChain, FastAPI)\n\n*(Note: Running in local simulated mode because Gemini API Key is loading fallback values)*";
+        return "I am Zeeshan's AI Assistant. Feel free to query me about:\n\n- His **Experience** at Algotix AI\n- His **Notable Projects** (MRI Detection, LLM Fine-tuning, RAG)\n- His **Professional Certifications** (Oracle, IBM, Stanford)\n- His **Tech Stack** (Python, Rust, LangChain, FastAPI)\n\n*(Note: Running in local simulated mode because Gemini API Key is loading fallback values)*";
     }
 
     // Lightweight markdown parser for clean chatbot formatting
